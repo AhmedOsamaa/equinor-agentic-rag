@@ -1,0 +1,374 @@
+{
+ "cross-307": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: unparsed",
+  "by": "claude"
+ },
+ "cross-308": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "equinor_ar2025-006": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "equinor_ar2025-010": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "equinor_ar2025-013": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "equinor_ar2025-017": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "equinor_ar2025-020": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "equinor_ar2025-022": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "equinor_ar2025-023": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "equinor_ar2025-025": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "equinor_ar2025-027": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "equinor_ar2025-102": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "equinor_ar2025-110": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "equinor_ar2025-111": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "equinor_ar2025-114": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "equinor_ar2025-115": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "equinor_ar2025-117": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "equinor_ar2025-122": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "equinor_ar2025-125": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "equinor_ar2025-127": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "equinor_ar2025-302": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "equinor_ar2025-310": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "equinor_ar2025-311": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "havtil_activities-001": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_activities-006": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_activities-105": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "havtil_activities-106": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "havtil_activities-304": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_co2-003": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_co2-004": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_co2-006": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_co2-009": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_co2-101": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_co2-102": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "havtil_co2-103": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "havtil_co2-106": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_co2-304": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "havtil_framework-002": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_framework-007": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_framework-104": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_framework-304": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_management-005": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_management-006": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_management-009": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "havtil_management-106": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_management-107": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_management-301": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "havtil_management-302": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "irena_rpgc2024-003": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "irena_rpgc2024-006": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "irena_rpgc2024-009": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "irena_rpgc2024-011": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "irena_rpgc2024-015": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "irena_rpgc2024-020": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "closed book: ambiguous",
+  "by": "claude"
+ },
+ "irena_rpgc2024-105": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "irena_rpgc2024-107": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "irena_rpgc2024-110": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ },
+ "irena_rpgc2024-115": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "irena_rpgc2024-116": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: ambiguous",
+  "by": "claude"
+ },
+ "irena_rpgc2024-302": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "irena_rpgc2024-306": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: answered",
+  "by": "claude"
+ },
+ "irena_rpgc2024-307": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "closed book: not_in_context",
+  "by": "claude"
+ }
+}

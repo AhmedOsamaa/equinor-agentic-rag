@@ -1,0 +1,374 @@
+{
+ "cross-307": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "0.123 and the reasons match the reference.",
+  "by": "claude"
+ },
+ "cross-308": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-006": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "Number right; unit not stated in the answer.",
+  "by": "claude"
+ },
+ "equinor_ar2025-010": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-013": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-017": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-020": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-022": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-023": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "Gives the three pillars, not the four elements in the reference (50% cut, power business, ...).",
+  "by": "claude"
+ },
+ "equinor_ar2025-025": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "Correct refusal.",
+  "by": "claude"
+ },
+ "equinor_ar2025-027": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Invents '100 mboe per day'; the report only says plateau was reached; no chunk contains that figure.",
+  "by": "claude"
+ },
+ "equinor_ar2025-102": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-110": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-111": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "Answers with organic capex totals, not the PP&E additions of E&P International in the reference.",
+  "by": "claude"
+ },
+ "equinor_ar2025-114": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "REN 1,355 vs 851; the fixed pipeline got this wrong.",
+  "by": "claude"
+ },
+ "equinor_ar2025-115": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-117": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-122": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "Truncated in the read; the visible part matches.",
+  "by": "claude"
+ },
+ "equinor_ar2025-125": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "Says three levers; the reference has four. Truncated.",
+  "by": "claude"
+ },
+ "equinor_ar2025-127": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Names the buyer of the 40% interest (p199) as the buyer of the remaining 20%, which the report does not name.",
+  "by": "claude"
+ },
+ "equinor_ar2025-302": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-310": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "Gives 532 and 31.85% but not the product, about 169.4 million.",
+  "by": "claude"
+ },
+ "equinor_ar2025-311": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-001": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-006": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-105": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "Truncated in the read.",
+  "by": "claude"
+ },
+ "havtil_activities-106": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "Truncated; the first items (approved health service) differ from the reference list of four duties.",
+  "by": "claude"
+ },
+ "havtil_activities-304": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-003": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-004": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-006": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-009": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "Gives no invented number but never says the deadline in weeks is not stated; status answered instead of not_in_context.",
+  "by": "claude"
+ },
+ "havtil_co2-101": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-102": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "Dates right; the lead phrase '19 December each year' is wrong for 2023 and 2024.",
+  "by": "claude"
+ },
+ "havtil_co2-103": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "Truncated; pipeline part is covered, comparison with the reservoir part not seen.",
+  "by": "claude"
+ },
+ "havtil_co2-106": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-304": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "1 day; the fixed pipeline got this wrong.",
+  "by": "claude"
+ },
+ "havtil_framework-002": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-007": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-104": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "Verification programme covered; the inspectors' power to order it not seen. Truncated.",
+  "by": "claude"
+ },
+ "havtil_framework-304": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "Gives the off-duty rule but not the 21-day longest period.",
+  "by": "claude"
+ },
+ "havtil_management-005": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "Truncated.",
+  "by": "claude"
+ },
+ "havtil_management-006": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_management-009": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "Says the passage does not specify a threshold (correct substance); status was labelled answered.",
+  "by": "claude"
+ },
+ "havtil_management-106": {
+  "correct": "partly",
+  "faithful": "na",
+  "note": "Three categories; the reference has four areas. Gold chunk not cited.",
+  "by": "claude"
+ },
+ "havtil_management-107": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "Correct: no number of weeks is stated.",
+  "by": "claude"
+ },
+ "havtil_management-301": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_management-302": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-003": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-006": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-009": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-011": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-015": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-020": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "Answers 0.034 without noting that onshore/offshore and the year are unspecified (reference: ambiguous).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-105": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-107": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-110": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "Truncated.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-115": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-116": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-302": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-306": {
+  "correct": "yes",
+  "faithful": "na",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-307": {
+  "correct": "no",
+  "faithful": "na",
+  "note": "82.9 GW is the end-2024 figure; the question asks for end-2023 (74.3 GW).",
+  "by": "claude"
+ }
+}

@@ -1,0 +1,205 @@
+﻿id,suggestion,category,reason,checked_source
+cross-306,edit,single-doc,The Equinor gold quote only gives context (Njord A spill); the answer comes wholly from the Activities Regulations.,yes
+cross-307,edit,single-doc,"The Equinor quote (""our New York offshore wind farm, Empire Wind"") is only context; the answer is entirely IRENA.",yes
+cross-308,edit,single-doc,The Equinor quote only says Dogger Bank is in the UK; the answer is entirely IRENA table data.,yes
+equinor_ar2025-102,edit,two-answers,"""Outside Norway"" also includes E&P USA; the answer compares only E&P International with E&P Norway; gold row has no segment labels.",yes
+equinor_ar2025-105,reject,other,Adds capex to renewables (Capex) to additions to PP&E/intangibles/equity-accounted investments for oil and gas: two differently defined measures.,yes
+equinor_ar2025-115,edit,false-premise,"The four wells (p43) include Argentina, which is in the Americas, so ""outside the Americas"" is wrong.",yes
+equinor_ar2025-116,reject,other,Compares a REN segment additions figure with a group-wide EU Taxonomy CapEx figure; different scope and definition.,yes
+equinor_ar2025-307,edit,other,34% is stated unqualified while the 50% target is a net reduction; the subtraction may mix different bases.,yes
+havtil_activities-304,edit,other,"""Deeper than 180 m"" is not in the quote used; the six-hour limit comes from a neighbouring clause.",yes
+havtil_co2-303,reject,weak-spanning,"Consent before manned underwater operations (p8) and the Section 63 correspondence (p10) are unrelated facts joined by ""and"".",yes
+havtil_framework-302,edit,weak-spanning,Organisation-change power (p10) and the appeal body (p26) are only loosely related; the second part is a generic appeal clause.,yes
+havtil_management-101,reject,unreadable,"""Initial strike announcement"", ""bore activities"", ""plugback programme"" disguise a collective work stoppage; barely readable and anchored on two different notices.",yes
+havtil_management-104,edit,wording,"""Unstaffed"" and ""bridge"" are not in the text, which says ""simpler facilities"" and gangways; the two obligations are also unrelated.",yes
+havtil_management-303,reject,weak-spanning,"Well programme in the consent application (p13) and who sets submission deadlines for programmes (p17) are two unrelated facts joined by ""and"".",yes
+irena_rpgc2024-309,unsure,two-answers,"p104 ""55% of this decline"" follows a sentence on module-cost decline, so it may not mean LCOE decline; a human should read the source.",yes
+equinor_ar2025-004,edit,wording,"""Based on the segment performance summary"" refers to the document layout.",yes
+equinor_ar2025-006,edit,wording,"""According to the group operational summary table"" refers to the document layout.",no
+equinor_ar2025-022,accept,ok,,yes
+equinor_ar2025-104,accept,ok,,yes
+equinor_ar2025-109,accept,ok,,no
+equinor_ar2025-118,accept,ok,,yes
+equinor_ar2025-308,accept,ok,,no
+equinor_ar2025-309,accept,ok,,yes
+equinor_ar2025-310,accept,ok,,no
+havtil_activities-001,accept,ok,,no
+havtil_activities-002,accept,ok,,no
+havtil_activities-003,accept,ok,,no
+havtil_activities-006,accept,ok,,no
+havtil_activities-007,accept,ok,,no
+havtil_activities-009,accept,ok,,yes
+havtil_activities-301,accept,ok,,no
+havtil_activities-303,accept,ok,,yes
+havtil_co2-104,accept,ok,,no
+havtil_co2-105,accept,ok,,no
+havtil_framework-001,accept,ok,,no
+havtil_framework-003,accept,ok,,no
+havtil_management-003,accept,ok,,no
+irena_rpgc2024-002,accept,ok,,yes
+irena_rpgc2024-008,accept,ok,,yes
+irena_rpgc2024-013,accept,ok,,no
+irena_rpgc2024-017,accept,ok,,no
+irena_rpgc2024-018,accept,ok,,yes
+irena_rpgc2024-101,accept,ok,,yes
+irena_rpgc2024-109,accept,ok,,no
+irena_rpgc2024-307,accept,ok,,yes
+cross-301,accept,ok,,no
+cross-302,accept,ok,,no
+cross-303,accept,ok,,yes
+cross-304,accept,ok,,no
+cross-305,accept,ok,,no
+equinor_ar2025-001,edit,other,Question asks for the total of members and observers; the answer lists 18 and 3 and never states the total of 21.,no
+equinor_ar2025-002,edit,wording,"""listed in the operational asset review"" refers to the document; the quote is a table row.",no
+equinor_ar2025-003,accept,ok,,no
+equinor_ar2025-005,accept,ok,,no
+equinor_ar2025-007,accept,ok,,no
+equinor_ar2025-008,edit,other,Question and answer call Raia a gas development; the quote says it includes both oil and gas discoveries.,yes
+equinor_ar2025-009,edit,wording,"""in the operational results summary"" refers to the document layout.",no
+equinor_ar2025-010,accept,ok,,no
+equinor_ar2025-011,accept,ok,,no
+equinor_ar2025-012,accept,ok,,no
+equinor_ar2025-013,accept,ok,,no
+equinor_ar2025-014,accept,ok,,no
+equinor_ar2025-015,accept,ok,,no
+equinor_ar2025-016,accept,ok,,no
+equinor_ar2025-017,accept,ok,,no
+equinor_ar2025-018,accept,ok,,no
+equinor_ar2025-019,accept,ok,,no
+equinor_ar2025-020,accept,ok,,no
+equinor_ar2025-021,accept,ok,,no
+equinor_ar2025-023,accept,ok,,yes
+equinor_ar2025-024,accept,ok,,yes
+equinor_ar2025-025,accept,ok,,yes
+equinor_ar2025-026,accept,ok,,yes
+equinor_ar2025-027,accept,ok,,yes
+equinor_ar2025-028,accept,ok,,no
+equinor_ar2025-101,accept,ok,,no
+equinor_ar2025-103,accept,ok,,no
+equinor_ar2025-106,accept,ok,,no
+equinor_ar2025-107,edit,two-answers,"""Federal authorities halting installation"" is ambiguous: there was more than one stop-work order; the answer uses only the 22 December one.",yes
+equinor_ar2025-108,accept,ok,,no
+equinor_ar2025-110,edit,weak-spanning,"Bacalhau first oil (p23) and Raia start-up (p43) are separate facts; ""subsequent Campos Basin hub"" is an unsupported link.",yes
+equinor_ar2025-111,accept,ok,,yes
+equinor_ar2025-112,edit,other,"Compares net interest-bearing debt (already net of cash) with cash; ""exceeded by more than double"" is not a meaningful comparison.",yes
+equinor_ar2025-113,accept,ok,,no
+equinor_ar2025-114,edit,other,"REN figure is ""impairment losses"" of USD 1.4 bn while EPI is ""net impairment losses"" of USD 851 m; differently defined measures.",yes
+equinor_ar2025-117,edit,wrong-answer,"""Initial carrying value"" is asked but USD 5,574 m is the net investment in Adura at 31 December 2025, not an initial value.",yes
+equinor_ar2025-119,accept,ok,,no
+equinor_ar2025-120,accept,ok,,yes
+equinor_ar2025-121,accept,ok,,no
+equinor_ar2025-122,accept,ok,,yes
+equinor_ar2025-123,accept,ok,,yes
+equinor_ar2025-124,accept,ok,,no
+equinor_ar2025-125,accept,ok,,yes
+equinor_ar2025-126,accept,ok,,yes
+equinor_ar2025-127,unsure,label,"p8 says the Peregrino divestment was ""for USD 3.5 billion"", so the final 20% price may be derivable; the near/unanswerable label needs a human read.",yes
+equinor_ar2025-128,accept,ok,,yes
+equinor_ar2025-301,accept,ok,,no
+equinor_ar2025-302,accept,ok,,yes
+equinor_ar2025-303,accept,ok,,no
+equinor_ar2025-304,accept,ok,,no
+equinor_ar2025-305,accept,ok,,yes
+equinor_ar2025-306,accept,ok,,no
+equinor_ar2025-311,accept,ok,,no
+havtil_activities-004,accept,ok,,no
+havtil_activities-005,accept,ok,,no
+havtil_activities-008,accept,ok,,no
+havtil_activities-101,unsure,other,Subtracts two deadlines with different starting points (48 h after detection vs 2 h after action management is set up); the difference has little meaning.,yes
+havtil_activities-102,accept,ok,,no
+havtil_activities-103,accept,ok,,no
+havtil_activities-104,unsure,wrong-answer,"The six-year validity (p19) is for baseline surveys, while question and answer speak of the mapping of vulnerable values (Section 53); they may be conflated.",yes
+havtil_activities-105,accept,ok,,no
+havtil_activities-106,accept,ok,,no
+havtil_activities-107,accept,ok,,yes
+havtil_activities-302,accept,ok,,no
+havtil_co2-001,accept,ok,,no
+havtil_co2-002,accept,ok,,no
+havtil_co2-003,accept,ok,,no
+havtil_co2-004,accept,ok,,no
+havtil_co2-005,accept,ok,,no
+havtil_co2-006,accept,ok,,no
+havtil_co2-007,accept,ok,,no
+havtil_co2-008,accept,ok,,no
+havtil_co2-009,accept,ok,,no
+havtil_co2-101,edit,other,"""Four years"" is a calendar-year difference (25 Feb 2020 to 18 Dec 2024 is almost five years); the question asks how many years elapsed.",yes
+havtil_co2-102,accept,ok,,yes
+havtil_co2-103,accept,ok,,no
+havtil_co2-106,edit,wrong-answer,Section 12 lists five items (a-e); the answer says four and omits b (major modifications or changes in use).,yes
+havtil_co2-107,accept,ok,,no
+havtil_co2-301,accept,ok,,no
+havtil_co2-302,accept,ok,,no
+havtil_co2-304,accept,ok,,no
+havtil_framework-002,accept,ok,,no
+havtil_framework-004,accept,ok,,no
+havtil_framework-005,accept,ok,,no
+havtil_framework-006,accept,ok,,no
+havtil_framework-007,accept,ok,,no
+havtil_framework-008,accept,ok,,no
+havtil_framework-009,accept,ok,,no
+havtil_framework-101,accept,ok,,no
+havtil_framework-102,edit,weak-spanning,"Rota notification timing and night-work consultation are two unrelated facts joined by ""and"".",yes
+havtil_framework-103,accept,ok,,no
+havtil_framework-104,accept,ok,,no
+havtil_framework-105,accept,ok,,yes
+havtil_framework-106,accept,ok,,no
+havtil_framework-107,accept,ok,,no
+havtil_framework-301,accept,ok,,no
+havtil_framework-303,accept,ok,,no
+havtil_framework-304,accept,ok,,no
+havtil_management-001,accept,ok,,no
+havtil_management-002,accept,ok,,no
+havtil_management-004,accept,ok,,no
+havtil_management-005,accept,ok,,no
+havtil_management-006,accept,ok,,no
+havtil_management-007,accept,ok,,no
+havtil_management-008,accept,ok,,no
+havtil_management-009,accept,ok,,no
+havtil_management-102,accept,ok,,no
+havtil_management-103,accept,ok,,no
+havtil_management-105,accept,ok,,no
+havtil_management-106,accept,ok,,yes
+havtil_management-107,accept,ok,,no
+havtil_management-301,accept,ok,,no
+havtil_management-302,accept,ok,,no
+havtil_management-304,accept,ok,,no
+irena_rpgc2024-001,accept,ok,,no
+irena_rpgc2024-003,accept,ok,,yes
+irena_rpgc2024-004,accept,ok,,no
+irena_rpgc2024-005,accept,ok,,yes
+irena_rpgc2024-006,accept,ok,,no
+irena_rpgc2024-007,accept,ok,,no
+irena_rpgc2024-009,accept,ok,,no
+irena_rpgc2024-010,accept,ok,,no
+irena_rpgc2024-011,accept,ok,,no
+irena_rpgc2024-012,accept,ok,,no
+irena_rpgc2024-014,accept,ok,,no
+irena_rpgc2024-015,accept,ok,,no
+irena_rpgc2024-016,accept,ok,,no
+irena_rpgc2024-019,accept,ok,,yes
+irena_rpgc2024-020,accept,ok,,no
+irena_rpgc2024-102,accept,ok,,no
+irena_rpgc2024-103,accept,ok,,no
+irena_rpgc2024-104,accept,ok,,no
+irena_rpgc2024-105,accept,ok,,no
+irena_rpgc2024-106,accept,ok,,no
+irena_rpgc2024-107,accept,ok,,no
+irena_rpgc2024-108,accept,ok,,no
+irena_rpgc2024-110,accept,ok,,no
+irena_rpgc2024-111,accept,ok,,no
+irena_rpgc2024-112,edit,weak-spanning,"India SATAT biogas target and India biomass LCOE are unrelated facts joined by ""and""; ""lowest worldwide"" is not the same as ""historical mean for India"".",yes
+irena_rpgc2024-113,accept,ok,,no
+irena_rpgc2024-114,edit,weak-spanning,"Share of German heat demand and the drilling share of project expenditure are unrelated facts joined by ""and""; the wording is garbled.",yes
+irena_rpgc2024-115,unsure,not-in-quote,The answer claims country risk raises WACC; the quotes only show capital intensity and financing share rising with WACC; the sovereign-risk claim was not found on p39.,yes
+irena_rpgc2024-116,accept,ok,,no
+irena_rpgc2024-117,accept,ok,,no
+irena_rpgc2024-118,accept,ok,,yes
+irena_rpgc2024-119,accept,ok,,no
+irena_rpgc2024-120,accept,ok,,no
+irena_rpgc2024-301,accept,ok,,no
+irena_rpgc2024-302,accept,ok,,no
+irena_rpgc2024-303,accept,ok,,yes
+irena_rpgc2024-304,accept,ok,,no
+irena_rpgc2024-305,accept,ok,,no
+irena_rpgc2024-306,accept,ok,,no
+irena_rpgc2024-308,accept,ok,,no

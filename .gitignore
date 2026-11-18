@@ -1,0 +1,31 @@
+# Source PDFs are downloaded from publishers and not redistributed
+docs/*.pdf
+
+# Derived artefacts: rebuilt by `make index`
+data/
+index/
+
+# Smoke-test dumps contain verbatim publisher text
+results/smoke/
+
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.env
+eval/prompts/
+output/
+Output/
+
+# the owner's working copy of the review sheet; decisions live in eval/review_log.jsonl
+eval/review_sheet*.csv
+
+# live run state of the dashboard (not results)
+results/run_status.json
+results/run_status.tmp
+results/run.log
+
+# run logs, call log (token and cost log, not results), local archive
+results/*.log
+results/llm_calls.jsonl
+Output.7z

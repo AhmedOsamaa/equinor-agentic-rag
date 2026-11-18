@@ -1,0 +1,1125 @@
+{
+ "cross-307": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "What LCOE did IRENA report for offshore wind in the United States in 2024, and what did it say explains this high level?"
+  ],
+  "baseline": {
+   "hit@5": 0.0,
+   "hit@10": 0.0,
+   "coverage@10": 0.0,
+   "mrr@10": 0.0,
+   "ndcg@10": 0.0
+  },
+  "gated": {
+   "hit@5": 0.0,
+   "hit@10": 0.0,
+   "coverage@10": 0.0,
+   "mrr@10": 0.0,
+   "ndcg@10": 0.0
+  }
+ },
+ "cross-308": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Need the UK offshore wind 2024 LCOE value and the European average LCOE for 2024. Passages provide Europe 2024 LCOE (weighted average) but do not give the UK 2024 value.",
+  "queries": [
+   "How did the UK's weighted average LCOE for offshore wind projects commissioned in 2024 compare with the European average?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.52129602861432
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.52129602861432
+  }
+ },
+ "equinor_ar2025-006": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "What was Equinor's total entitlement liquids and gas production per day in 2025?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.44091585574750664
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.44091585574750664
+  }
+ },
+ "equinor_ar2025-010": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "What target year has Equinor designated for attaining net zero across its energy operations?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8262346571285599
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8262346571285599
+  }
+ },
+ "equinor_ar2025-013": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Need specific year-on-year changes for liquids output and natural gas production within Exploration & Production Norway (E&P Norway) for 2025 (e.g., 2025 vs 2024 percentages or volume changes) to compare trajectory.",
+  "queries": [
+   "For the Exploration & Production Norway segment, how did the year-on-year trajectory of liquids output compare to natural gas production in 2025?",
+   "Exploration & Production Norway liquids output year-on-year 2025",
+   "Exploration & Production Norway natural gas production year-on-year 2025",
+   "E&P Norway 2025 liquids vs natural gas production change 2025 versus 2024"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.819876640193745
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8797930601107827
+  }
+ },
+ "equinor_ar2025-017": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "The passages do not clearly identify a single 'main generator of onshore green electricity in 2025' or provide a dedicated 'operating asset register' net power capacity for that asset. We need a specific statement naming the main generator and its net capacity (MW) from the operating asset register.",
+  "queries": [
+   "Which onshore renewable asset was identified as the main generator of onshore green electricity in 2025, and what is its net power capacity in the operating asset register?",
+   "main generator of onshore green electricity in 2025",
+   "operating asset register net power capacity MW onshore renewable asset 2025",
+   "onshore renewable asset identified as main generator 2025 operating asset register"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.6039488141628168
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.5102825701477163
+  }
+ },
+ "equinor_ar2025-020": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "What operational factor caused the 7% increase in liquids production on the Norwegian continental shelf during 2025 despite natural reservoir decline?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.9726097514324383
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.9726097514324383
+  }
+ },
+ "equinor_ar2025-102": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "By how much did the 2025 additions to PP&E, intangibles and equity-accounted investments of E&P International exceed those of E&P Norway?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.48801287133544796
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.48801287133544796
+  }
+ },
+ "equinor_ar2025-110": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "When did the Bacalhau field in Brazil reach first oil, and in which year is start-up scheduled for Equinor's Raia development there?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8471595489557654
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8471595489557654
+  }
+ },
+ "equinor_ar2025-111": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "The passages do not provide segmented breakdown of capital investments specifically for international extraction assets by year 2024 and 2025. Look for a table or section that details capital expenditures by segment (e.g., E&P International) and shows 2024 vs 2025 figures.",
+  "queries": [
+   "How did capital investment allocations for international extraction assets evolve between 2024 and 2025 in segmented reporting?"
+  ],
+  "baseline": {
+   "hit@5": 0.0,
+   "hit@10": 0.0,
+   "coverage@10": 0.0,
+   "mrr@10": 0.0,
+   "ndcg@10": 0.0
+  },
+  "gated": {
+   "hit@5": 0.0,
+   "hit@10": 0.0,
+   "coverage@10": 0.0,
+   "mrr@10": 0.0,
+   "ndcg@10": 0.0
+  }
+ },
+ "equinor_ar2025-114": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Need explicit net impairment (losses) by segment for 2025: REN and E&P International values.",
+  "queries": [
+   "In 2025, which of Equinor's segments recorded the larger net impairment losses: Renewables (REN) or E&P International?"
+  ],
+  "baseline": {
+   "hit@5": 0.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.1111111111111111,
+   "ndcg@10": 0.19797631038139768
+  },
+  "gated": {
+   "hit@5": 0.0,
+   "hit@10": 0.0,
+   "coverage@10": 0.0,
+   "mrr@10": 0.0,
+   "ndcg@10": 0.0
+  }
+ },
+ "equinor_ar2025-115": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "The passages do not state the number of exploration wells completed in E&P International in 2025 or where they were drilled; only mention two discoveries in 2025 (Argentina onshore and Angola Block 1/14) and that four wells were drilled with locations (Angola, Argentina onshore, Libya) but not explicitly 'completed' or a global count for E&P International. Need explicit sentence with 'exploration wells completed in 2025 in E&P International' and drilling locations.",
+  "queries": [
+   "How many exploration wells did Equinor and its partners complete in E&P International in 2025, and where were they drilled?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.6936671966985962
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.6936671966985962
+  }
+ },
+ "equinor_ar2025-117": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "What ownership interest did Equinor receive in Adura, the joint venture with Shell that combined their UK upstream businesses, and what was Equinor's investment in Adura worth at year-end 2025?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 0.5,
+   "mrr@10": 0.25,
+   "ndcg@10": 0.2786954613091193
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 0.5,
+   "mrr@10": 0.25,
+   "ndcg@10": 0.2786954613091193
+  }
+ },
+ "equinor_ar2025-122": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Need explicit statement linking: (a) which operational shutdown(s) and portfolio divestitures caused international production volumes to contract in 2025, and (b) how these volume reductions affected overseas revenues and net operating income.",
+  "queries": [
+   "What operational shutdown and portfolio divestitures caused international production volumes to contract in 2025, and how did these volume reductions affect overseas revenues and net operating income?",
+   "operational shutdowns and portfolio divestitures caused international production volumes to contract in 2025",
+   "international production volumes contract 2025 portfolio divestitures overseas revenues net operating income",
+   "2025 overseas revenues net operating income impact from production volume reductions related to shutdowns and divestitures"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.6699428277754006
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7484699483616326
+  }
+ },
+ "equinor_ar2025-302": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "What net impairment did Equinor recognise on its Exploration & Production USA - offshore assets in 2025, and what drove it?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8404974336657743
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8404974336657743
+  }
+ },
+ "equinor_ar2025-310": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "In the Petrofac arbitration over the In Salah Southern Fields Project, what amount does Equinor's share of the estimated claim represent?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7959761332981399
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7959761332981399
+  }
+ },
+ "equinor_ar2025-311": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "The passages provide: base discount rate 5.5% real after tax (passage 1,4) and a discount rate of 3% real post-tax for Renewables USA – Offshore (passage 2). However, the question asks: 'How many percentage points lower was the real post-tax discount rate applied in the 2025 impairment of Equinor's US offshore wind projects than the base discount rate used in its value-in-use calculations?' We need to confirm these two rates refer to the same impairment context (US offshore wind projects) and that 3% real post-tax Discount rate is specifically for impairment in 2025 for US offshore wind, and compare it to the base 5.5% real after tax discount rate used in value-in-use. The passages do show 3% real post-tax for Renewables USA – Offshore, and 5.5% real after tax base rate. If these are indeed the same impairment context, the difference is 5.5% - 3% = 2.5 percentage points. If not, the missing would be needed.",
+  "queries": [
+   "How many percentage points lower was the real post-tax discount rate applied in the 2025 impairment of Equinor's US offshore wind projects than the base discount rate used in its value-in-use calculations?",
+   "Equinor impairment 2025 US offshore wind real post-tax discount rate 3% Renewables USA Offshore",
+   "base discount rate 5.5% real after tax value-in-use Equinor",
+   "how many percentage points lower real post-tax discount rate compared to base rate Equinor value-in-use impairment US offshore wind 2025"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.879224587684455
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8084762024911105
+  }
+ },
+ "havtil_activities-001": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "Under the Activities Regulations, what specific operational method must be used when offshore personnel perform dives exceeding a depth of 50 metres?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 1.0
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 1.0
+  }
+ },
+ "havtil_activities-006": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "During start-up and operation, specify the exact qualification standard for the enterprise's occupational health service (e.g., required professional qualifications, certifications, or standards) as referenced in the Activities Regulations; the passages mention Section 5 and start-up requirements but do not state a concrete qualification standard.",
+  "queries": [
+   "Under the Activities Regulations, what qualification standard must an enterprise's occupational health service satisfy during the start-up and operation of facilities?",
+   "Activities Regulations qualification standard for enterprise's occupational health service start-up operation",
+   "start-up and operation Activities Regulations occupational health service professional qualifications",
+   "Section 5 start-up requirements Activities Regulations occupational health service qualification standard"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7931521607797158
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8040236524147698
+  }
+ },
+ "havtil_activities-105": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Missing explicit milestones and evidentiary proofs required to conclude emergency response measures, such as: specific criteria for normalisation (Section 77 e) evidence, required documentation types (action plan completion, reports, verifications), timeframes (e.g., two-hour plan version after action establishment), and formal closure/assessment criteria and authorities' sign-off.",
+  "queries": [
+   "What operational milestones and evidentiary proof are mandatory before emergency response measures against an offshore contamination event can be officially concluded?",
+   "operational milestones evidentiary proof mandatory before emergency response measures can be officially concluded offshore contamination event",
+   "normalisation criteria Section 77 e evidence required documentation action plan completion reports verifications timeframe two-hour plan version after action establishment closure assessment authorities sign-off",
+   "formal closure criteria offshore emergency response measures assessment criteria authorities sign-off documentation types"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.59282326324377
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.47639327193905884
+  }
+ },
+ "havtil_activities-304": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "For dives deeper than 180 metres, how many hours longer may a bell run last if the divers stay dry in a subsea chamber than the normal limit?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.7967075809905066
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.7967075809905066
+  }
+ },
+ "havtil_co2-003": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "The passages do not specify which section of Chapter IX of the Management Regulations is exempted under Section 10 of the CO2 safety regulations. Need the exact exemption reference from Section 10.",
+  "queries": [
+   "Under Section 10 of the CO2 safety regulations, which section of Chapter IX of the Management Regulations is exempted from applying?"
+  ],
+  "baseline": {
+   "hit@5": 0.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.14285714285714285,
+   "ndcg@10": 0.31205198423028313
+  },
+  "gated": {
+   "hit@5": 0.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.14285714285714285,
+   "ndcg@10": 0.31205198423028313
+  }
+ },
+ "havtil_co2-004": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "On what calendar date did the Norwegian continental shelf CO2 safety regulations enter into force?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.3333333333333333,
+   "ndcg@10": 0.41311732856427996
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.3333333333333333,
+   "ndcg@10": 0.41311732856427996
+  }
+ },
+ "havtil_co2-006": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Definition or identification of 'responsible party' under CO2 safety regulations; explicit statement of who qualifies as the responsible party (e.g., operator, licensee, owner, etc.); core compliance obligation required of the responsible party (e.g., ensure compliance with health, safety and environment legislation) with citation to CO2 regulations.",
+  "queries": [
+   "Who qualifies as a responsible party under the CO2 safety regulations, and what core compliance obligation is placed upon them?",
+   "CO2 safety regulations responsible party definition who qualifies",
+   "CO2 safety regulations responsible party operator licensee owner definition",
+   "core compliance obligation CO2 safety regulations responsible party health safety environment obligation"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7715039881147672
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7958830702855284
+  }
+ },
+ "havtil_co2-101": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "On what date were the CO2 safety regulations stipulated, and on what date were they last amended?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.944847956559586
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.944847956559586
+  }
+ },
+ "havtil_co2-102": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "No passages mention an offshore greenhouse gas containment framework revision timetable or recurring year-end timetable after 2021.",
+  "queries": [
+   "Following what recurring year-end timetable was the offshore greenhouse gas containment framework revised across consecutive years after 2021?"
+  ],
+  "baseline": {
+   "hit@5": 0.0,
+   "hit@10": 0.0,
+   "coverage@10": 0.0,
+   "mrr@10": 0.0,
+   "ndcg@10": 0.0
+  },
+  "gated": {
+   "hit@5": 0.0,
+   "hit@10": 0.0,
+   "coverage@10": 0.0,
+   "mrr@10": 0.0,
+   "ndcg@10": 0.0
+  }
+ },
+ "havtil_co2-103": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Need explicit definitions of scope for pipeline conveyance and subsea reservoir placement within the regulations, including what activities are included or excluded for each, and any comparative statements or criteria that differentiate their scopes.",
+  "queries": [
+   "How do the defined scopes of activity differ between pipeline conveyance and subsea reservoir placement for greenhouse gas containment?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7417311907845863
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7417311907845863
+  }
+ },
+ "havtil_co2-304": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Need the date CO2 safety regulations were stipulated (stipulated by authority) and the date they entered into force. Passages provide some dates (amendments and last amending dates) but not the initial stipulation date for the CO2 safety regulations themselves, nor the exact wording stating the stipulation date.",
+  "queries": [
+   "How many days passed between the date the CO2 safety regulations were stipulated and the date they came into force?",
+   "CO2 safety regulations stipulated date",
+   "date CO2 safety regulations were stipulated",
+   "CO2 safety regulations entered into force date"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.6565619062195633
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.6101774772943848
+  }
+ },
+ "havtil_framework-002": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "specific requirement stating the operator must establish an independent organizational entity capable of ensuring regulatory compliance under the Framework Regulations; identify location/section that mandates independent organisation and its independence from the operator (e.g., requirements about independent basis, organizational composition, and number of personnel)",
+  "queries": [
+   "Where is an operator required to establish an organizational entity capable of independently ensuring regulatory compliance under the Framework Regulations?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7262287617954056
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7262287617954056
+  }
+ },
+ "havtil_framework-007": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "The passages do not specify the operational consequence when a safety delegate halts dangerous work and rejects proposed mitigations under the Framework Regulations; need explicit consequence (e.g., halt of operation, escalation, replacement measures, or requirement to implement alternatives) referenced to the Framework Regulations (Section 6-3 and related sections).",
+  "queries": [
+   "What operational consequence occurs if a safety delegate halts dangerous work and rejects proposed mitigations under the Framework Regulations?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7262287617954056
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7262287617954056
+  }
+ },
+ "havtil_framework-104": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "There is no explicit mention of a formal framework governing 'technical audits' when compliance checks are required, nor a description of the power government inspectors possess to mandate such reviews. Look for: (1) a named framework or standard for technical audits (e.g., ISAE, ISOs, regulatory audit framework) and (2) explicit authority granted to government inspectors to require or mandate audits/reviews (scope, coercive powers, enforcement).",
+  "queries": [
+   "What formal framework governs technical audits when compliance checks are required, and what power do government inspectors possess to mandate such reviews?",
+   "formal framework governing technical audits when compliance checks are required",
+   "power of government inspectors to mandate audits reviews authority coercive enforcement regulatory audit framework",
+   "named framework for technical audits ISAE ISO regulatory audit framework government inspectors authority to require audits"
+  ],
+  "baseline": {
+   "hit@5": 0.0,
+   "hit@10": 1.0,
+   "coverage@10": 0.5,
+   "mrr@10": 0.1,
+   "ndcg@10": 0.13963767902663948
+  },
+  "gated": {
+   "hit@5": 0.0,
+   "hit@10": 1.0,
+   "coverage@10": 0.5,
+   "mrr@10": 0.1111111111111111,
+   "ndcg@10": 0.14541765751081445
+  }
+ },
+ "havtil_framework-304": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "An offshore period is extended by the longest single extension the employer can decide on after discussing the matter with the elected employee representative. What is the shortest continuous off-duty period that must follow before the next offshore period?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.880167417661258
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.880167417661258
+  }
+ },
+ "havtil_management-005": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Need the exact wording of Section 29 of the Management Regulations (reporting format and timing) to compare how it differentiates reporting for critical emergencies vs less acute hazard situations.",
+  "queries": [
+   "Under Section 29 of the Management Regulations, how do the reporting format and timing requirements differ between critical emergencies and less acute hazard situations?",
+   "Section 29 of the Management Regulations reporting format timing critical emergencies less acute hazard situations",
+   "Management Regulations Section 29 reporting format timing critical emergency vs less acute hazard",
+   "exact wording Section 29 management regulations reporting format timing"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7072908790226796
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.5845838454394389
+  }
+ },
+ "havtil_management-006": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Need explicit statements about obligations to implement compensating measures when safety barriers are degraded/impaired and when nonconformities remain uncorrected, including any timelines or processes for these compensating measures.",
+  "queries": [
+   "What obligations do operators have regarding compensating measures when safety barriers are degraded or when regulatory nonconformities remain uncorrected?",
+   "obligations to implement compensating measures when safety barriers are degraded",
+   "compensating measures when regulatory nonconformities remain uncorrected",
+   "timelines or processes for compensating measures safety barriers degraded regulatory nonconformities"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8401851084845681
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.7884024947763404
+  }
+ },
+ "havtil_management-301": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "An operator wants to keep using an offshore facility beyond the lifetime assumed when its PDO was approved. How long before the planned end of that lifetime must the consent application be submitted, and what must it contain about the facility's technical condition?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8676182686276376
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8676182686276376
+  }
+ },
+ "havtil_management-302": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Details on how the operator should notify the supervisory authority (specific method, timing) and actions during normalisation (what must be done while normalisation is in progress and before it is concluded) are spread across multiple sections; need a unified reference to the required notification method and ongoing actions during normalisation as described in Sections 29, 30, and 31.",
+  "queries": [
+   "A hazard and accident situation has led to serious and acute injury. How must the operator first notify the supervisory authority, and what must it do while the situation is being normalised and before the normalisation is concluded?",
+   "hazard and accident situation serious injury notify supervisory authority method timing",
+   "operator notifies supervisory authority how and what actions during normalisation before normalisation is concluded",
+   "sections 29 30 31 notification method timing ongoing actions during normalisation supervisory authority energy document"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.850140288426797
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.850140288426797
+  }
+ },
+ "irena_rpgc2024-003": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "In IRENA's 2024 assessment of renewable energy benefits, by how much did Germany's avoided fossil fuel expenditures exceed its avoided air pollution damage costs?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.9180385079206221
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.9180385079206221
+  }
+ },
+ "irena_rpgc2024-006": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "How did the typical construction timeline for offshore wind farms change between the 2010–2015 era and 2024?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 1.0
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 1.0
+  }
+ },
+ "irena_rpgc2024-009": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "Between 2010 and 2024, which generation source experienced a steeper percentage decrease in its levelised cost of electricity: utility-scale solar PV or onshore wind?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.25,
+   "ndcg@10": 0.3127697035039474
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.25,
+   "ndcg@10": 0.3127697035039474
+  }
+ },
+ "irena_rpgc2024-011": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Need the explicit comparison of average total installed costs (TIC) for pumped hydro vs thermal storage within the IRENA overview of long-duration energy storage; current passages provide general cost statements but no direct average TIC values for pumped hydro and thermal storage in the same context.",
+  "queries": [
+   "In IRENA's overview of long-duration energy storage, how do the average total installed costs of pumped hydro compare to those of thermal storage systems?",
+   "IRENA overview of long-duration energy storage average total installed cost pumped hydro vs thermal storage",
+   "long-duration energy storage TIC pumped hydro compared to thermal storage IRENA",
+   "average total installed cost pumped hydro thermal storage IRENA overview"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.9327783893101107
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.6193996029832952
+  }
+ },
+ "irena_rpgc2024-015": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Need explicit linkage: how greater distances from shore and deeper water depths influence logistical requirements (e.g., transit times, vessel size, port infrastructure, installation challenges, foundation choices, maintenance logistics). While passages discuss trends and costs and foundations, they do not directly connect distance/depth to specific logistical/engineering requirements in a detailed, integrated manner.",
+  "queries": [
+   "How do greater distances from shore and deeper water depths influence the logistical and engineering requirements of offshore wind projects?",
+   "offshore wind greater distance from shore impact on logistics vessel size transit times port infrastructure installation challenges maintenance logistics",
+   "deeper water depths offshore wind foundations logistics engineering requirements installation considerations maintenance challenges",
+   "logistical requirements offshore wind distance from shore depth water installation transportation transit times port facilities foundation choices maintenance planning"
+  ],
+  "baseline": {
+   "hit@5": 0.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.16666666666666666,
+   "ndcg@10": 0.3562071871080222
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.3333333333333333,
+   "ndcg@10": 0.5
+  }
+ },
+ "irena_rpgc2024-105": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "No information in the passages about heat retention operational capacity or storage duration for sunlight-concentrating generating stations across 2010–2024, and the year of its historical maximum is not specified.",
+  "queries": [
+   "How did heat retention operational capacity change across sunlight-concentrating generating stations from 2010 to 2024, and when did this duration achieve its historical maximum?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.2,
+   "ndcg@10": 0.3196311965446524
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.2,
+   "ndcg@10": 0.3196311965446524
+  }
+ },
+ "irena_rpgc2024-107": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "The passages do not mention a 'central operating productivity metric' for ground-mounted solar electric projects or any benchmark milestones 2010, 2018, 2024 related to that metric.",
+  "queries": [
+   "How did the central operating productivity metric for ground-mounted solar electric projects transition through the benchmark milestones of 2010, 2018, and 2024?"
+  ],
+  "baseline": {
+   "hit@5": 0.0,
+   "hit@10": 0.0,
+   "coverage@10": 0.0,
+   "mrr@10": 0.0,
+   "ndcg@10": 0.08622930147869444
+  },
+  "gated": {
+   "hit@5": 0.0,
+   "hit@10": 0.0,
+   "coverage@10": 0.0,
+   "mrr@10": 0.0,
+   "ndcg@10": 0.08622930147869444
+  }
+ },
+ "irena_rpgc2024-110": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Need explicit comparison of long-term investment (investment costs) trajectories for river-driven electricity stations (hydropower) vs thermal tower/trough facilities (CSP) from 2010 to 2024, including whether TIC/LCOE trends, percentage changes, and notable cost drivers shown in the passages apply to both technologies over 2010–2024.",
+  "queries": [
+   "How did the long-term investment expenditure trajectories between 2010 and 2024 diverge between river-driven electricity stations and thermal tower/trough facilities?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.49674701470413135
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.49674701470413135
+  }
+ },
+ "irena_rpgc2024-115": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Need explicit linkage between sovereign macroeconomic risk and heavy influence on clean electricity costs, plus explanation of how borrowing expense (cost of capital) correlates with overall project economics (e.g., WACC impact on LCOE, breakdown of financing costs, and evidence from passages)",
+  "queries": [
+   "Why does sovereign macroeconomic risk exert such a heavy influence on clean electricity costs, and how does borrowing expense correlate with overall project economics?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 0.3333333333333333,
+   "mrr@10": 0.3333333333333333,
+   "ndcg@10": 0.32400856568044833
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 0.3333333333333333,
+   "mrr@10": 0.3333333333333333,
+   "ndcg@10": 0.32400856568044833
+  }
+ },
+ "irena_rpgc2024-116": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Need explicit statement linking elevated heat transfer fluid temperatures to increased heat retention in CSP (thermal storage efficiency/density) and how this improves plant productivity and reduces LCOE; also require how integration with storage affects costs.",
+  "queries": [
+   "In what way do elevated operating fluid temperatures enhance heat retention performance in concentrated solar facilities, and how does this integration influence plant productivity and generation costs?",
+   "elevated operating fluid temperatures heat retention CSP thermal storage efficiency heat transfer fluid CSP",
+   "concentrated solar facilities elevated heat transfer fluid temperatures impact on plant productivity generation costs LCOE integration with storage",
+   "heat retention performance elevated temperatures heat transfer fluid CSP thermal storage density costs integration storage CSP plant economics"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 0.5,
+   "mrr@10": 0.5,
+   "ndcg@10": 0.325027967813913
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.6702348924930113
+  }
+ },
+ "irena_rpgc2024-302": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "Exact integration cost figure for Australia at high penetration (USD per kWh) and the explanation of why plant-level LCOE does not capture these costs are not both explicitly stated together in the passages.",
+  "queries": [
+   "In Australia, how much per kWh can the integration costs of variable renewables add at high penetration, and why does the plant-level LCOE not capture them?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 0.5,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.48306700197788277
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 0.5,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.48306700197788277
+  }
+ },
+ "irena_rpgc2024-306": {
+  "sufficient": true,
+  "grade_parsed": true,
+  "missing": "",
+  "queries": [
+   "By how many US dollars per kWh was the global weighted average LCOE of utility-scale solar PV in 2024 lower than the global average LCOE of coal power?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 1.0
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 1.0
+  }
+ },
+ "irena_rpgc2024-307": {
+  "sufficient": false,
+  "grade_parsed": true,
+  "missing": "The exact global cumulative installed capacity of offshore wind at the end of 2023 is not explicitly stated in the passages.",
+  "queries": [
+   "What was the global cumulative installed capacity of offshore wind at the end of 2023?"
+  ],
+  "baseline": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8262346571285599
+  },
+  "gated": {
+   "hit@5": 1.0,
+   "hit@10": 1.0,
+   "coverage@10": 1.0,
+   "mrr@10": 1.0,
+   "ndcg@10": 0.8262346571285599
+  }
+ }
+}

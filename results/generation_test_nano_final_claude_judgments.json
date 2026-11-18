@@ -1,0 +1,824 @@
+{
+ "cross-301": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "cross-302": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "cross-303": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "status ambiguous but the answer is right (operator)",
+  "by": "claude"
+ },
+ "cross-304": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Lists the right reading only among several 'possible readings'.",
+  "by": "claude"
+ },
+ "cross-305": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "cross-306": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Extra 'best practice' sentence is in p1.",
+  "by": "claude"
+ },
+ "equinor_ar2025-001": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-002": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-003": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-004": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Empty not_in_context, gold was not retrieved.",
+  "by": "claude"
+ },
+ "equinor_ar2025-005": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-007": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-008": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-009": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-011": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-012": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-014": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-015": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-016": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Status ambiguous but the answer is committed: 5-15%, Scope 3 categories 11 and 15 (in p2).",
+  "by": "claude"
+ },
+ "equinor_ar2025-018": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-019": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses, gold (high-tax regimes, UK Energy Profits Levy) was not retrieved.",
+  "by": "claude"
+ },
+ "equinor_ar2025-021": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-024": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites all 10 passages (over-citation).",
+  "by": "claude"
+ },
+ "equinor_ar2025-026": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-028": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Question is ambiguous (year, total vs renewable), answers 3.67 TWh (REN) without asking.",
+  "by": "claude"
+ },
+ "equinor_ar2025-101": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-103": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Gives 3,569 (proved developed reserves) but not the difference asked for (1,955).",
+  "by": "claude"
+ },
+ "equinor_ar2025-104": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "78.1% is wrong (239,304 / 314,448 = 76.1%) and not in the passages.",
+  "by": "claude"
+ },
+ "equinor_ar2025-106": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although gold (p, 12-month intervals) was retrieved.",
+  "by": "claude"
+ },
+ "equinor_ar2025-107": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "24 days, correct.",
+  "by": "claude"
+ },
+ "equinor_ar2025-108": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-109": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although gold was retrieved.",
+  "by": "claude"
+ },
+ "equinor_ar2025-112": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Derives 2,955 from 9,221 and 12,176.",
+  "by": "claude"
+ },
+ "equinor_ar2025-113": {
+  "correct": "yes",
+  "faithful": "partly",
+  "note": "6,034 vs 2,507, but hedges with an alternative REN figure (2,853 including LCS).",
+  "by": "claude"
+ },
+ "equinor_ar2025-118": {
+  "correct": "partly",
+  "faithful": "partly",
+  "note": "Says Equinor attained its safety benchmarks, the personal injury target was missed (2.3 vs 2.2). SIF and the fatality are right.",
+  "by": "claude"
+ },
+ "equinor_ar2025-119": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-120": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Empty not_in_context although gold was retrieved.",
+  "by": "claude"
+ },
+ "equinor_ar2025-121": {
+  "correct": "partly",
+  "faithful": "partly",
+  "note": "Gives the reasons but says the impact is not stated, p states cancellation costs drove higher OPEX.",
+  "by": "claude"
+ },
+ "equinor_ar2025-123": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Empty not_in_context although gold was retrieved.",
+  "by": "claude"
+ },
+ "equinor_ar2025-124": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Empty not_in_context although gold was retrieved.",
+  "by": "claude"
+ },
+ "equinor_ar2025-126": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Generic list, misses several specifics in the reference.",
+  "by": "claude"
+ },
+ "equinor_ar2025-128": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites all 10 passages (over-citation).",
+  "by": "claude"
+ },
+ "equinor_ar2025-301": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-303": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Starts with 'Yes' and says the reduction (4%) is within a 15-20% range, the reference answer is No (4% is below 5-15%).",
+  "by": "claude"
+ },
+ "equinor_ar2025-304": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Concludes five-year-earlier removal is larger (USD 1.5 bn) because the 1.0 pp discount-rate effect (USD 2.1 bn) was not in the retrieved passages, should have said it could not compare.",
+  "by": "claude"
+ },
+ "equinor_ar2025-305": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Called ambiguous, p1 gives about USD 6 bn for the 30% decline, so the comparison was nearly possible.",
+  "by": "claude"
+ },
+ "equinor_ar2025-306": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Empty not_in_context although gold was retrieved.",
+  "by": "claude"
+ },
+ "equinor_ar2025-307": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "34% since 2015, 2030 target 50% (net) stated alongside 45% gross.",
+  "by": "claude"
+ },
+ "equinor_ar2025-308": {
+  "correct": "partly",
+  "faithful": "partly",
+  "note": "Gives 2,199, 2,137 x 1.03 = 2,201. Close but not the right arithmetic.",
+  "by": "claude"
+ },
+ "equinor_ar2025-309": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Empty not_in_context although gold was retrieved.",
+  "by": "claude"
+ },
+ "havtil_activities-002": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-003": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-004": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-005": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-007": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-008": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites all 10 passages (over-citation).",
+  "by": "claude"
+ },
+ "havtil_activities-009": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-101": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-102": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although gold was retrieved.",
+  "by": "claude"
+ },
+ "havtil_activities-103": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Claims no passage covers these baseline surveys, Sections 53 and 55 are in the retrieved passages.",
+  "by": "claude"
+ },
+ "havtil_activities-104": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Empty not_in_context although gold was retrieved.",
+  "by": "claude"
+ },
+ "havtil_activities-107": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-301": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-302": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-303": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Describes the YELLOW category, the question asks which category is exempt (green).",
+  "by": "claude"
+ },
+ "havtil_co2-001": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-002": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-005": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-007": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-008": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Correct refusal but the answer text is EMPTY.",
+  "by": "claude"
+ },
+ "havtil_co2-104": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Ambiguous status, reading (a), Ministry of Energy (Section 21), is right but not committed to.",
+  "by": "claude"
+ },
+ "havtil_co2-105": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although gold was retrieved.",
+  "by": "claude"
+ },
+ "havtil_co2-107": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites six passages for a refusal.",
+  "by": "claude"
+ },
+ "havtil_co2-301": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-302": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-001": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-003": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Says it can be increased to 300 hours, does not give the increase (100).",
+  "by": "claude"
+ },
+ "havtil_framework-004": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Empty not_in_context although gold was retrieved.",
+  "by": "claude"
+ },
+ "havtil_framework-005": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Ambiguous status, both thresholds (half an hour, one hour) are given as 'readings'.",
+  "by": "claude"
+ },
+ "havtil_framework-006": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-008": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites all 10 passages (over-citation).",
+  "by": "claude"
+ },
+ "havtil_framework-009": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Refusal text is just 'missing'.",
+  "by": "claude"
+ },
+ "havtil_framework-101": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although gold was retrieved.",
+  "by": "claude"
+ },
+ "havtil_framework-102": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-103": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although gold was retrieved.",
+  "by": "claude"
+ },
+ "havtil_framework-105": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-106": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Called ambiguous, readings are vague and one drifts to Equinor's environmental policy.",
+  "by": "claude"
+ },
+ "havtil_framework-107": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Answered 'to seven days': garbled and wrong, the document states no numeric ceiling.",
+  "by": "claude"
+ },
+ "havtil_framework-301": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-302": {
+  "correct": "partly",
+  "faithful": "partly",
+  "note": "Right that the authority can require changes, names the Ministry of Energy as appeal body (reference: Ministry of Labour and Social Inclusion).",
+  "by": "claude"
+ },
+ "havtil_framework-303": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Says 'maritime regulations' in general, gets the Acknowledgement of Compliance part.",
+  "by": "claude"
+ },
+ "havtil_management-001": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although gold was retrieved.",
+  "by": "claude"
+ },
+ "havtil_management-002": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Claims the passages do not contain Section 14, but the gold chunk was retrieved.",
+  "by": "claude"
+ },
+ "havtil_management-003": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_management-004": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_management-007": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_management-008": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_management-102": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses, gold (illness notification path) was not retrieved.",
+  "by": "claude"
+ },
+ "havtil_management-103": {
+  "correct": "yes",
+  "faithful": "partly",
+  "note": "Ambiguous status but the recipients are right (Environment Agency, Geological Survey), adds unrelated extras (notices to seafarers).",
+  "by": "claude"
+ },
+ "havtil_management-104": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_management-105": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although gold was retrieved.",
+  "by": "claude"
+ },
+ "havtil_management-304": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Gives 1 April the year after but not the 13-month interval asked for.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-001": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although gold was retrieved.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-002": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Refuses although a cited table has the value (USD 0.014/kWh).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-004": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "998 - 195 = 803.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-005": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Gives 56% (the 2024 level), not the 20-point increase asked for.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-007": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Adds a derived 37 points.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-008": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Gives 10.95 for 2024 and says the 2023 value is not in the passages, mini found 9.6 for 2023.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-010": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-012": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Says installations increased in 2024, the passages say they fell from 11.3 GW to 9.3 GW.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-013": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-014": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-016": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Covers vertical integration, margins, financing risk and scale, details not all checked.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-017": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites all 10 passages (over-citation).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-018": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites all 10 passages (over-citation).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-019": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Names the factory and the 5.3-7.5 MW models but never says the GW capacity is not stated, status answered instead of not_in_context.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-101": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Writes '49.1 - 18.9' without the result 30.2.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-102": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-103": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses, gold (0.065 to 0.080) was not retrieved.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-104": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although gold was retrieved.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-106": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Ambiguous status but the right numbers are given (0.1 to 169 GWh, 2571 to 192 USD/kWh).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-108": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses, gold was not retrieved.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-109": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses, gold was not retrieved.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-111": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although gold was retrieved.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-112": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-113": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although gold was retrieved.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-114": {
+  "correct": "partly",
+  "faithful": "partly",
+  "note": "Answers 'Below EUR 30/MWh (USD 32/MWh) and 50%': the 50% is right, the first part gives a cost, not the 25% heat-demand share.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-117": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although gold was retrieved.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-118": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Called ambiguous with no real list of hurdles, gold was not retrieved.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-119": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Correct refusal but the answer text is EMPTY.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-120": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-301": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-303": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Ambiguous status, the reason is right (modules and inverters fell faster) but the 65% figure is missing.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-304": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Reason for the 2023 rise is right, the 2024 drop explanation is vaguer.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-305": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-308": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Says 46%, the increase from 155 to 415 MW is 168%.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-309": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ }
+}

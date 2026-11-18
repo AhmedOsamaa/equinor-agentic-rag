@@ -1,0 +1,374 @@
+{
+ "cross-307": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refused. Gold (IRENA p46, US 0.123) was not retrieved, so the refusal is faithful but the question is unanswered.",
+  "by": "claude"
+ },
+ "equinor_ar2025-013": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Called it ambiguous although p40 and p49 state liquids +7%, gas -2%. Nothing unsupported is claimed.",
+  "by": "claude"
+ },
+ "equinor_ar2025-022": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Right content, but status ambiguous while giving a full answer (status/answer mismatch).",
+  "by": "claude"
+ },
+ "equinor_ar2025-025": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Correct refusal.",
+  "by": "claude"
+ },
+ "equinor_ar2025-027": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Correct refusal.",
+  "by": "claude"
+ },
+ "equinor_ar2025-127": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Names Prio Tigris, the buyer of the 40% stake, as buyer of the remaining 20%. Not supported.",
+  "by": "claude"
+ },
+ "havtil_activities-105": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Called ambiguous; the question is answerable from Sections 77 and 79.",
+  "by": "claude"
+ },
+ "havtil_activities-106": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Called ambiguous; lists the right duties only as one 'reading'.",
+  "by": "claude"
+ },
+ "havtil_co2-003": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "not_in_context with an EMPTY answer text, although p7 states Section 34 is the exception.",
+  "by": "claude"
+ },
+ "havtil_co2-009": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Correct refusal, but the answer text is empty (no explanation).",
+  "by": "claude"
+ },
+ "havtil_co2-103": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "not_in_context with an empty answer text.",
+  "by": "claude"
+ },
+ "havtil_co2-106": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "not_in_context with an empty answer text.",
+  "by": "claude"
+ },
+ "havtil_framework-002": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Status ambiguous; the right reading (Section 12, organisation in Norway) is listed but not committed to.",
+  "by": "claude"
+ },
+ "havtil_framework-007": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Says the passages do not state the consequence, but p17 says work shall stop immediately if the delegate does not accept alternatives.",
+  "by": "claude"
+ },
+ "havtil_framework-104": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Called ambiguous; first reading (Section 19) is right, the second pulls in an Equinor annual-report passage about Havtil.",
+  "by": "claude"
+ },
+ "havtil_management-005": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Claims the passages do not contain Section 29; p14 is Section 29 and states the phone vs written-next-workday rule.",
+  "by": "claude"
+ },
+ "havtil_management-006": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Both obligations (Section 5 and Section 22) are described, but under status ambiguous with 'possible readings'.",
+  "by": "claude"
+ },
+ "havtil_management-009": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Correct refusal.",
+  "by": "claude"
+ },
+ "havtil_management-106": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "not_in_context with an EMPTY answer; Section 9 (p6) lists the four areas.",
+  "by": "claude"
+ },
+ "havtil_management-107": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Content is a correct refusal but status is ambiguous, not not_in_context.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-011": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Says no side-by-side values exist; p179 (passage 1, which it cites) gives USD 156/kWh vs 238/kWh.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-015": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Status ambiguous but the answer covers transit times and more complex foundations. Details beyond the reference not all checked.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-020": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Correctly flags onshore vs offshore (0.034 vs 0.079 USD/kWh), both figures in the passages.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-105": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Claims no data on storage duration; p134 (passage 5, which it cites) gives 3.5 to 8.5 hours and the 17.5 h peak in 2021.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-107": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Refuses because 'central operating productivity' is not a term in the text; does not recognise capacity factor. The literal claim is true but misleading.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-110": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses, saying no side-by-side comparison; the hydro and CSP figures are in the passages and could be combined.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-116": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "not_in_context with an EMPTY answer; p133 explains the mechanism.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-307": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses; correctly notes only the end-2024 figure (82.9 GW) is given, but does not derive 2023 by subtracting the 2024 addition.",
+  "by": "claude"
+ },
+ "cross-308": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "UK 0.059 vs Europe 0.080 USD/kWh; does not give the 0.021 difference.",
+  "by": "claude"
+ },
+ "equinor_ar2025-006": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Gives 2,070 (liquids and gas LIFTINGS), not the asked entitlement production 2,019. Honestly labelled, but wrong measure.",
+  "by": "claude"
+ },
+ "equinor_ar2025-010": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "2050.",
+  "by": "claude"
+ },
+ "equinor_ar2025-017": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Names the Serra da Babilonia 1 Wind Complex but omits the 223 MW the question also asks for.",
+  "by": "claude"
+ },
+ "equinor_ar2025-020": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "New wells and tie-backs giving more liquids in the mix; p40 mentions new wells and ramp-up of new fields.",
+  "by": "claude"
+ },
+ "equinor_ar2025-023": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Lists the three strategic pillars plus vague 'commitments'; none of the four elements in the reference (50% cut by 2030, integrated power, low-carbon value chains, net zero 2050).",
+  "by": "claude"
+ },
+ "equinor_ar2025-102": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Garbled reply ('8,? Wait'): no answer.",
+  "by": "claude"
+ },
+ "equinor_ar2025-110": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "2025 and 2028 are right but it omits that first oil was in Q4 2025.",
+  "by": "claude"
+ },
+ "equinor_ar2025-111": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses. The gold figures (3,191 to 8,224) were not in the retrieved passages.",
+  "by": "claude"
+ },
+ "equinor_ar2025-114": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Says E&P International; p195 shows REN 1,355 vs E&P International 851, so REN is larger.",
+  "by": "claude"
+ },
+ "equinor_ar2025-115": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Says two wells (Angola, Argentina); reference is four (2 Angola, 1 Argentina, 1 Libya). Looks derived from the 'two discoveries' sentence.",
+  "by": "claude"
+ },
+ "equinor_ar2025-117": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Gives 50% only; omits USD 5,574 million that the question also asks for.",
+  "by": "claude"
+ },
+ "equinor_ar2025-122": {
+  "correct": "partly",
+  "faithful": "partly",
+  "note": "Gets the Peregrino stop but names UK asset sales and the Peregrino 40% sale instead of the Nigeria and Azerbaijan disposals; vague on the revenue effect.",
+  "by": "claude"
+ },
+ "equinor_ar2025-125": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Electrification, efficiency and portfolio management; misses reduced flaring.",
+  "by": "claude"
+ },
+ "equinor_ar2025-302": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "USD 385 million, Gulf of America, three drivers: matches.",
+  "by": "claude"
+ },
+ "equinor_ar2025-310": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Gives USD 532 million, the TOTAL claim, as Equinor's share (31.85% of it is about 169.4 million).",
+  "by": "claude"
+ },
+ "equinor_ar2025-311": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "5.5% vs 3% = 2.5 points, with sources.",
+  "by": "claude"
+ },
+ "havtil_activities-001": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Saturation diving, Section 93.",
+  "by": "claude"
+ },
+ "havtil_activities-006": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Says 'in accordance with Section 5' without saying what Section 5 requires (approved service, competence adapted to risk factors).",
+  "by": "claude"
+ },
+ "havtil_activities-304": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Says the bell run may be extended to eight hours; does not answer 'how many hours longer' (2).",
+  "by": "claude"
+ },
+ "havtil_co2-004": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "26 February 2020.",
+  "by": "claude"
+ },
+ "havtil_co2-006": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Operator and others participating; must ensure compliance with the safety legislation.",
+  "by": "claude"
+ },
+ "havtil_co2-101": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "25 February 2020 and 18 December 2024.",
+  "by": "claude"
+ },
+ "havtil_co2-102": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses. The question is worded indirectly (a round 2 paraphrase) and the amendment dates were not matched.",
+  "by": "claude"
+ },
+ "havtil_co2-304": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "25 to 26 February 2020 = 1 day.",
+  "by": "claude"
+ },
+ "havtil_framework-304": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "States the rule (one third of the last offshore period) but does not work out 7 days from the 21-day maximum.",
+  "by": "claude"
+ },
+ "havtil_management-301": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "One year before; summary of analyses and assessments of technical condition.",
+  "by": "claude"
+ },
+ "havtil_management-302": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Phone notice confirmed in writing and updates are covered; the duty to notify before normalisation is concluded appears only as 'notify if it was more serious'.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-003": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "16.4 - 6.0 = 10.4 (no units stated).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-006": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Two or more years to about 16 months.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-009": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Solar PV (the reference gives -90% vs -70%; nano gives no figures).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-115": {
+  "correct": "yes",
+  "faithful": "partly",
+  "note": "Right mechanism (country risk raises WACC, so financing share of LCOE) but contains the nonsense phrase 'total project costs and voltages'.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-302": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "USD 0.028 to 0.032/kWh, with the plant-level reason; storage, curtailment and transmission are in p22.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-306": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "0.030 USD/kWh.",
+  "by": "claude"
+ }
+}

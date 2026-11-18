@@ -1,0 +1,352 @@
+# Pages proposed for removal before chunking. Written by `python -m rag.clean flag`.
+# Review each entry, then set `approved: true` to drop that page. Add a `note` if useful.
+# Re-running the detector keeps your approved / note values. Nothing is dropped until approved.
+# Page numbers are PDF pages (1-based), the same as in data/pages and in gold labels.
+
+equinor_ar2025:
+- page: 1
+  flags:
+  - cover
+  - short
+  real_chars: 56
+  preview: 2025 Annual Report Equinor 2023 Integrated annual report
+  approved: true
+  note: cover page
+- page: 3
+  flags:
+  - toc_heading
+  real_chars: 2119
+  preview: Contents INTRODUCTION Report overview 2 Key figures 4 Key fi
+  approved: true
+  note: contents page
+- page: 15
+  flags:
+  - toc_heading
+  real_chars: 1306
+  preview: 'CONTENTS ABOUT US 1.4 Our strategy and transition ambitions '
+  approved: false
+  note: 'KEEP: real content (false flag) - leaked CONTENTS navigation line on top'
+- page: 62
+  flags:
+  - toc_heading
+  real_chars: 2356
+  preview: CONTENTS ABOUT US MMP Current year result is driven by Gas a
+  approved: false
+  note: 'KEEP: real content (false flag) - leaked CONTENTS navigation line on top'
+- page: 99
+  flags:
+  - short
+  real_chars: 15
+  preview: 3.2 Environment
+  approved: true
+  note: divider, back cover or lone heading
+- page: 132
+  flags:
+  - short
+  real_chars: 37
+  preview: 3.3 Social Equinor 2025 Annual report
+  approved: true
+  note: divider, back cover or lone heading
+- page: 163
+  flags:
+  - short
+  - toc_heading
+  real_chars: 117
+  preview: CONTENTS ABOUT US OUR SUSTAINABILITY FINANCIAL ADDITIONAL PE
+  approved: true
+  note: contents page
+- page: 324
+  flags:
+  - short
+  real_chars: 87
+  preview: 'Equinor ASA Box 8500 NO-4035 Stavanger Norway Telephone:+47 '
+  approved: true
+  note: divider, back cover or lone heading
+havtil_activities:
+- page: 1
+  flags:
+  - cover
+  real_chars: 293
+  preview: REGULATIONS RELATING TO CONDUCTING PETROLEUM ACTIVITIES (THE
+  approved: true
+  note: cover page
+- page: 2
+  flags:
+  - toc_leaders
+  real_chars: 4163
+  preview: Regulations relating to conducting petroleum activities (the
+  approved: true
+  note: contents / list page
+- page: 3
+  flags:
+  - toc_leaders
+  real_chars: 4825
+  preview: 'Section 22 Safety and working environment training pursuant '
+  approved: true
+  note: contents / list page
+- page: 4
+  flags:
+  - toc_leaders
+  real_chars: 4494
+  preview: Section 50 Special requirements for technical condition moni
+  approved: true
+  note: contents / list page
+- page: 5
+  flags:
+  - toc_leaders
+  real_chars: 4424
+  preview: Section 70a Measuring the discharged amount of radioactive s
+  approved: true
+  note: contents / list page
+- page: 6
+  flags:
+  - toc_leaders
+  real_chars: 1290
+  preview: Section 91 Work on and operation of electrical installations
+  approved: true
+  note: contents / list page
+havtil_co2:
+- page: 1
+  flags:
+  - cover
+  - short
+  real_chars: 171
+  preview: REGULATIONS RELATING TO SAFETY AND WORKING ENVIRONMENT FOR T
+  approved: true
+  note: cover page
+- page: 2
+  flags:
+  - toc_leaders
+  real_chars: 3794
+  preview: Regulations relating to safety and working environment for t
+  approved: true
+  note: contents / list page
+- page: 3
+  flags:
+  - toc_leaders
+  real_chars: 554
+  preview: CHAPTER V CLOSING PROVISIONS ...............................
+  approved: true
+  note: contents / list page
+havtil_framework:
+- page: 1
+  flags:
+  - cover
+  real_chars: 356
+  preview: REGULATIONS RELATING TO HEALTH, SAFETY AND THE ENVIRONMENT I
+  approved: true
+  note: cover page
+- page: 2
+  flags:
+  - toc_leaders
+  real_chars: 4114
+  preview: Regulations relating to health, safety and the environment i
+  approved: true
+  note: contents / list page
+- page: 3
+  flags:
+  - toc_leaders
+  real_chars: 4521
+  preview: Sec�on 24 Use of recognised standards ......................
+  approved: true
+  note: contents / list page
+- page: 4
+  flags:
+  - toc_leaders
+  real_chars: 3667
+  preview: CHAPTER VIII OFFSHORE SAFETY ZONES .........................
+  approved: true
+  note: contents / list page
+- page: 27
+  flags:
+  - short
+  real_chars: 153
+  preview: 'petroleum facili�es on land and associated pipeline systems '
+  approved: false
+  note: 'KEEP: real content (false flag)'
+havtil_management:
+- page: 1
+  flags:
+  - cover
+  real_chars: 370
+  preview: REGULATIONS RELATING TO MANAGEMENT AND THE DUTY TO PROVIDE I
+  approved: true
+  note: cover page
+- page: 2
+  flags:
+  - toc_leaders
+  real_chars: 4256
+  preview: Regulations relating to management and the duty to provide i
+  approved: true
+  note: contents / list page
+- page: 3
+  flags:
+  - toc_leaders
+  real_chars: 3622
+  preview: Section 23 Continuous improvement ..........................
+  approved: true
+  note: contents / list page
+irena_rpgc2024:
+- page: 1
+  flags:
+  - cover
+  - short
+  real_chars: 40
+  preview: RENEWABLE POWER GENERATION COSTS IN 2024
+  approved: true
+  note: cover page
+- page: 4
+  flags:
+  - toc_leaders
+  - toc_heading
+  real_chars: 5389
+  preview: CONTENTS Figures, tables and boxes . . . . . . . . . . . . .
+  approved: true
+  note: contents / list page
+- page: 5
+  flags:
+  - toc_leaders
+  real_chars: 6196
+  preview: CONCENTRATED SOLAR POWER . . . . . . . . . . . . . . . . . .
+  approved: true
+  note: contents / list page
+- page: 6
+  flags:
+  - toc_leaders
+  real_chars: 3325
+  preview: FIGURES Figure S1 Renewable energy LCOE decline, 2010-2024 .
+  approved: true
+  note: contents / list page
+- page: 7
+  flags:
+  - toc_leaders
+  real_chars: 3548
+  preview: 'Figure B1.7 Hourly output profiles of solar and Figure 2.12 '
+  approved: true
+  note: contents / list page
+- page: 8
+  flags:
+  - toc_leaders
+  real_chars: 3509
+  preview: 'Figure 3.4 Total installed costs by component in Figure 4.5 '
+  approved: true
+  note: contents / list page
+- page: 9
+  flags:
+  - toc_leaders
+  real_chars: 3528
+  preview: Figure 5.6 Reduction in LCOE for CSP projects Figure 7.3 Cap
+  approved: true
+  note: contents / list page
+- page: 10
+  flags:
+  - toc_leaders
+  real_chars: 3189
+  preview: Figure 9.3 Turnkey battery storage system prices Table 2.2 W
+  approved: true
+  note: contents / list page
+- page: 11
+  flags:
+  - toc_leaders
+  real_chars: 3133
+  preview: BOXES Table 6.2 Total installed costs for hydropower by BO X
+  approved: true
+  note: contents / list page
+- page: 13
+  flags:
+  - empty
+  real_chars: 0
+  preview: ''
+  approved: true
+  note: empty page
+- page: 26
+  flags:
+  - short
+  real_chars: 21
+  preview: 01 LATEST COST TRENDS
+  approved: true
+  note: divider, back cover or lone heading
+- page: 62
+  flags:
+  - short
+  real_chars: 42
+  preview: 02 ONSHORE WIND Vu Giap © Shutterstock.com
+  approved: true
+  note: divider, back cover or lone heading
+- page: 86
+  flags:
+  - short
+  real_chars: 22
+  preview: 03 SOLAR PHOTOVOLTAICS
+  approved: true
+  note: divider, back cover or lone heading
+- page: 108
+  flags:
+  - short
+  real_chars: 16
+  preview: 04 OFFSHORE WIND
+  approved: true
+  note: divider, back cover or lone heading
+- page: 127
+  flags:
+  - empty
+  real_chars: 0
+  preview: ''
+  approved: true
+  note: empty page
+- page: 128
+  flags:
+  - short
+  real_chars: 53
+  preview: 05 CONCENTRATED SOLAR POWER Damira © Shutterstock.com
+  approved: true
+  note: divider, back cover or lone heading
+- page: 139
+  flags:
+  - empty
+  real_chars: 0
+  preview: ''
+  approved: true
+  note: empty page
+- page: 140
+  flags:
+  - short
+  real_chars: 13
+  preview: 06 HYDROPOWER
+  approved: true
+  note: divider, back cover or lone heading
+- page: 156
+  flags:
+  - short
+  real_chars: 42
+  preview: 07 GEOTHERMAL ABB Photo © Shutterstock.com
+  approved: true
+  note: divider, back cover or lone heading
+- page: 164
+  flags:
+  - short
+  real_chars: 12
+  preview: 08 BIOENERGY
+  approved: true
+  note: divider, back cover or lone heading
+- page: 175
+  flags:
+  - empty
+  real_chars: 0
+  preview: ''
+  approved: true
+  note: empty page
+- page: 176
+  flags:
+  - short
+  real_chars: 24
+  preview: 09 ENABLING TECHNOLOGIES
+  approved: true
+  note: divider, back cover or lone heading
+- page: 216
+  flags:
+  - short
+  real_chars: 26
+  preview: www.irena.org © IRENA 2025
+  approved: true
+  note: divider, back cover or lone heading

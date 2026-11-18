@@ -1,0 +1,47 @@
+# Corpus manifest. Filenames are local names in docs/ (gitignored).
+# source_url is the publisher PAGE from the project plan, not a direct PDF link: the direct
+# links are unknown until download.py exists. page_range is null = whole document.
+# sha256 is of the files downloaded by hand on 2026-11-14.
+documents:
+  - doc_id: equinor_ar2025
+    title: Equinor Annual Report 2025
+    filename: 2025-annual-report-equinor.pdf
+    source_url: https://www.equinor.com/en/investors/annual-reports
+    sha256: 4266bb0b2f31bb9a8cc2ed11248cd579e0f98bb3c81fcffaf5c93a89e62e5d98
+    page_range: null
+
+  - doc_id: havtil_framework
+    title: Havtil Framework Regulations (English)
+    filename: rammeforskriften_e.pdf
+    source_url: https://www.havtil.no/en/regulations/pdfs-of-regulations/
+    sha256: f95cc9ab03f7a72cf150b8e58ef6a5c5a6bd443669900249afec321bc16d3e83
+    page_range: null
+
+  - doc_id: havtil_management
+    title: Havtil Management Regulations (English)
+    filename: styringsforskriften_e.pdf
+    source_url: https://www.havtil.no/en/regulations/pdfs-of-regulations/
+    sha256: adb2ce4c1bf70a1c11d92a33772f27826a99fe55e7a30371635c31f4412622a4
+    page_range: null
+
+  - doc_id: havtil_activities
+    title: Havtil Activities Regulations (English)
+    filename: aktivitetsforskriften_e.pdf
+    source_url: https://www.havtil.no/en/regulations/pdfs-of-regulations/
+    sha256: a637558716f73d3e967e5e034337b852e02ced02eb0441882c12571ed9b6f186
+    page_range: null
+
+  # Added on 2026-11-14 as a sixth document (not in the original plan).
+  - doc_id: havtil_co2
+    title: Havtil CO2 Safety Regulations (English)
+    filename: co2-sikkerhetsforskriften_e.pdf
+    source_url: https://www.havtil.no/en/regulations/pdfs-of-regulations/
+    sha256: 2b2825d8e1ca59be6883c18c9459cae2e5aa095362e0a600661425fefd6153f5
+    page_range: null
+
+  - doc_id: irena_rpgc2024
+    title: IRENA Renewable Power Generation Costs in 2024
+    filename: IRENA_TEC_RPGC_in_2024_2025.pdf
+    source_url: https://www.irena.org/Publications/2025/Jun/Renewable-Power-Generation-Costs-in-2024
+    sha256: ffe8ce4bde29616f3edf9ef1a86dbb6ae2d5381a0ecb9bb1f71bb20204b6bada
+    page_range: null

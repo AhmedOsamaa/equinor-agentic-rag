@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retrieval results dashboard</title>
+<style>
+  /* Palette: reference instance of the data-viz skill. Modes keep one categorical slot each
+     (vector 1, hybrid 2, hybrid + rerank 3); the first three slots validate on the strict
+     all-pairs test in both modes. Light aqua is below 3:1 on the surface, so every value is also
+     in a table and in the tooltip (the relief rule). */
+  :root {
+    color-scheme: light dark;
+    --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+      --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px 48px; }
+  h1 { font-size: 24px; margin: 24px 0 4px; font-weight: 600; }
+  h2 { font-size: 18px; margin: 0 0 4px; font-weight: 600; }
+  p { margin: 4px 0 12px; }
+  .sub { color: var(--ink2); }
+  .muted { color: var(--muted); }
+  code { font: 13px ui-monospace, "Cascadia Code", Consolas, monospace; background: var(--page);
+         padding: 1px 5px; border-radius: 4px; }
+  pre { background: var(--page); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px;
+        overflow-x: auto; margin: 8px 0; }
+  .banner { display: inline-block; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+            border: 1px solid var(--axis); margin: 8px 0; }
+  .banner.final { border-color: var(--ink); }
+
+  /* one filter row above everything it scopes */
+  .filters { position: sticky; top: 0; z-index: 5; display: flex; gap: 16px; align-items: center;
+             flex-wrap: wrap; background: var(--page); border-bottom: 1px solid var(--grid);
+             padding: 10px 0; margin-bottom: 16px; }
+  .filters label { color: var(--ink2); }
+  select, button { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--axis);
+                   border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+  select:focus-visible, button:focus-visible, .barwrap:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+            padding: 20px; margin: 16px 0; }
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; margin: 12px 0 8px; color: var(--ink2); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .swatch { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .m-vector { --c: var(--s1); } .m-hybrid { --c: var(--s2); } .m-hybrid_rerank { --c: var(--s3); } .m-other { --c: var(--muted); }
+  .swatch { background: var(--c); }
+
+  /* chart: horizontal grouped bars, one baseline, thin marks, hairline solid grid */
+  .grow { display: grid; grid-template-columns: 230px 1fr 92px; column-gap: 12px; padding: 8px 0;
+          border-top: 1px solid var(--grid); }
+  .grow:first-of-type { border-top: 0; }
+  .glabel { font-weight: 500; }
+  .glabel .gsub { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
+  .glabel .warn { display: block; color: var(--ink2); font-size: 13px; font-weight: 400; }
+  .plot { position: relative; border-left: 1px solid var(--axis); border-right: 1px solid var(--grid);
+          background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px);
+          background-size: 25% 100%; background-repeat: repeat-x; }
+  .barwrap { position: relative; height: 18px; }       /* 12px mark + air = a hit target larger than the mark */
+  .bar { position: absolute; left: 0; top: 3px; height: 12px; background: var(--c);
+         border-radius: 0 4px 4px 0; }                   /* square at the baseline, 4px rounded data end */
+  .ci { position: absolute; top: 8px; height: 2px; background: var(--ink); opacity: .85; }
+  .ci::before, .ci::after { content: ""; position: absolute; top: -3px; width: 2px; height: 8px; background: var(--ink); }
+  .ci::before { left: 0; } .ci::after { right: 0; }
+  .dlabel { font-size: 13px; color: var(--ink2); height: 18px; line-height: 18px; }
+  .axis { display: grid; grid-template-columns: 230px 1fr 92px; column-gap: 12px; margin-top: 4px; }
+  .ticks { position: relative; height: 18px; color: var(--muted); font-size: 12px; }
+  .ticks span { position: absolute; transform: translateX(-50%); }
+  .ticks span:first-child { transform: none; } .ticks span:last-child { transform: translateX(-100%); }
+
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: left; padding: 6px 10px; border-top: 1px solid var(--grid); vertical-align: top; }
+  th { color: var(--ink2); font-weight: 600; border-top: 0; border-bottom: 1px solid var(--axis); white-space: nowrap; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.num .ci-text { color: var(--muted); font-size: 12px; display: block; }
+  tr.groupstart td { border-top: 1px solid var(--axis); }
+  .tablewrap { overflow-x: auto; margin-top: 8px; }
+  details > summary { cursor: pointer; color: var(--ink2); margin-top: 10px; }
+  .pooled-note { border-left: 3px solid var(--axis); padding-left: 10px; color: var(--ink2); }
+  .pooled td, .pooled th { color: var(--ink2); }
+  .verdict-yes { font-weight: 600; } .verdict-no { color: var(--muted); }
+
+  /* run panel and progress bar (neutral ink, so it never borrows a series colour) */
+  .runrow { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 10px 0; }
+  .runrow input[type=text] { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--axis);
+                             border-radius: 8px; padding: 6px 10px; width: 14ch; }
+  button.primary { background: var(--ink); color: var(--page); border-color: var(--ink); font-weight: 600; }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  .warnbox { border: 1px solid var(--axis); border-left: 4px solid var(--ink); border-radius: 8px; padding: 8px 12px;
+             margin: 8px 0; color: var(--ink2); }
+  .track { height: 12px; background: var(--grid); border-radius: 6px; overflow: hidden; margin: 8px 0 4px; }
+  .fill { height: 100%; width: 0; background: var(--ink2); transition: width .4s; }
+  .runstatus { color: var(--ink2); font-variant-numeric: tabular-nums; min-height: 1.5em; }
+  .runstatus.err { color: var(--ink); font-weight: 600; }
+  #tip { position: fixed; pointer-events: none; z-index: 10; background: var(--ink); color: var(--page);
+         padding: 6px 9px; border-radius: 6px; font-size: 13px; max-width: 320px; display: none; white-space: pre-line; }
+  ul.limits { margin: 6px 0 0 18px; padding: 0; } ul.limits li { margin: 3px 0; }
+  @media print { .filters { display: none; } section { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Retrieval results</h1>
+  <div id="meta" class="sub"></div>
+  <div id="banner"></div>
+
+  <div class="filters" role="group" aria-label="Chart filters">
+    <span id="runkeywrap" hidden><label for="runkey">Run shown</label> <select id="runkey"></select></span>
+    <label for="metric">Metric shown in the charts</label>
+    <select id="metric"></select>
+    <button id="theme" type="button" aria-label="Toggle light and dark theme">Theme: auto</button>
+    <span class="muted">Tables always show every metric.</span>
+  </div>
+
+  <section id="s-run"></section>
+  <section id="s-tiers"></section>
+  <section id="s-type"></section>
+  <section id="s-format"></section>
+  <section id="s-document"></section>
+  <section id="s-pooled"></section>
+  <section id="s-diffs"></section>
+  <section id="s-latency"></section>
+  <section id="s-notes"></section>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script id="data" type="application/json">{"git_sha": "e38bdc6", "time_utc": "2026-11-16T18:32:15+00:00", "pilot": true, "split": "dev", "question_source": "eval\\questions.jsonl", "k": 10, "settings": {"chunk_max_tokens": 400, "prefix_heading_path": true, "bm25_use_embed_text": true, "rrf_k": 60, "rerank_candidates": 30, "embed_model": "BAAI/bge-small-en-v1.5", "rerank_model": "cross-encoder/ms-marco-MiniLM-L-6-v2", "bootstrap_resamples": 10000}, "mean_latency_s": {"vector": 0.018596124489036178, "hybrid": 0.020541844898430934, "hybrid_rerank": 0.8344157244885407}, "tiers": {"round_1": {"n": 19, "modes": {"vector": {"hit@5": {"mean": 0.7894736842105263, "ci_low": 0.5789473684210527, "ci_high": 0.9473684210526315}, "hit@10": {"mean": 0.7894736842105263, "ci_low": 0.5789473684210527, "ci_high": 0.9473684210526315}, "coverage@10": {"mean": 0.7894736842105263, "ci_low": 0.5789473684210527, "ci_high": 0.9473684210526315}, "mrr@10": {"mean": 0.6271929824561403, "ci_low": 0.4385964912280702, "ci_high": 0.8070175438596492}, "ndcg@10": {"mean": 0.553196730693099, "ci_low": 0.4020876340441274, "ci_high": 0.6971244493492728}}, "hybrid": {"hit@5": {"mean": 0.8947368421052632, "ci_low": 0.7368421052631579, "ci_high": 1.0}, "hit@10": {"mean": 0.9473684210526315, "ci_low": 0.8421052631578947, "ci_high": 1.0}, "coverage@10": {"mean": 0.9473684210526315, "ci_low": 0.8421052631578947, "ci_high": 1.0}, "mrr@10": {"mean": 0.7461152882205513, "ci_low": 0.5852130325814536, "ci_high": 0.8947368421052632}, "ndcg@10": {"mean": 0.6776779423436698, "ci_low": 0.5528428907887935, "ci_high": 0.7953628545254822}}, "hybrid_rerank": {"hit@5": {"mean": 0.8947368421052632, "ci_low": 0.7368421052631579, "ci_high": 1.0}, "hit@10": {"mean": 0.8947368421052632, "ci_low": 0.7368421052631579, "ci_high": 1.0}, "coverage@10": {"mean": 0.868421052631579, "ci_low": 0.7105263157894737, "ci_high": 1.0}, "mrr@10": {"mean": 0.7385964912280701, "ci_low": 0.5631578947368421, "ci_high": 0.8947368421052632}, "ndcg@10": {"mean": 0.6447679099348944, "ci_low": 0.5137956727808074, "ci_high": 0.7598785019406952}}}, "paired_diffs": {"hybrid - vector | hit@10": {"diff": 0.15789473684210525, "ci_low": 0.0, "ci_high": 0.3157894736842105, "supported": false}, "hybrid - vector | mrr@10": {"diff": 0.11892230576441103, "ci_low": 0.003630952380952399, "ci_high": 0.23772243107769417, "supported": true}, "hybrid - vector | ndcg@10": {"diff": 0.1244812116505708, "ci_low": 0.04056016233118564, "ci_high": 0.20895112544252983, "supported": true}, "hybrid_rerank - hybrid | hit@10": {"diff": -0.05263157894736842, "ci_low": -0.15789473684210525, "ci_high": 0.0, "supported": false}, "hybrid_rerank - hybrid | mrr@10": {"diff": -0.0075187969924812, "ci_low": -0.13157894736842105, "ci_high": 0.13533834586466167, "supported": false}, "hybrid_rerank - hybrid | ndcg@10": {"diff": -0.03291003240877539, "ci_low": -0.10379701021647207, "ci_high": 0.04783796215139201, "supported": false}}}, "round_2": {"n": 17, "modes": {"vector": {"hit@5": {"mean": 0.5294117647058824, "ci_low": 0.29411764705882354, "ci_high": 0.7647058823529411}, "hit@10": {"mean": 0.7058823529411765, "ci_low": 0.47058823529411764, "ci_high": 0.8823529411764706}, "coverage@10": {"mean": 0.5588235294117647, "ci_low": 0.35294117647058826, "ci_high": 0.7647058823529411}, "mrr@10": {"mean": 0.41624649859943974, "ci_low": 0.2299719887955182, "ci_high": 0.6162464985994397}, "ndcg@10": {"mean": 0.37217057903689615, "ci_low": 0.22644657029436577, "ci_high": 0.5257769865142079}}, "hybrid": {"hit@5": {"mean": 0.7058823529411765, "ci_low": 0.47058823529411764, "ci_high": 0.8823529411764706}, "hit@10": {"mean": 0.7058823529411765, "ci_low": 0.47058823529411764, "ci_high": 0.8823529411764706}, "coverage@10": {"mean": 0.6078431372549019, "ci_low": 0.38235294117647056, "ci_high": 0.8137254901960783}, "mrr@10": {"mean": 0.42156862745098034, "ci_low": 0.25, "ci_high": 0.6029411764705882}, "ndcg@10": {"mean": 0.39485696978389506, "ci_low": 0.2542728636611464, "ci_high": 0.5390595631488971}}, "hybrid_rerank": {"hit@5": {"mean": 0.7647058823529411, "ci_low": 0.5294117647058824, "ci_high": 0.9411764705882353}, "hit@10": {"mean": 0.8235294117647058, "ci_low": 0.6470588235294118, "ci_high": 1.0}, "coverage@10": {"mean": 0.6764705882352942, "ci_low": 0.5, "ci_high": 0.8529411764705882}, "mrr@10": {"mean": 0.4565359477124183, "ci_low": 0.2852941176470588, "ci_high": 0.6431535947712417}, "ndcg@10": {"mean": 0.42421656422205567, "ci_low": 0.29879432401274, "ci_high": 0.5593122657322974}}}, "paired_diffs": {"hybrid - vector | hit@10": {"diff": 0.0, "ci_low": -0.23529411764705882, "ci_high": 0.23529411764705882, "supported": false}, "hybrid - vector | mrr@10": {"diff": 0.005322128851540623, "ci_low": -0.1480567226890755, "ci_high": 0.1180672268907563, "supported": false}, "hybrid - vector | ndcg@10": {"diff": 0.022686390746998842, "ci_low": -0.0840772129481049, "ci_high": 0.12777471112753558, "supported": false}, "hybrid_rerank - hybrid | hit@10": {"diff": 0.11764705882352941, "ci_low": 0.0, "ci_high": 0.29411764705882354, "supported": false}, "hybrid_rerank - hybrid | mrr@10": {"diff": 0.0349673202614379, "ci_low": -0.05522875816993464, "ci_high": 0.12941176470588237, "supported": false}, "hybrid_rerank - hybrid | ndcg@10": {"diff": 0.029359594438160583, "ci_low": -0.05528011859398343, "ci_high": 0.11378819256796263, "supported": false}}}, "round_3": {"n": 13, "modes": {"vector": {"hit@5": {"mean": 0.9230769230769231, "ci_low": 0.7692307692307693, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 0.9615384615384616, "ci_low": 0.8846153846153846, "ci_high": 1.0}, "mrr@10": {"mean": 0.6481684981684981, "ci_low": 0.4635531135531136, "ci_high": 0.8333333333333333}, "ndcg@10": {"mean": 0.6469220855063179, "ci_low": 0.529649393447058, "ci_high": 0.7625754177379417}}, "hybrid": {"hit@5": {"mean": 0.8461538461538461, "ci_low": 0.6153846153846154, "ci_high": 1.0}, "hit@10": {"mean": 0.9230769230769231, "ci_low": 0.7692307692307693, "ci_high": 1.0}, "coverage@10": {"mean": 0.8461538461538461, "ci_low": 0.6538461538461539, "ci_high": 1.0}, "mrr@10": {"mean": 0.7802197802197802, "ci_low": 0.5714285714285714, "ci_high": 0.9615384615384616}, "ndcg@10": {"mean": 0.6878117615369548, "ci_low": 0.52854275748661, "ci_high": 0.8169917622302677}}, "hybrid_rerank": {"hit@5": {"mean": 0.8461538461538461, "ci_low": 0.6153846153846154, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 0.9230769230769231, "ci_low": 0.8076923076923077, "ci_high": 1.0}, "mrr@10": {"mean": 0.7609890109890111, "ci_low": 0.5604395604395606, "ci_high": 0.9423076923076923}, "ndcg@10": {"mean": 0.6448221372579609, "ci_low": 0.5222424926137559, "ci_high": 0.7660298556242116}}}, "paired_diffs": {"hybrid - vector | hit@10": {"diff": -0.07692307692307693, "ci_low": -0.23076923076923078, "ci_high": 0.0, "supported": false}, "hybrid - vector | mrr@10": {"diff": 0.13205128205128205, "ci_low": -0.015384615384615385, "ci_high": 0.3012820512820513, "supported": false}, "hybrid - vector | ndcg@10": {"diff": 0.04088967603063698, "ci_low": -0.05829671472631285, "ci_high": 0.15012912340115883, "supported": false}, "hybrid_rerank - hybrid | hit@10": {"diff": 0.07692307692307693, "ci_low": 0.0, "ci_high": 0.23076923076923078, "supported": false}, "hybrid_rerank - hybrid | mrr@10": {"diff": -0.019230769230769232, "ci_low": -0.21153846153846156, "ci_high": 0.15384615384615385, "supported": false}, "hybrid_rerank - hybrid | ndcg@10": {"diff": -0.04298962427899386, "ci_low": -0.17023096946505925, "ci_high": 0.06944168859871919, "supported": false}}}}, "breakdowns": {"type": {"comparative": {"n": 9, "n_by_tier": {"round_1": 4, "round_2": 4, "round_3": 1}, "modes": {"vector": {"hit@5": {"mean": 0.5555555555555556, "ci_low": 0.2222222222222222, "ci_high": 0.8888888888888888}, "hit@10": {"mean": 0.6666666666666666, "ci_low": 0.3333333333333333, "ci_high": 0.8888888888888888}, "coverage@10": {"mean": 0.6111111111111112, "ci_low": 0.3333333333333333, "ci_high": 0.8888888888888888}, "mrr@10": {"mean": 0.3555555555555555, "ci_low": 0.12222222222222223, "ci_high": 0.6148148148148148}, "ndcg@10": {"mean": 0.35505315623765443, "ci_low": 0.16395436754953538, "ci_high": 0.5555919348313104}}, "hybrid": {"hit@5": {"mean": 0.5555555555555556, "ci_low": 0.2222222222222222, "ci_high": 0.8888888888888888}, "hit@10": {"mean": 0.5555555555555556, "ci_low": 0.2222222222222222, "ci_high": 0.8888888888888888}, "coverage@10": {"mean": 0.5555555555555556, "ci_low": 0.2222222222222222, "ci_high": 0.8888888888888888}, "mrr@10": {"mean": 0.4444444444444444, "ci_low": 0.16666666666666666, "ci_high": 0.7222222222222222}, "ndcg@10": {"mean": 0.41137261043567663, "ci_low": 0.16954069109207395, "ci_high": 0.6675435889084199}}, "hybrid_rerank": {"hit@5": {"mean": 0.6666666666666666, "ci_low": 0.3333333333333333, "ci_high": 1.0}, "hit@10": {"mean": 0.7777777777777778, "ci_low": 0.4444444444444444, "ci_high": 1.0}, "coverage@10": {"mean": 0.7222222222222222, "ci_low": 0.4444444444444444, "ci_high": 1.0}, "mrr@10": {"mean": 0.4166666666666667, "ci_low": 0.19444444444444445, "ci_high": 0.6574074074074074}, "ndcg@10": {"mean": 0.4331444810259322, "ci_low": 0.23142703861217898, "ci_high": 0.6420603740899606}}}}, "direct_fact": {"n": 3, "n_by_tier": {"round_1": 2, "round_2": 1}, "modes": {"vector": {"hit@5": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "mrr@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "ndcg@10": {"mean": 0.8236033618452484, "ci_low": 0.7262287617954056, "ci_high": 0.9243382314975351}}, "hybrid": {"hit@5": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "mrr@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "ndcg@10": {"mean": 0.8032747150440062, "ci_low": 0.7196549500199593, "ci_high": 0.9639404333166532}}, "hybrid_rerank": {"hit@5": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "mrr@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "ndcg@10": {"mean": 0.7970190003096662, "ci_low": 0.7262287617954056, "ci_high": 0.8385935820050331}}}}, "numerical": {"n": 10, "n_by_tier": {"round_1": 3, "round_2": 1, "round_3": 6}, "modes": {"vector": {"hit@5": {"mean": 0.7, "ci_low": 0.4, "ci_high": 1.0}, "hit@10": {"mean": 0.7, "ci_low": 0.4, "ci_high": 1.0}, "coverage@10": {"mean": 0.7, "ci_low": 0.4, "ci_high": 1.0}, "mrr@10": {"mean": 0.525, "ci_low": 0.275, "ci_high": 0.8}, "ndcg@10": {"mean": 0.5334568231899015, "ci_low": 0.2918549762049622, "ci_high": 0.7648651224083717}}, "hybrid": {"hit@5": {"mean": 0.9, "ci_low": 0.7, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "mrr@10": {"mean": 0.6976190476190476, "ci_low": 0.49523809523809526, "ci_high": 0.9}, "ndcg@10": {"mean": 0.6887868185511227, "ci_low": 0.5436811199945899, "ci_high": 0.8275856041577069}}, "hybrid_rerank": {"hit@5": {"mean": 0.9, "ci_low": 0.7, "ci_high": 1.0}, "hit@10": {"mean": 0.9, "ci_low": 0.7, "ci_high": 1.0}, "coverage@10": {"mean": 0.9, "ci_low": 0.7, "ci_high": 1.0}, "mrr@10": {"mean": 0.6283333333333333, "ci_low": 0.38333333333333336, "ci_high": 0.8666666666666666}, "ndcg@10": {"mean": 0.600583931514232, "ci_low": 0.40505426745653117, "ci_high": 0.7796666548571684}}}}, "relationship": {"n": 9, "n_by_tier": {"round_1": 3, "round_2": 4, "round_3": 2}, "modes": {"vector": {"hit@5": {"mean": 0.7777777777777778, "ci_low": 0.4444444444444444, "ci_high": 1.0}, "hit@10": {"mean": 0.8888888888888888, "ci_low": 0.6666666666666666, "ci_high": 1.0}, "coverage@10": {"mean": 0.7777777777777778, "ci_low": 0.5555555555555556, "ci_high": 0.9458333333333131}, "mrr@10": {"mean": 0.6084656084656085, "ci_low": 0.3492063492063492, "ci_high": 0.8492063492063492}, "ndcg@10": {"mean": 0.5409540812696549, "ci_low": 0.3416312088058606, "ci_high": 0.7286599325830801}}, "hybrid": {"hit@5": {"mean": 0.8888888888888888, "ci_low": 0.6666666666666666, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 0.8703703703703703, "ci_low": 0.6851851851851851, "ci_high": 1.0}, "mrr@10": {"mean": 0.6306878306878306, "ci_low": 0.3994708994708994, "ci_high": 0.8555555555555556}, "ndcg@10": {"mean": 0.5839310583882416, "ci_low": 0.43352633072425195, "ci_high": 0.7429461858208299}}, "hybrid_rerank": {"hit@5": {"mean": 0.7777777777777778, "ci_low": 0.4444444444444444, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 0.8888888888888888, "ci_low": 0.7222222222222222, "ci_high": 1.0}, "mrr@10": {"mean": 0.6059964726631394, "ci_low": 0.35890211640211644, "ci_high": 0.8492063492063492}, "ndcg@10": {"mean": 0.5870155193850093, "ci_low": 0.42320934794750653, "ci_high": 0.7567202290450338}}}}, "spanning": {"n": 9, "n_by_tier": {"round_1": 4, "round_2": 2, "round_3": 3}, "modes": {"vector": {"hit@5": {"mean": 0.8888888888888888, "ci_low": 0.6666666666666666, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 0.8333333333333334, "ci_low": 0.6666666666666666, "ci_high": 1.0}, "mrr@10": {"mean": 0.6777777777777777, "ci_low": 0.42962962962962964, "ci_high": 0.9259259259259258}, "ndcg@10": {"mean": 0.5511766375868903, "ci_low": 0.41657384162750266, "ci_high": 0.6859889901725137}}, "hybrid": {"hit@5": {"mean": 0.8888888888888888, "ci_low": 0.6666666666666666, "ci_high": 1.0}, "hit@10": {"mean": 0.8888888888888888, "ci_low": 0.6666666666666666, "ci_high": 1.0}, "coverage@10": {"mean": 0.7222222222222222, "ci_low": 0.5, "ci_high": 0.9444444444444444}, "mrr@10": {"mean": 0.75, "ci_low": 0.5, "ci_high": 1.0}, "ndcg@10": {"mean": 0.5716207048420354, "ci_low": 0.3771946664997104, "ci_high": 0.7471208633993703}}, "hybrid_rerank": {"hit@5": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 0.7222222222222222, "ci_low": 0.5555555555555556, "ci_high": 0.8888888888888888}, "mrr@10": {"mean": 0.837037037037037, "ci_low": 0.6000000000000001, "ci_high": 1.0}, "ndcg@10": {"mean": 0.5559157092354824, "ci_low": 0.425601723743085, "ci_high": 0.6733973941552601}}}}, "temporal": {"n": 9, "n_by_tier": {"round_1": 3, "round_2": 5, "round_3": 1}, "modes": {"vector": {"hit@5": {"mean": 0.6666666666666666, "ci_low": 0.3333333333333333, "ci_high": 1.0}, "hit@10": {"mean": 0.7777777777777778, "ci_low": 0.4444444444444444, "ci_high": 1.0}, "coverage@10": {"mean": 0.7777777777777778, "ci_low": 0.4444444444444444, "ci_high": 1.0}, "mrr@10": {"mean": 0.488095238095238, "ci_low": 0.23015873015873012, "ci_high": 0.75}, "ndcg@10": {"mean": 0.49084351612174376, "ci_low": 0.27354788756827153, "ci_high": 0.6997821563020477}}, "hybrid": {"hit@5": {"mean": 0.7777777777777778, "ci_low": 0.4444444444444444, "ci_high": 1.0}, "hit@10": {"mean": 0.7777777777777778, "ci_low": 0.4444444444444444, "ci_high": 1.0}, "coverage@10": {"mean": 0.7777777777777778, "ci_low": 0.4444444444444444, "ci_high": 1.0}, "mrr@10": {"mean": 0.5648148148148148, "ci_low": 0.2962962962962963, "ci_high": 0.8333333333333334}, "ndcg@10": {"mean": 0.5699989552443919, "ci_low": 0.33643558984823385, "ci_high": 0.7899326685981949}}, "hybrid_rerank": {"hit@5": {"mean": 0.7777777777777778, "ci_low": 0.4444444444444444, "ci_high": 1.0}, "hit@10": {"mean": 0.7777777777777778, "ci_low": 0.4444444444444444, "ci_high": 1.0}, "coverage@10": {"mean": 0.7777777777777778, "ci_low": 0.4444444444444444, "ci_high": 1.0}, "mrr@10": {"mean": 0.6296296296296295, "ci_low": 0.3333333333333333, "ci_high": 0.8888888888888888}, "ndcg@10": {"mean": 0.5848202180002556, "ci_low": 0.37490749395908574, "ci_high": 0.7801450786744999}}}}}, "format": {"table": {"n": 10, "n_by_tier": {"round_1": 4, "round_2": 4, "round_3": 2}, "modes": {"vector": {"hit@5": {"mean": 0.4, "ci_low": 0.1, "ci_high": 0.7}, "hit@10": {"mean": 0.4, "ci_low": 0.1, "ci_high": 0.7}, "coverage@10": {"mean": 0.35, "ci_low": 0.1, "ci_high": 0.65}, "mrr@10": {"mean": 0.18666666666666668, "ci_low": 0.03333333333333333, "ci_high": 0.4}, "ndcg@10": {"mean": 0.21206460922391335, "ci_low": 0.05526815971293221, "ci_high": 0.4085767637533781}}, "hybrid": {"hit@5": {"mean": 0.5, "ci_low": 0.2, "ci_high": 0.8}, "hit@10": {"mean": 0.5, "ci_low": 0.2, "ci_high": 0.8}, "coverage@10": {"mean": 0.45, "ci_low": 0.15, "ci_high": 0.75}, "mrr@10": {"mean": 0.2833333333333333, "ci_low": 0.1, "ci_high": 0.5}, "ndcg@10": {"mean": 0.25613891920340504, "ci_low": 0.11019671997870034, "ci_high": 0.41063493854243077}}, "hybrid_rerank": {"hit@5": {"mean": 0.5, "ci_low": 0.2, "ci_high": 0.8}, "hit@10": {"mean": 0.6, "ci_low": 0.3, "ci_high": 0.9}, "coverage@10": {"mean": 0.5, "ci_low": 0.2, "ci_high": 0.8}, "mrr@10": {"mean": 0.32, "ci_low": 0.10666666666666666, "ci_high": 0.5666666666666667}, "ndcg@10": {"mean": 0.29004242965391425, "ci_low": 0.15586876215801668, "ci_high": 0.42837739897827976}}}}, "text": {"n": 39, "n_by_tier": {"round_1": 15, "round_2": 13, "round_3": 11}, "modes": {"vector": {"hit@5": {"mean": 0.8205128205128205, "ci_low": 0.6923076923076923, "ci_high": 0.9230769230769231}, "hit@10": {"mean": 0.9230769230769231, "ci_low": 0.8461538461538461, "ci_high": 1.0}, "coverage@10": {"mean": 0.8589743589743589, "ci_low": 0.7564102564102564, "ci_high": 0.9487179487179487}, "mrr@10": {"mean": 0.6551892551892552, "ci_low": 0.5357066544566546, "ci_high": 0.7701572039072037}, "ndcg@10": {"mean": 0.5929994550292079, "ci_low": 0.5046373308419455, "ci_high": 0.6782406185446125}}, "hybrid": {"hit@5": {"mean": 0.8974358974358975, "ci_low": 0.7948717948717948, "ci_high": 0.9743589743589743}, "hit@10": {"mean": 0.9487179487179487, "ci_low": 0.8717948717948718, "ci_high": 1.0}, "coverage@10": {"mean": 0.893162393162393, "ci_low": 0.8034188034188033, "ci_high": 0.9700854700854702}, "mrr@10": {"mean": 0.7346764346764346, "ci_low": 0.6214178876678876, "ci_high": 0.8415140415140414}, "ndcg@10": {"mean": 0.6658618743282643, "ci_low": 0.579736090964411, "ci_high": 0.7472625485074901}}, "hybrid_rerank": {"hit@5": {"mean": 0.9230769230769231, "ci_low": 0.8205128205128205, "ci_high": 1.0}, "hit@10": {"mean": 0.9743589743589743, "ci_low": 0.9230769230769231, "ci_high": 1.0}, "coverage@10": {"mean": 0.8974358974358975, "ci_low": 0.8205128205128205, "ci_high": 0.9615384615384616}, "mrr@10": {"mean": 0.7304436304436304, "ci_low": 0.6141982091982092, "ci_high": 0.8363247863247861}, "ndcg@10": {"mean": 0.6396034709833921, "ci_low": 0.5584690974560456, "ci_high": 0.7148293757458334}}}}}, "document": {"equinor_ar2025": {"n": 15, "n_by_tier": {"round_1": 5, "round_2": 7, "round_3": 3}, "modes": {"vector": {"hit@5": {"mean": 0.6666666666666666, "ci_low": 0.4, "ci_high": 0.8666666666666667}, "hit@10": {"mean": 0.7333333333333333, "ci_low": 0.5333333333333333, "ci_high": 0.9333333333333333}, "coverage@10": {"mean": 0.6666666666666666, "ci_low": 0.43333333333333335, "ci_high": 0.8666666666666667}, "mrr@10": {"mean": 0.5844444444444444, "ci_low": 0.3533333333333333, "ci_high": 0.8222222222222222}, "ndcg@10": {"mean": 0.5250866101966961, "ci_low": 0.3383600909073327, "ci_high": 0.7082005083594614}}, "hybrid": {"hit@5": {"mean": 0.8666666666666667, "ci_low": 0.6666666666666666, "ci_high": 1.0}, "hit@10": {"mean": 0.8666666666666667, "ci_low": 0.6666666666666666, "ci_high": 1.0}, "coverage@10": {"mean": 0.8, "ci_low": 0.6, "ci_high": 0.9666666666666667}, "mrr@10": {"mean": 0.7055555555555555, "ci_low": 0.5055555555555555, "ci_high": 0.888888888888889}, "ndcg@10": {"mean": 0.5929191516368691, "ci_low": 0.4319171975298599, "ci_high": 0.745299640814872}}, "hybrid_rerank": {"hit@5": {"mean": 0.8666666666666667, "ci_low": 0.6666666666666666, "ci_high": 1.0}, "hit@10": {"mean": 0.8666666666666667, "ci_low": 0.6666666666666666, "ci_high": 1.0}, "coverage@10": {"mean": 0.7666666666666667, "ci_low": 0.5666666666666667, "ci_high": 0.9333333333333333}, "mrr@10": {"mean": 0.7244444444444444, "ci_low": 0.5155555555555555, "ci_high": 0.9111111111111111}, "ndcg@10": {"mean": 0.5842232061338514, "ci_low": 0.42198615714253773, "ci_high": 0.738363701411882}}}}, "havtil_activities": {"n": 4, "n_by_tier": {"round_1": 2, "round_2": 1, "round_3": 1}, "modes": {"vector": {"hit@5": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 0.875, "ci_low": 0.625, "ci_high": 1.0}, "mrr@10": {"mean": 0.7083333333333334, "ci_low": 0.41666666666666663, "ci_high": 1.0}, "ndcg@10": {"mean": 0.7281643789851646, "ci_low": 0.4601599407758559, "ci_high": 0.8957179525623742}}, "hybrid": {"hit@5": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "mrr@10": {"mean": 0.75, "ci_low": 0.5, "ci_high": 1.0}, "ndcg@10": {"mean": 0.7971713808361178, "ci_low": 0.6493392941991792, "ci_high": 0.9221322202351167}}, "hybrid_rerank": {"hit@5": {"mean": 0.75, "ci_low": 0.25, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 0.875, "ci_low": 0.625, "ci_high": 1.0}, "mrr@10": {"mean": 0.7777777777777778, "ci_low": 0.33333333333333337, "ci_high": 1.0}, "ndcg@10": {"mean": 0.7152905813225547, "ci_low": 0.4239213201008249, "ci_high": 0.9362776984341865}}}}, "havtil_co2": {"n": 7, "n_by_tier": {"round_1": 3, "round_2": 3, "round_3": 1}, "modes": {"vector": {"hit@5": {"mean": 0.7142857142857143, "ci_low": 0.42857142857142855, "ci_high": 1.0}, "hit@10": {"mean": 0.8571428571428571, "ci_low": 0.5714285714285714, "ci_high": 1.0}, "coverage@10": {"mean": 0.8571428571428571, "ci_low": 0.5714285714285714, "ci_high": 1.0}, "mrr@10": {"mean": 0.3656462585034013, "ci_low": 0.17517006802721086, "ci_high": 0.6037414965986395}, "ndcg@10": {"mean": 0.44228022847873055, "ci_low": 0.2508368132727253, "ci_high": 0.6403845784027271}}, "hybrid": {"hit@5": {"mean": 0.7142857142857143, "ci_low": 0.42857142857142855, "ci_high": 1.0}, "hit@10": {"mean": 0.8571428571428571, "ci_low": 0.5714285714285714, "ci_high": 1.0}, "coverage@10": {"mean": 0.8571428571428571, "ci_low": 0.5714285714285714, "ci_high": 1.0}, "mrr@10": {"mean": 0.4965986394557823, "ci_low": 0.2346938775510204, "ci_high": 0.761904761904762}, "ndcg@10": {"mean": 0.5226971788026964, "ci_low": 0.29759065684548985, "ci_high": 0.7286228275967461}}, "hybrid_rerank": {"hit@5": {"mean": 0.8571428571428571, "ci_low": 0.5714285714285714, "ci_high": 1.0}, "hit@10": {"mean": 0.8571428571428571, "ci_low": 0.5714285714285714, "ci_high": 1.0}, "coverage@10": {"mean": 0.8571428571428571, "ci_low": 0.5714285714285714, "ci_high": 1.0}, "mrr@10": {"mean": 0.7619047619047619, "ci_low": 0.42857142857142866, "ci_high": 1.0}, "ndcg@10": {"mean": 0.6372148852889293, "ci_low": 0.4002326160632968, "ci_high": 0.8166117211033634}}}}, "havtil_framework": {"n": 4, "n_by_tier": {"round_1": 2, "round_2": 1, "round_3": 1}, "modes": {"vector": {"hit@5": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 0.875, "ci_low": 0.625, "ci_high": 1.0}, "mrr@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "ndcg@10": {"mean": 0.7253565191008006, "ci_low": 0.5438574419322635, "ci_high": 0.9059833535747326}}, "hybrid": {"hit@5": {"mean": 0.75, "ci_low": 0.25, "ci_high": 1.0}, "hit@10": {"mean": 0.75, "ci_low": 0.25, "ci_high": 1.0}, "coverage@10": {"mean": 0.75, "ci_low": 0.25, "ci_high": 1.0}, "mrr@10": {"mean": 0.75, "ci_low": 0.25, "ci_high": 1.0}, "ndcg@10": {"mean": 0.5831562353130173, "ci_low": 0.1815571904488514, "ci_high": 0.8416827536947948}}, "hybrid_rerank": {"hit@5": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 0.875, "ci_low": 0.625, "ci_high": 1.0}, "mrr@10": {"mean": 0.8, "ci_low": 0.39999999999999997, "ci_high": 1.0}, "ndcg@10": {"mean": 0.6278376046339722, "ci_low": 0.3217140597969898, "ci_high": 0.835569992309521}}}}, "havtil_management": {"n": 4, "n_by_tier": {"round_1": 2, "round_3": 2}, "modes": {"vector": {"hit@5": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "mrr@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "ndcg@10": {"mean": 0.7713361708205475, "ci_low": 0.7108690028643486, "ci_high": 0.8318033387767463}}, "hybrid": {"hit@5": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "mrr@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "ndcg@10": {"mean": 0.8163086361404206, "ci_low": 0.7430032313737089, "ci_high": 0.8607599785918703}}, "hybrid_rerank": {"hit@5": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "hit@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "coverage@10": {"mean": 1.0, "ci_low": 1.0, "ci_high": 1.0}, "mrr@10": {"mean": 0.875, "ci_low": 0.625, "ci_high": 1.0}, "ndcg@10": {"mean": 0.7202405644231091, "ci_low": 0.6213856333596249, "ci_high": 0.8162169979966021}}}}, "irena_rpgc2024": {"n": 15, "n_by_tier": {"round_1": 5, "round_2": 5, "round_3": 5}, "modes": {"vector": {"hit@5": {"mean": 0.6, "ci_low": 0.3333333333333333, "ci_high": 0.8}, "hit@10": {"mean": 0.7333333333333333, "ci_low": 0.4666666666666667, "ci_high": 0.9333333333333333}, "coverage@10": {"mean": 0.6666666666666666, "ci_low": 0.43333333333333335, "ci_high": 0.8666666666666667}, "mrr@10": {"mean": 0.35063492063492063, "ci_low": 0.19666269841269846, "ci_high": 0.5206349206349207}, "ndcg@10": {"mean": 0.35839572069670955, "ci_low": 0.21972870820269572, "ci_high": 0.4978751116432345}}, "hybrid": {"hit@5": {"mean": 0.7333333333333333, "ci_low": 0.5333333333333333, "ci_high": 0.9333333333333333}, "hit@10": {"mean": 0.8, "ci_low": 0.6, "ci_high": 1.0}, "coverage@10": {"mean": 0.6888888888888888, "ci_low": 0.47777777777777775, "ci_high": 0.8888888888888888}, "mrr@10": {"mean": 0.49507936507936506, "ci_low": 0.30174603174603176, "ci_high": 0.6917460317460318}, "ndcg@10": {"mean": 0.4793859837004147, "ci_low": 0.31788604885352173, "ci_high": 0.6433650398478367}}, "hybrid_rerank": {"hit@5": {"mean": 0.7333333333333333, "ci_low": 0.5333333333333333, "ci_high": 0.9333333333333333}, "hit@10": {"mean": 0.8666666666666667, "ci_low": 0.6666666666666666, "ci_high": 1.0}, "coverage@10": {"mean": 0.7666666666666667, "ci_low": 0.5666666666666667, "ci_high": 0.9333333333333333}, "mrr@10": {"mean": 0.37841269841269837, "ci_low": 0.23888888888888887, "ci_high": 0.533968253968254}, "ndcg@10": {"mean": 0.42450882495617415, "ci_low": 0.31638466967695006, "ci_high": 0.5380704533173042}}}}}}, "pooled": {"n": 49, "modes": {"vector": {"hit@5": {"mean": 0.7346938775510204, "ci_low": 0.6122448979591837, "ci_high": 0.8571428571428571}, "hit@10": {"mean": 0.8163265306122449, "ci_low": 0.6938775510204082, "ci_high": 0.9183673469387755}, "coverage@10": {"mean": 0.7551020408163265, "ci_low": 0.6428571428571429, "ci_high": 0.8571428571428571}, "mrr@10": {"mean": 0.5595724003887269, "ci_low": 0.44309888241010686, "ci_high": 0.6755636540330417}, "ndcg@10": {"mean": 0.5152576497628214, "ci_low": 0.4227661517142643, "ci_high": 0.6043208679202525}}, "hybrid": {"hit@5": {"mean": 0.8163265306122449, "ci_low": 0.7142857142857143, "ci_high": 0.9183673469387755}, "hit@10": {"mean": 0.8571428571428571, "ci_low": 0.7551020408163265, "ci_high": 0.9387755102040817}, "coverage@10": {"mean": 0.802721088435374, "ci_low": 0.697278911564626, "ci_high": 0.8979591836734694}, "mrr@10": {"mean": 0.6425655976676384, "ci_low": 0.533040573372206, "ci_high": 0.750728862973761}, "ndcg@10": {"mean": 0.5822449447109461, "ci_low": 0.49421224077550235, "ci_high": 0.6697160536989495}}, "hybrid_rerank": {"hit@5": {"mean": 0.8367346938775511, "ci_low": 0.7346938775510204, "ci_high": 0.9387755102040817}, "hit@10": {"mean": 0.8979591836734694, "ci_low": 0.8163265306122449, "ci_high": 0.9795918367346939}, "coverage@10": {"mean": 0.8163265306122449, "ci_low": 0.7244897959183674, "ci_high": 0.9081632653061225}, "mrr@10": {"mean": 0.6466796242306446, "ci_low": 0.5341411564625851, "ci_high": 0.7554442014901198}, "ndcg@10": {"mean": 0.5682644829569681, "ci_low": 0.48845936983040456, "ci_high": 0.6479651720021563}}}}}</script>
+<script id="serverinfo" type="application/json">{"enabled": false}</script>
+<script>
+(function () {
+  "use strict";
+  const D = JSON.parse(document.getElementById("data").textContent);
+
+  const METRICS = [
+    ["coverage@10", "Coverage@10 (share of gold evidence quotes found in the top 10)", true],
+    ["hit@10", "Hit@10 (any gold quote in the top 10)", true],
+    ["hit@5", "Hit@5 (any gold quote in the top 5)", true],
+    ["mrr@10", "MRR@10 (1 / rank of the first quote chunk)", false],
+    ["ndcg@10", "nDCG@10 (graded, rank-discounted)", false],
+  ];
+  const METRIC_SHORT = { "hit@5": "Hit@5", "hit@10": "Hit@10", "coverage@10": "Coverage@10", "mrr@10": "MRR@10", "ndcg@10": "nDCG@10" };
+  const IS_PCT = { "hit@5": true, "hit@10": true, "coverage@10": true, "mrr@10": false, "ndcg@10": false };
+  const MODE_LABEL = { vector: "Vector", hybrid: "Hybrid", hybrid_rerank: "Hybrid + rerank" };
+  const MODE_NOTE = { vector: "dense embeddings only", hybrid: "BM25 + vectors fused with RRF", hybrid_rerank: "hybrid, top 30 re-ordered by a cross-encoder" };
+  const TIER_LABEL = {
+    round_1: ["Round 1", "natural wording, easy"],
+    round_2: ["Round 2", "synonym-swapped wording (paraphrase stress test)"],
+    round_3: ["Round 3", "natural wording, multi-page (written by Claude)"],
+  };
+  const DOC_LABEL = {
+    equinor_ar2025: "Equinor Annual Report 2025", havtil_framework: "Havtil Framework Regulations",
+    havtil_management: "Havtil Management Regulations", havtil_activities: "Havtil Activities Regulations",
+    havtil_co2: "Havtil CO2 Safety Regulations", irena_rpgc2024: "IRENA Renewable Power Costs 2024",
+  };
+  const SMALL_N = 10;
+  const MODES = Object.keys(D.tiers[Object.keys(D.tiers)[0]].modes);
+  const modeClass = (m) => (MODE_LABEL[m] ? "m-" + m : "m-other");
+
+  function el(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+  const fmt = (metric, v) => (IS_PCT[metric] ? Math.round(v * 100) + "%" : v.toFixed(2));
+  const fmtCI = (metric, a, b) => (IS_PCT[metric] ? "[" + Math.round(a * 100) + "–" + Math.round(b * 100) + "%]" : "[" + a.toFixed(2) + ", " + b.toFixed(2) + "]");
+  const fmtDiff = (v) => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(3);
+
+  // ---------------------------------------------------------------- header
+  const stampTime = D.time_utc ? D.time_utc.replace("T", " ").replace("+00:00", " UTC") : "";
+  document.getElementById("meta").textContent =
+    "Split: " + D.split + " · git " + D.git_sha + " · " + stampTime + " · questions: " + D.question_source + " · k = " + D.k +
+    " · reranker: " + D.settings.rerank_model;
+  const banner = el("span", "banner" + (D.pilot ? "" : " final"), D.pilot
+    ? "PILOT on dev. Not the final result; the test split is run once, at the end."
+    : "FINAL: test split, run once. Nothing was tuned on it.");
+  document.getElementById("banner").appendChild(banner);
+
+  // The metric dropdown must be filled before any chart draws: the charts read its value.
+  const sel = document.getElementById("metric");
+  METRICS.forEach((m) => { const o = el("option", "", m[1]); o.value = m[0]; sel.appendChild(o); });
+
+  // ---------------------------------------------------------------- tooltip
+  const tip = document.getElementById("tip");
+  function showTip(text, x, y) {
+    tip.textContent = text;
+    tip.style.display = "block";
+    const r = tip.getBoundingClientRect();
+    tip.style.left = Math.min(x + 12, window.innerWidth - r.width - 8) + "px";
+    tip.style.top = Math.max(8, y - r.height - 10) + "px";
+  }
+  const hideTip = () => { tip.style.display = "none"; };
+
+  // ---------------------------------------------------------------- chart
+  const charts = [];   // re-rendered when the metric changes
+  function legend(parent) {
+    const lg = el("div", "legend");
+    lg.setAttribute("aria-label", "Retrieval modes");
+    MODES.forEach((m) => {
+      const s = el("span", modeClass(m));
+      s.appendChild(el("i", "swatch"));
+      s.appendChild(el("span", "", MODE_LABEL[m] || m));
+      s.title = MODE_NOTE[m] || "";
+      lg.appendChild(s);
+    });
+    parent.appendChild(lg);
+  }
+  function renderChart(host, groups) {
+    host.textContent = "";
+    const metric = document.getElementById("metric").value;
+    groups.forEach((g, gi) => {
+      const row = el("div", "grow");
+      const lab = el("div", "glabel", g.label);
+      lab.appendChild(el("span", "gsub", g.sub));
+      if (g.n < SMALL_N) lab.appendChild(el("span", "warn", "▲ n = " + g.n + ": interval means little"));
+      row.appendChild(lab);
+
+      const plot = el("div", "plot");
+      MODES.forEach((m) => {
+        const v = g.modes[m][metric];
+        const wrap = el("div", "barwrap " + modeClass(m));
+        wrap.tabIndex = 0;
+        const text = g.label + " · " + (MODE_LABEL[m] || m) + "\n" + METRIC_SHORT[metric] + ": " + fmt(metric, v.mean) + " " +
+          fmtCI(metric, v.ci_low, v.ci_high) + " (95% bootstrap CI)\nn = " + g.n;
+        wrap.setAttribute("aria-label", text.replace(/\n/g, ". "));
+        const bar = el("div", "bar");
+        bar.style.width = (v.mean * 100) + "%";
+        const ci = el("div", "ci");
+        ci.style.left = (v.ci_low * 100) + "%";
+        ci.style.width = Math.max(0, (v.ci_high - v.ci_low) * 100) + "%";
+        wrap.appendChild(bar); wrap.appendChild(ci);
+        wrap.addEventListener("mousemove", (e) => showTip(text, e.clientX, e.clientY));
+        wrap.addEventListener("mouseleave", hideTip);
+        wrap.addEventListener("focus", () => { const r = wrap.getBoundingClientRect(); showTip(text, r.left + r.width / 2, r.top); });
+        wrap.addEventListener("blur", hideTip);
+        plot.appendChild(wrap);
+      });
+      row.appendChild(plot);
+
+      const dl = el("div");   // direct labels, first row only: the legend carries identity for the rest
+      if (gi === 0) MODES.forEach((m) => dl.appendChild(el("div", "dlabel", MODE_LABEL[m] || m)));
+      row.appendChild(dl);
+      host.appendChild(row);
+    });
+    const axis = el("div", "axis");
+    axis.appendChild(el("div"));
+    const ticks = el("div", "ticks");
+    [0, 25, 50, 75, 100].forEach((t) => {
+      const s = el("span", "", IS_PCT[metric] ? t + "%" : (t / 100).toFixed(2));
+      s.style.left = t + "%";
+      ticks.appendChild(s);
+    });
+    axis.appendChild(ticks); axis.appendChild(el("div"));
+    host.appendChild(axis);
+  }
+
+  // ---------------------------------------------------------------- table
+  function numCell(metric, v) {
+    const td = el("td", "num", fmt(metric, v.mean));
+    td.appendChild(el("span", "ci-text", fmtCI(metric, v.ci_low, v.ci_high)));
+    return td;
+  }
+  function renderTable(parent, groups, extraClass) {
+    const wrap = el("div", "tablewrap");
+    const t = el("table", extraClass || "");
+    const head = el("tr");
+    ["Group", "n", "Mode"].concat(Object.keys(METRIC_SHORT).map((k) => METRIC_SHORT[k])).forEach((h) => head.appendChild(el("th", "", h)));
+    t.appendChild(head);
+    groups.forEach((g) => {
+      MODES.forEach((m, mi) => {
+        const tr = el("tr", mi === 0 ? "groupstart" : "");
+        if (mi === 0) {
+          const c = el("td", "", g.label); c.rowSpan = MODES.length;
+          if (g.sub) c.appendChild(el("span", "gsub muted", " " + g.sub));
+          tr.appendChild(c);
+          const n = el("td", "num", String(g.n)); n.rowSpan = MODES.length; tr.appendChild(n);
+        }
+        const mc = el("td", modeClass(m));
+        mc.appendChild(el("i", "swatch")); mc.appendChild(document.createTextNode(" " + (MODE_LABEL[m] || m)));
+        tr.appendChild(mc);
+        Object.keys(METRIC_SHORT).forEach((k) => tr.appendChild(numCell(k, g.modes[m][k])));
+        t.appendChild(tr);
+      });
+    });
+    wrap.appendChild(t);
+    parent.appendChild(wrap);
+  }
+
+  function section(id, title, lead, groups, opts) {
+    const host = document.getElementById(id);
+    host.appendChild(el("h2", "", title));
+    host.appendChild(el("p", "sub", lead));
+    if (!(opts && opts.noChart)) {
+      legend(host);
+      const chartHost = el("div");
+      host.appendChild(chartHost);
+      const draw = () => renderChart(chartHost, groups);
+      charts.push(draw); draw();
+    }
+    const det = el("details"); det.open = true;
+    det.appendChild(el("summary", "", "Table view: every metric, mean and 95% bootstrap interval"));
+    renderTable(det, groups, opts && opts.tableClass);
+    host.appendChild(det);
+  }
+
+  // ---------------------------------------------------------------- sections
+  const tierGroups = Object.keys(D.tiers).map((k) => ({
+    label: (TIER_LABEL[k] || [k, ""])[0], sub: (TIER_LABEL[k] || [k, ""])[1], n: D.tiers[k].n, modes: D.tiers[k].modes,
+  }));
+  section("s-tiers", "By tier (the main result)",
+    "The three question tiers differ a lot in difficulty, so they are never blended into one headline number. Bars show the mean; the thin line is the 95% bootstrap interval.",
+    tierGroups);
+
+  function breakdownGroups(dim, labelOf) {
+    const b = D.breakdowns[dim];
+    return Object.keys(b).sort((x, y) => b[y].n - b[x].n || x.localeCompare(y)).map((v) => ({
+      label: labelOf(v), n: b[v].n, modes: b[v].modes,
+      sub: Object.keys(b[v].n_by_tier).map((t) => "R" + t.replace("round_", "") + " " + b[v].n_by_tier[t]).join(" · "),
+    }));
+  }
+  const pooledLead = " Pooled across tiers, so descriptive only; the small grey line under each name is its mix of questions per tier (R1 = round 1).";
+  section("s-type", "By question type", "What kind of reasoning the question needs." + pooledLead, breakdownGroups("type", (v) => v));
+  section("s-format", "By format", "Whether the evidence is in running text or in a table. Table rows are the known weak spot of the parser and the retriever." + pooledLead,
+    breakdownGroups("format", (v) => v));
+  section("s-document", "By document", "The document of the first gold evidence quote." + pooledLead, breakdownGroups("document", (v) => DOC_LABEL[v] || v));
+
+  const pooled = [{ label: "All tiers pooled", sub: "", n: D.pooled.n, modes: D.pooled.modes }];
+  const sp = document.getElementById("s-pooled");
+  sp.appendChild(el("h2", "", "All tiers pooled (small print)"));
+  sp.appendChild(el("p", "pooled-note", "This mixes easy, paraphrased and multi-page questions, so it describes the question set more than the retrievers. It is not a headline number and is not charted. Use the per-tier results above."));
+  const pdet = el("details"); pdet.open = true; pdet.appendChild(el("summary", "", "Table view"));
+  renderTable(pdet, pooled, "pooled"); sp.appendChild(pdet);
+
+  // paired differences, per tier
+  const sd = document.getElementById("s-diffs");
+  sd.appendChild(el("h2", "", "Differences between modes (paired, per tier)"));
+  let total = 0, yes = 0;
+  const dt = el("table"); const dh = el("tr");
+  ["Tier", "Comparison (a − b)", "Metric", "Difference", "95% interval", "Verdict"].forEach((h) => dh.appendChild(el("th", "", h)));
+  dt.appendChild(dh);
+  Object.keys(D.tiers).forEach((tk) => {
+    const pd = D.tiers[tk].paired_diffs || {};
+    Object.keys(pd).forEach((name, i) => {
+      const d = pd[name]; total += 1; if (d.supported) yes += 1;
+      const parts = name.split(" | "); const cmp = parts[0].split(" - ").map((x) => MODE_LABEL[x] || x).join(" − ");
+      const tr = el("tr", i === 0 ? "groupstart" : "");
+      tr.appendChild(el("td", "", i === 0 ? (TIER_LABEL[tk] || [tk])[0] + " (n = " + D.tiers[tk].n + ")" : ""));
+      tr.appendChild(el("td", "", cmp)); tr.appendChild(el("td", "", METRIC_SHORT[parts[1]] || parts[1]));
+      tr.appendChild(el("td", "num", fmtDiff(d.diff)));
+      tr.appendChild(el("td", "num", "[" + fmtDiff(d.ci_low) + ", " + fmtDiff(d.ci_high) + "]"));
+      tr.appendChild(el("td", d.supported ? "verdict-yes" : "verdict-no", d.supported ? "● interval excludes 0" : "○ no supported difference"));
+      dt.appendChild(tr);
+    });
+  });
+  sd.appendChild(el("p", "sub", yes + " of " + total + " intervals exclude 0. At the 95% level about " + (total * 0.05).toFixed(1) +
+    " would do so by chance alone, so a lone supported difference is weak evidence; and metrics on the same questions are correlated, so they are not independent tests. " +
+    "Do not claim that one mode beats another unless its interval excludes 0."));
+  const dw = el("div", "tablewrap"); dw.appendChild(dt); sd.appendChild(dw);
+
+  // latency
+  const sl = document.getElementById("s-latency");
+  sl.appendChild(el("h2", "", "Latency"));
+  sl.appendChild(el("p", "sub", "Mean seconds per query, warm models, CPU only (the first call of each mode is discarded)."));
+  const lt = el("table"); const lh = el("tr");
+  ["Mode", "Seconds per query"].forEach((h) => lh.appendChild(el("th", "", h))); lt.appendChild(lh);
+  MODES.forEach((m) => {
+    const tr = el("tr"); const c = el("td", modeClass(m)); c.appendChild(el("i", "swatch")); c.appendChild(document.createTextNode(" " + (MODE_LABEL[m] || m)));
+    tr.appendChild(c); tr.appendChild(el("td", "num", (D.mean_latency_s[m] || 0).toFixed(3))); lt.appendChild(tr);
+  });
+  sl.appendChild(lt);
+
+  // notes
+  const sn = document.getElementById("s-notes");
+  sn.appendChild(el("h2", "", "How to read this, and its limits"));
+  const ul = el("ul", "limits");
+  [
+    "Coverage@10 is the share of a question's gold evidence quotes that appear in some top-10 chunk. It is a quote-matching measure, not a keyword measure; for a one-quote question it equals Hit@10.",
+    "A chunk counts as relevant only if it is from the gold document and contains the gold quote. A quote split across two chunks would count in neither (none was found in this set).",
+    "Questions are model-generated: none is hand-written, round 3 and 30 later rewrites were written by Claude, and the review log records no reading of each item by the owner. These results measure retrieval on this question set, not on real user questions.",
+    "Small n: at 13 to 45 questions per tier the intervals are wide. Per-type and per-document rows are smaller still and are shown for orientation only.",
+    "Table rows are retrieved poorly (parser and chunk context); text inside figures is lost; there is no closed-book baseline in this view.",
+  ].forEach((t) => ul.appendChild(el("li", "", t)));
+  sn.appendChild(ul);
+  sn.appendChild(el("p", "sub", "The test split is run once, after the configuration is frozen: from the run button when this page is served by the dashboard server (typed confirmation, committed tree, one run only), or from the command line:"));
+  sn.appendChild(el("pre", "", "uv run python eval/retrieval_eval.py --split test --allow-test --tag final\nuv run python eval/dashboard.py --key retrieval_test_final"));
+  const st = D.settings;
+  sn.appendChild(el("p", "muted", "Settings: embedder " + st.embed_model + " · reranker " + st.rerank_model + " · RRF k " + st.rrf_k +
+    " · rerank candidates " + st.rerank_candidates + " · chunk max " + st.chunk_max_tokens + " tokens · heading-path prefix " + st.prefix_heading_path +
+    " · bootstrap resamples " + st.bootstrap_resamples));
+
+
+  // ---------------------------------------------------------------- run panel (only when served by dashboard_server.py)
+  const SV = JSON.parse(document.getElementById("serverinfo").textContent);
+  (function runPanel() {
+    const host = document.getElementById("s-run");
+    host.appendChild(el("h2", "", "Run the retrieval eval"));
+    if (!SV.enabled) {
+      host.appendChild(el("p", "sub", "This is the static page. To use the run button and a live progress bar, serve it:"));
+      host.appendChild(el("pre", "", "uv run python eval/dashboard_server.py"));
+      return;
+    }
+    host.appendChild(el("p", "sub", "Starts eval/retrieval_eval.py (the same command you would type). The dev pilot can be repeated. The test split is run exactly once."));
+    const row = el("div", "runrow");
+    const splitSel = el("select"); splitSel.setAttribute("aria-label", "Split to run");
+    [["dev", "Dev pilot (can be repeated)"], ["test", "Test split: FINAL, run once"]].forEach((o) => { const x = el("option", "", o[1]); x.value = o[0]; splitSel.appendChild(x); });
+    const tagLab = el("label", "", "Results tag"); const tagIn = el("input"); tagIn.type = "text"; tagIn.value = "reviewed"; tagIn.maxLength = 20;
+    tagIn.setAttribute("aria-label", "Results tag"); tagLab.appendChild(document.createTextNode(" ")); tagLab.appendChild(tagIn);
+    const btn = el("button", "primary", "Run"); btn.type = "button";
+    row.appendChild(splitSel); row.appendChild(tagLab); row.appendChild(btn);
+    host.appendChild(row);
+
+    const testBox = el("div", "warnbox"); testBox.hidden = true;
+    testBox.appendChild(el("p", "", "The test split is run once, after the configuration is frozen. Nothing may be tuned on it afterwards, and a second run is refused."));
+    const why = el("p", "", ""); testBox.appendChild(why);
+    const confirmIn = el("input"); confirmIn.type = "text"; confirmIn.placeholder = SV.phrase; confirmIn.style.width = "20ch";
+    confirmIn.setAttribute("aria-label", "Type the confirmation phrase");
+    const confirmLab = el("label", "", "Type " + SV.phrase + " to enable the button: "); confirmLab.appendChild(confirmIn);
+    testBox.appendChild(confirmLab);
+    host.appendChild(testBox);
+
+    const track = el("div", "track"); track.setAttribute("role", "progressbar"); track.setAttribute("aria-valuemin", "0"); track.setAttribute("aria-valuemax", "100");
+    const fill = el("div", "fill"); track.appendChild(fill); host.appendChild(track);
+    const stat = el("div", "runstatus"); stat.setAttribute("aria-live", "polite"); host.appendChild(stat);
+
+    let running = false, timer = null;
+    const mmss = (s) => (s == null ? "-" : Math.floor(s / 60) + ":" + String(Math.round(s % 60)).padStart(2, "0"));
+    function refreshButton() {
+      const test = splitSel.value === "test";
+      testBox.hidden = !test; tagLab.hidden = test;
+      why.textContent = SV.test_blocked ? "Blocked: " + SV.test_blocked + "." : "Ready: the working tree is committed (" + SV.git + ") and no test run has been started.";
+      btn.disabled = running || (test && (!!SV.test_blocked || confirmIn.value.trim() !== SV.phrase));
+    }
+    function show(st) {
+      const pct = st.total ? Math.round(100 * st.done / st.total) : 0;
+      fill.style.width = pct + "%"; track.setAttribute("aria-valuenow", String(pct));
+      stat.className = "runstatus";
+      if (st.state === "running") {
+        stat.textContent = (st.mode || "starting") + " · " + st.done + " of " + st.total + " steps · " + pct + "% · elapsed " + mmss(st.elapsed_s) + " · ETA " + mmss(st.eta_s);
+      } else if (st.state === "done") {
+        fill.style.width = "100%"; stat.textContent = "Done in " + mmss(st.elapsed_s) + ". Showing the new results…";
+      } else if (st.state === "error") {
+        stat.className = "runstatus err"; stat.textContent = "Run failed: " + (st.message || "see the server terminal");
+      } else { stat.textContent = ""; fill.style.width = "0"; }
+    }
+    async function poll() {
+      try {
+        const st = await (await fetch("/api/status", { cache: "no-store" })).json();
+        running = st.state === "running"; show(st); refreshButton();
+        if (running) { timer = setTimeout(poll, 800); }
+        else if (st.state === "done" && waiting) { setTimeout(() => { location.href = "/?key=" + encodeURIComponent(st.key); }, 1200); }
+      } catch (e) { stat.textContent = "Lost contact with the dashboard server."; }
+    }
+    let waiting = false;   // true only for a run started from this page, so an old "done" never reloads the page by itself
+    btn.addEventListener("click", async () => {
+      const body = { split: splitSel.value, tag: tagIn.value.trim() };
+      if (splitSel.value === "test") body.confirm = confirmIn.value.trim();
+      stat.className = "runstatus"; stat.textContent = "Starting…"; btn.disabled = true;
+      const r = await fetch("/api/run", { method: "POST", headers: { "Content-Type": "application/json", "X-Token": SV.token }, body: JSON.stringify(body) });
+      const j = await r.json();
+      if (!r.ok) { stat.className = "runstatus err"; stat.textContent = j.error || "could not start"; refreshButton(); return; }
+      waiting = true; running = true; confirmIn.value = ""; poll();
+    });
+    splitSel.addEventListener("change", refreshButton); confirmIn.addEventListener("input", refreshButton);
+    refreshButton(); poll();   // a run already in progress (started elsewhere) shows up on load
+  })();
+
+  // which stored run the page shows
+  (function runPicker() {
+    if (!SV.enabled || !SV.keys || SV.keys.length < 2) return;
+    document.getElementById("runkeywrap").hidden = false;
+    const sel2 = document.getElementById("runkey");
+    SV.keys.forEach((k) => { const o = el("option", "", k); o.value = k; if (k === SV.current) o.selected = true; sel2.appendChild(o); });
+    sel2.addEventListener("change", () => { location.href = "/?key=" + encodeURIComponent(sel2.value); });
+  })();
+
+  // ---------------------------------------------------------------- controls
+  sel.addEventListener("change", () => charts.forEach((f) => f()));
+  const themeBtn = document.getElementById("theme");
+  const order = ["auto", "light", "dark"]; let ti = 0;
+  themeBtn.addEventListener("click", () => {
+    ti = (ti + 1) % order.length;
+    if (order[ti] === "auto") document.documentElement.removeAttribute("data-theme");
+    else document.documentElement.setAttribute("data-theme", order[ti]);
+    themeBtn.textContent = "Theme: " + order[ti];
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1627 @@
+{
+ "per_question": {
+  "hybrid_rerank": {
+   "cross-307": {
+    "hit@5": 0.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.125,
+    "ndcg@10": 0.3154648767857287
+   },
+   "cross-308": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.25,
+    "ndcg@10": 0.35583989829307827
+   },
+   "equinor_ar2025-006": {
+    "hit@5": 0.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.16666666666666666,
+    "ndcg@10": 0.31699192084652206
+   },
+   "equinor_ar2025-010": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.8262346571285599
+   },
+   "equinor_ar2025-013": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.7262287617954056
+   },
+   "equinor_ar2025-017": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 0.5,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.5449456928844474
+   },
+   "equinor_ar2025-020": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 1.0
+   },
+   "equinor_ar2025-102": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.5,
+    "ndcg@10": 0.47830828396182096
+   },
+   "equinor_ar2025-110": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.7198317413941083
+   },
+   "equinor_ar2025-111": {
+    "hit@5": 0.0,
+    "hit@10": 1.0,
+    "coverage@10": 0.5,
+    "mrr@10": 0.14285714285714285,
+    "ndcg@10": 0.1885589209934509
+   },
+   "equinor_ar2025-114": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.25,
+    "ndcg@10": 0.2832400663165278
+   },
+   "equinor_ar2025-115": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.5,
+    "ndcg@10": 0.7937009386000569
+   },
+   "equinor_ar2025-117": {
+    "hit@5": 0.0,
+    "hit@10": 1.0,
+    "coverage@10": 0.5,
+    "mrr@10": 0.16666666666666666,
+    "ndcg@10": 0.24631681296952032
+   },
+   "equinor_ar2025-122": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.8386452372470259
+   },
+   "equinor_ar2025-302": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.7515891746950859
+   },
+   "equinor_ar2025-310": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.7959761332981399
+   },
+   "equinor_ar2025-311": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.8329770947522683
+   },
+   "havtil_activities-001": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.8262346571285599
+   },
+   "havtil_activities-006": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.810697463206958
+   },
+   "havtil_activities-105": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.25,
+    "ndcg@10": 0.5013350693965879
+   },
+   "havtil_activities-304": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 1.0
+   },
+   "havtil_co2-003": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.819876640193745
+   },
+   "havtil_co2-004": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.3333333333333333,
+    "ndcg@10": 0.41311732856427996
+   },
+   "havtil_co2-006": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.7715039881147672
+   },
+   "havtil_co2-101": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.8262346571285599
+   },
+   "havtil_co2-102": {
+    "hit@5": 0.0,
+    "hit@10": 0.0,
+    "coverage@10": 0.0,
+    "mrr@10": 0.0,
+    "ndcg@10": 0.0
+   },
+   "havtil_co2-103": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.8344475896326595
+   },
+   "havtil_co2-304": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.8898230449493622
+   },
+   "havtil_framework-002": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.7262287617954056
+   },
+   "havtil_framework-007": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.7262287617954056
+   },
+   "havtil_framework-104": {
+    "hit@5": 0.0,
+    "hit@10": 1.0,
+    "coverage@10": 0.5,
+    "mrr@10": 0.14285714285714285,
+    "ndcg@10": 0.16102233399262758
+   },
+   "havtil_framework-304": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.934413330529788
+   },
+   "havtil_management-005": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.5,
+    "ndcg@10": 0.5845838454394389
+   },
+   "havtil_management-006": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.7144471267060176
+   },
+   "havtil_management-301": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.7171046914674696
+   },
+   "havtil_management-302": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.8571968910711802
+   },
+   "irena_rpgc2024-003": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.25,
+    "ndcg@10": 0.4476437490851405
+   },
+   "irena_rpgc2024-006": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 1.0,
+    "ndcg@10": 1.0
+   },
+   "irena_rpgc2024-009": {
+    "hit@5": 0.0,
+    "hit@10": 0.0,
+    "coverage@10": 0.0,
+    "mrr@10": 0.0,
+    "ndcg@10": 0.0
+   },
+   "irena_rpgc2024-011": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.5,
+    "ndcg@10": 0.6590018048024133
+   },
+   "irena_rpgc2024-015": {
+    "hit@5": 0.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.1111111111111111,
+    "ndcg@10": 0.3010299956639812
+   },
+   "irena_rpgc2024-105": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.5,
+    "ndcg@10": 0.52129602861432
+   },
+   "irena_rpgc2024-107": {
+    "hit@5": 0.0,
+    "hit@10": 0.0,
+    "coverage@10": 0.0,
+    "mrr@10": 0.0,
+    "ndcg@10": 0.24207625393180188
+   },
+   "irena_rpgc2024-110": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 0.5,
+    "mrr@10": 0.2,
+    "ndcg@10": 0.19928998603536255
+   },
+   "irena_rpgc2024-115": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.5,
+    "ndcg@10": 0.5412732783019044
+   },
+   "irena_rpgc2024-116": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 0.5,
+    "mrr@10": 0.5,
+    "ndcg@10": 0.325027967813913
+   },
+   "irena_rpgc2024-302": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 0.5,
+    "mrr@10": 1.0,
+    "ndcg@10": 0.48306700197788277
+   },
+   "irena_rpgc2024-306": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.25,
+    "ndcg@10": 0.4306765580733931
+   },
+   "irena_rpgc2024-307": {
+    "hit@5": 1.0,
+    "hit@10": 1.0,
+    "coverage@10": 1.0,
+    "mrr@10": 0.3333333333333333,
+    "ndcg@10": 0.41311732856427996
+   }
+  }
+ },
+ "rankings": {
+  "hybrid_rerank": {
+   "cross-307": {
+    "chunk_ids": [
+     "irena_rpgc2024:0052",
+     "irena_rpgc2024:0051",
+     "irena_rpgc2024:0149",
+     "irena_rpgc2024:0173",
+     "irena_rpgc2024:0014",
+     "irena_rpgc2024:0114",
+     "irena_rpgc2024:0060",
+     "irena_rpgc2024:0062",
+     "irena_rpgc2024:0036",
+     "irena_rpgc2024:0171"
+    ],
+    "gains": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0
+    ]
+   },
+   "cross-308": {
+    "chunk_ids": [
+     "irena_rpgc2024:0172",
+     "irena_rpgc2024:0171",
+     "irena_rpgc2024:0166",
+     "irena_rpgc2024:0173",
+     "irena_rpgc2024:0147",
+     "irena_rpgc2024:0118",
+     "irena_rpgc2024:0113",
+     "irena_rpgc2024:0157",
+     "irena_rpgc2024:0116",
+     "irena_rpgc2024:0119"
+    ],
+    "gains": [
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "equinor_ar2025-006": {
+    "chunk_ids": [
+     "equinor_ar2025:0087",
+     "equinor_ar2025:0088",
+     "equinor_ar2025:0115",
+     "equinor_ar2025:0172",
+     "equinor_ar2025:0174",
+     "equinor_ar2025:0116",
+     "equinor_ar2025:0119",
+     "equinor_ar2025:0312",
+     "equinor_ar2025:0175",
+     "equinor_ar2025:0000"
+    ],
+    "gains": [
+     0,
+     0,
+     1,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "equinor_ar2025-010": {
+    "chunk_ids": [
+     "equinor_ar2025:0031",
+     "equinor_ar2025:0199",
+     "equinor_ar2025:0268",
+     "equinor_ar2025:0025",
+     "equinor_ar2025:0653",
+     "equinor_ar2025:0270",
+     "equinor_ar2025:0108",
+     "equinor_ar2025:0105",
+     "equinor_ar2025:0179",
+     "equinor_ar2025:0181"
+    ],
+    "gains": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "equinor_ar2025-013": {
+    "chunk_ids": [
+     "equinor_ar2025:0084",
+     "equinor_ar2025:0138",
+     "equinor_ar2025:0087",
+     "equinor_ar2025:0035",
+     "equinor_ar2025:0136",
+     "equinor_ar2025:0780",
+     "equinor_ar2025:0779",
+     "equinor_ar2025:0116",
+     "equinor_ar2025:0695",
+     "equinor_ar2025:0119"
+    ],
+    "gains": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "equinor_ar2025-017": {
+    "chunk_ids": [
+     "equinor_ar2025:0104",
+     "equinor_ar2025:0098",
+     "irena_rpgc2024:0060",
+     "irena_rpgc2024:0089",
+     "equinor_ar2025:0301",
+     "irena_rpgc2024:0038",
+     "equinor_ar2025:0038",
+     "irena_rpgc2024:0096",
+     "equinor_ar2025:0103",
+     "equinor_ar2025:0303"
+    ],
+    "gains": [
+     2,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0
+    ]
+   },
+   "equinor_ar2025-020": {
+    "chunk_ids": [
+     "equinor_ar2025:0084",
+     "equinor_ar2025:0086",
+     "equinor_ar2025:0085",
+     "equinor_ar2025:0006",
+     "equinor_ar2025:0180",
+     "equinor_ar2025:0087",
+     "equinor_ar2025:0136",
+     "equinor_ar2025:0293",
+     "equinor_ar2025:0035",
+     "equinor_ar2025:0304"
+    ],
+    "gains": [
+     2,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "equinor_ar2025-102": {
+    "chunk_ids": [
+     "equinor_ar2025:0139",
+     "equinor_ar2025:0698",
+     "equinor_ar2025:0660",
+     "equinor_ar2025:0704",
+     "equinor_ar2025:0701",
+     "equinor_ar2025:0659",
+     "equinor_ar2025:0140",
+     "equinor_ar2025:0153",
+     "equinor_ar2025:0658",
+     "equinor_ar2025:0697"
+    ],
+    "gains": [
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1
+    ]
+   },
+   "equinor_ar2025-110": {
+    "chunk_ids": [
+     "equinor_ar2025:0039",
+     "equinor_ar2025:0095",
+     "equinor_ar2025:0010",
+     "equinor_ar2025:0111",
+     "equinor_ar2025:0006",
+     "equinor_ar2025:0077",
+     "equinor_ar2025:0024",
+     "equinor_ar2025:0715",
+     "equinor_ar2025:0094",
+     "equinor_ar2025:0104"
+    ],
+    "gains": [
+     2,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0
+    ]
+   },
+   "equinor_ar2025-111": {
+    "chunk_ids": [
+     "equinor_ar2025:0127",
+     "equinor_ar2025:0847",
+     "equinor_ar2025:0140",
+     "equinor_ar2025:0904",
+     "equinor_ar2025:0769",
+     "equinor_ar2025:0793",
+     "equinor_ar2025:0701",
+     "equinor_ar2025:0639",
+     "equinor_ar2025:0702",
+     "equinor_ar2025:1083"
+    ],
+    "gains": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     2,
+     0,
+     1,
+     0
+    ]
+   },
+   "equinor_ar2025-114": {
+    "chunk_ids": [
+     "equinor_ar2025:1096",
+     "equinor_ar2025:1091",
+     "equinor_ar2025:1092",
+     "equinor_ar2025:0698",
+     "equinor_ar2025:0704",
+     "equinor_ar2025:0701",
+     "equinor_ar2025:1090",
+     "equinor_ar2025:0782",
+     "equinor_ar2025:1095",
+     "equinor_ar2025:0781"
+    ],
+    "gains": [
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "equinor_ar2025-115": {
+    "chunk_ids": [
+     "equinor_ar2025:0093",
+     "equinor_ar2025:0091",
+     "equinor_ar2025:0095",
+     "equinor_ar2025:0092",
+     "equinor_ar2025:0094",
+     "equinor_ar2025:0036",
+     "equinor_ar2025:0078",
+     "equinor_ar2025:1092",
+     "equinor_ar2025:0039",
+     "equinor_ar2025:1096"
+    ],
+    "gains": [
+     1,
+     2,
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "equinor_ar2025-117": {
+    "chunk_ids": [
+     "equinor_ar2025:0714",
+     "equinor_ar2025:0794",
+     "equinor_ar2025:0078",
+     "equinor_ar2025:0874",
+     "equinor_ar2025:0011",
+     "equinor_ar2025:0083",
+     "equinor_ar2025:0720",
+     "equinor_ar2025:1017",
+     "equinor_ar2025:0036",
+     "equinor_ar2025:0717"
+    ],
+    "gains": [
+     0,
+     1,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "equinor_ar2025-122": {
+    "chunk_ids": [
+     "equinor_ar2025:0085",
+     "equinor_ar2025:0140",
+     "equinor_ar2025:0083",
+     "equinor_ar2025:0144",
+     "equinor_ar2025:0142",
+     "equinor_ar2025:0136",
+     "equinor_ar2025:0132",
+     "equinor_ar2025:0141",
+     "equinor_ar2025:0138",
+     "equinor_ar2025:0780"
+    ],
+    "gains": [
+     2,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0
+    ]
+   },
+   "equinor_ar2025-302": {
+    "chunk_ids": [
+     "equinor_ar2025:0780",
+     "equinor_ar2025:0782",
+     "equinor_ar2025:0781",
+     "equinor_ar2025:0779",
+     "equinor_ar2025:0670",
+     "equinor_ar2025:0141",
+     "equinor_ar2025:1092",
+     "equinor_ar2025:1096",
+     "equinor_ar2025:0671",
+     "equinor_ar2025:0136"
+    ],
+    "gains": [
+     2,
+     1,
+     1,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "equinor_ar2025-310": {
+    "chunk_ids": [
+     "equinor_ar2025:0867",
+     "equinor_ar2025:0868",
+     "equinor_ar2025:0830",
+     "equinor_ar2025:0852",
+     "equinor_ar2025:0713",
+     "equinor_ar2025:0932",
+     "equinor_ar2025:0871",
+     "equinor_ar2025:0869",
+     "equinor_ar2025:0774",
+     "equinor_ar2025:0290"
+    ],
+    "gains": [
+     2,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "equinor_ar2025-311": {
+    "chunk_ids": [
+     "equinor_ar2025:0785",
+     "equinor_ar2025:0782",
+     "equinor_ar2025:0781",
+     "equinor_ar2025:0136",
+     "equinor_ar2025:0774",
+     "equinor_ar2025:0181",
+     "equinor_ar2025:0666",
+     "equinor_ar2025:0786",
+     "equinor_ar2025:0784",
+     "equinor_ar2025:0144"
+    ],
+    "gains": [
+     2,
+     1,
+     2,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0
+    ]
+   },
+   "havtil_activities-001": {
+    "chunk_ids": [
+     "havtil_activities:0080",
+     "havtil_activities:0003",
+     "havtil_co2:0013",
+     "havtil_framework:0004",
+     "havtil_framework:0003",
+     "havtil_activities:0000",
+     "havtil_activities:0015",
+     "havtil_framework:0038",
+     "havtil_management:0018",
+     "havtil_management:0020"
+    ],
+    "gains": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_activities-006": {
+    "chunk_ids": [
+     "havtil_activities:0014",
+     "havtil_activities:0005",
+     "havtil_activities:0018",
+     "havtil_activities:0015",
+     "havtil_activities:0007",
+     "havtil_framework:0006",
+     "havtil_activities:0071",
+     "havtil_framework:0016",
+     "havtil_co2:0010",
+     "havtil_activities:0020"
+    ],
+    "gains": [
+     2,
+     2,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_activities-105": {
+    "chunk_ids": [
+     "havtil_activities:0069",
+     "havtil_management:0024",
+     "havtil_framework:0018",
+     "havtil_activities:0068",
+     "havtil_activities:0017",
+     "havtil_management:0020",
+     "havtil_activities:0070",
+     "havtil_management:0021",
+     "equinor_ar2025:0351",
+     "havtil_framework:0019"
+    ],
+    "gains": [
+     1,
+     0,
+     0,
+     2,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_activities-304": {
+    "chunk_ids": [
+     "havtil_activities:0080",
+     "havtil_activities:0081",
+     "havtil_management:0027",
+     "irena_rpgc2024:0153",
+     "havtil_activities:0015",
+     "havtil_co2:0013",
+     "havtil_activities:0076",
+     "havtil_framework:0044",
+     "havtil_framework:0007",
+     "havtil_framework:0035"
+    ],
+    "gains": [
+     2,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_co2-003": {
+    "chunk_ids": [
+     "havtil_co2:0006",
+     "havtil_framework:0052",
+     "havtil_framework:0054",
+     "havtil_co2:0002",
+     "havtil_co2:0007",
+     "havtil_framework:0056",
+     "havtil_co2:0015",
+     "havtil_co2:0003",
+     "havtil_co2:0001",
+     "havtil_co2:0009"
+    ],
+    "gains": [
+     2,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_co2-004": {
+    "chunk_ids": [
+     "havtil_co2:0000",
+     "havtil_management:0029",
+     "havtil_co2:0015",
+     "havtil_co2:0001",
+     "havtil_activities:0082",
+     "havtil_framework:0056",
+     "havtil_activities:0001",
+     "havtil_activities:0002",
+     "equinor_ar2025:0180",
+     "equinor_ar2025:0293"
+    ],
+    "gains": [
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_co2-006": {
+    "chunk_ids": [
+     "havtil_co2:0004",
+     "havtil_framework:0008",
+     "havtil_framework:0016",
+     "havtil_framework:0021",
+     "havtil_co2:0002",
+     "havtil_management:0016",
+     "havtil_management:0004",
+     "havtil_framework:0029",
+     "havtil_framework:0013",
+     "havtil_activities:0015"
+    ],
+    "gains": [
+     2,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_co2-101": {
+    "chunk_ids": [
+     "havtil_co2:0000",
+     "havtil_activities:0002",
+     "havtil_management:0001",
+     "havtil_activities:0001",
+     "havtil_management:0000",
+     "havtil_framework:0056",
+     "havtil_co2:0002",
+     "havtil_co2:0015",
+     "havtil_co2:0003",
+     "havtil_framework:0001"
+    ],
+    "gains": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_co2-102": {
+    "chunk_ids": [
+     "irena_rpgc2024:0149",
+     "equinor_ar2025:0116",
+     "equinor_ar2025:0495",
+     "equinor_ar2025:0183",
+     "equinor_ar2025:0114",
+     "equinor_ar2025:0274",
+     "equinor_ar2025:0315",
+     "irena_rpgc2024:0290",
+     "equinor_ar2025:0180",
+     "equinor_ar2025:0298"
+    ],
+    "gains": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_co2-103": {
+    "chunk_ids": [
+     "havtil_co2:0003",
+     "havtil_co2:0001",
+     "havtil_co2:0002",
+     "havtil_framework:0038",
+     "havtil_framework:0007",
+     "havtil_framework:0006",
+     "equinor_ar2025:0325",
+     "havtil_activities:0055",
+     "equinor_ar2025:0314",
+     "havtil_co2:0007"
+    ],
+    "gains": [
+     2,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_co2-304": {
+    "chunk_ids": [
+     "havtil_co2:0000",
+     "havtil_co2:0015",
+     "havtil_framework:0056",
+     "havtil_activities:0082",
+     "havtil_co2:0002",
+     "havtil_activities:0001",
+     "havtil_management:0036",
+     "havtil_co2:0003",
+     "havtil_management:0000",
+     "havtil_co2:0001"
+    ],
+    "gains": [
+     2,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1
+    ]
+   },
+   "havtil_framework-002": {
+    "chunk_ids": [
+     "havtil_framework:0012",
+     "havtil_co2:0004",
+     "havtil_framework:0008",
+     "havtil_activities:0007",
+     "havtil_management:0005",
+     "havtil_management:0002",
+     "havtil_activities:0066",
+     "havtil_framework:0016",
+     "havtil_framework:0052",
+     "havtil_framework:0010"
+    ],
+    "gains": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_framework-007": {
+    "chunk_ids": [
+     "havtil_framework:0031",
+     "havtil_management:0002",
+     "havtil_management:0009",
+     "havtil_activities:0019",
+     "havtil_framework:0042",
+     "havtil_co2:0005",
+     "havtil_framework:0009",
+     "havtil_activities:0027",
+     "havtil_management:0011",
+     "havtil_co2:0009"
+    ],
+    "gains": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_framework-104": {
+    "chunk_ids": [
+     "equinor_ar2025:1024",
+     "equinor_ar2025:1025",
+     "equinor_ar2025:0582",
+     "equinor_ar2025:0583",
+     "equinor_ar2025:1057",
+     "equinor_ar2025:0581",
+     "havtil_framework:0017",
+     "equinor_ar2025:0494",
+     "equinor_ar2025:0334",
+     "equinor_ar2025:1054"
+    ],
+    "gains": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_framework-304": {
+    "chunk_ids": [
+     "havtil_framework:0036",
+     "havtil_framework:0034",
+     "havtil_framework:0037",
+     "havtil_management:0032",
+     "havtil_framework:0033",
+     "havtil_framework:0035",
+     "havtil_framework:0032",
+     "havtil_framework:0030",
+     "havtil_framework:0031",
+     "havtil_framework:0007"
+    ],
+    "gains": [
+     2,
+     2,
+     1,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_management-005": {
+    "chunk_ids": [
+     "havtil_management:0024",
+     "havtil_management:0023",
+     "havtil_activities:0065",
+     "havtil_activities:0036",
+     "havtil_co2:0006",
+     "havtil_activities:0020",
+     "havtil_management:0020",
+     "havtil_activities:0068",
+     "havtil_activities:0021",
+     "havtil_management:0011"
+    ],
+    "gains": [
+     1,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_management-006": {
+    "chunk_ids": [
+     "havtil_management:0016",
+     "havtil_activities:0019",
+     "havtil_co2:0004",
+     "havtil_framework:0008",
+     "havtil_management:0003",
+     "equinor_ar2025:1025",
+     "equinor_ar2025:0197",
+     "havtil_management:0002",
+     "havtil_framework:0019",
+     "equinor_ar2025:1010"
+    ],
+    "gains": [
+     2,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "havtil_management-301": {
+    "chunk_ids": [
+     "havtil_management:0018",
+     "havtil_management:0022",
+     "havtil_co2:0008",
+     "havtil_management:0034",
+     "havtil_management:0030",
+     "havtil_management:0027",
+     "havtil_framework:0036",
+     "havtil_management:0032",
+     "havtil_framework:0033",
+     "havtil_management:0020"
+    ],
+    "gains": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     2
+    ]
+   },
+   "havtil_management-302": {
+    "chunk_ids": [
+     "havtil_management:0024",
+     "havtil_management:0023",
+     "havtil_management:0014",
+     "havtil_management:0025",
+     "havtil_activities:0017",
+     "havtil_activities:0068",
+     "havtil_framework:0018",
+     "havtil_management:0003",
+     "havtil_framework:0019",
+     "havtil_activities:0021"
+    ],
+    "gains": [
+     2,
+     2,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "irena_rpgc2024-003": {
+    "chunk_ids": [
+     "irena_rpgc2024:0046",
+     "irena_rpgc2024:0044",
+     "irena_rpgc2024:0027",
+     "irena_rpgc2024:0029",
+     "irena_rpgc2024:0028",
+     "irena_rpgc2024:0045",
+     "irena_rpgc2024:0030",
+     "irena_rpgc2024:0031",
+     "irena_rpgc2024:0004",
+     "irena_rpgc2024:0052"
+    ],
+    "gains": [
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0
+    ]
+   },
+   "irena_rpgc2024-006": {
+    "chunk_ids": [
+     "irena_rpgc2024:0164",
+     "irena_rpgc2024:0157",
+     "irena_rpgc2024:0156",
+     "irena_rpgc2024:0147",
+     "irena_rpgc2024:0165",
+     "irena_rpgc2024:0171",
+     "irena_rpgc2024:0158",
+     "irena_rpgc2024:0153",
+     "irena_rpgc2024:0166",
+     "irena_rpgc2024:0149"
+    ],
+    "gains": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "irena_rpgc2024-009": {
+    "chunk_ids": [
+     "irena_rpgc2024:0007",
+     "irena_rpgc2024:0141",
+     "irena_rpgc2024:0032",
+     "irena_rpgc2024:0119",
+     "irena_rpgc2024:0142",
+     "irena_rpgc2024:0127",
+     "irena_rpgc2024:0012",
+     "irena_rpgc2024:0140",
+     "irena_rpgc2024:0146",
+     "irena_rpgc2024:0004"
+    ],
+    "gains": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "irena_rpgc2024-011": {
+    "chunk_ids": [
+     "irena_rpgc2024:0198",
+     "irena_rpgc2024:0240",
+     "irena_rpgc2024:0239",
+     "irena_rpgc2024:0179",
+     "irena_rpgc2024:0196",
+     "irena_rpgc2024:0180",
+     "irena_rpgc2024:0183",
+     "irena_rpgc2024:0064",
+     "irena_rpgc2024:0241",
+     "irena_rpgc2024:0190"
+    ],
+    "gains": [
+     0,
+     2,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "irena_rpgc2024-015": {
+    "chunk_ids": [
+     "irena_rpgc2024:0155",
+     "irena_rpgc2024:0153",
+     "irena_rpgc2024:0154",
+     "irena_rpgc2024:0157",
+     "irena_rpgc2024:0159",
+     "irena_rpgc2024:0156",
+     "irena_rpgc2024:0160",
+     "irena_rpgc2024:0158",
+     "irena_rpgc2024:0152",
+     "irena_rpgc2024:0165"
+    ],
+    "gains": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     2,
+     0
+    ]
+   },
+   "irena_rpgc2024-105": {
+    "chunk_ids": [
+     "irena_rpgc2024:0215",
+     "irena_rpgc2024:0183",
+     "irena_rpgc2024:0188",
+     "irena_rpgc2024:0182",
+     "irena_rpgc2024:0146",
+     "irena_rpgc2024:0031",
+     "irena_rpgc2024:0119",
+     "irena_rpgc2024:0033",
+     "irena_rpgc2024:0106",
+     "irena_rpgc2024:0010"
+    ],
+    "gains": [
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "irena_rpgc2024-107": {
+    "chunk_ids": [
+     "irena_rpgc2024:0134",
+     "irena_rpgc2024:0052",
+     "irena_rpgc2024:0146",
+     "irena_rpgc2024:0140",
+     "irena_rpgc2024:0119",
+     "irena_rpgc2024:0055",
+     "irena_rpgc2024:0033",
+     "irena_rpgc2024:0206",
+     "irena_rpgc2024:0247",
+     "irena_rpgc2024:0204"
+    ],
+    "gains": [
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "irena_rpgc2024-110": {
+    "chunk_ids": [
+     "irena_rpgc2024:0171",
+     "irena_rpgc2024:0033",
+     "irena_rpgc2024:0086",
+     "irena_rpgc2024:0188",
+     "irena_rpgc2024:0195",
+     "irena_rpgc2024:0190",
+     "irena_rpgc2024:0062",
+     "irena_rpgc2024:0087",
+     "irena_rpgc2024:0114",
+     "irena_rpgc2024:0119"
+    ],
+    "gains": [
+     0,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "irena_rpgc2024-115": {
+    "chunk_ids": [
+     "irena_rpgc2024:0051",
+     "irena_rpgc2024:0024",
+     "irena_rpgc2024:0054",
+     "irena_rpgc2024:0052",
+     "equinor_ar2025:1005",
+     "irena_rpgc2024:0025",
+     "irena_rpgc2024:0272",
+     "irena_rpgc2024:0275",
+     "irena_rpgc2024:0049",
+     "irena_rpgc2024:0171"
+    ],
+    "gains": [
+     0,
+     2,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     2,
+     0
+    ]
+   },
+   "irena_rpgc2024-116": {
+    "chunk_ids": [
+     "irena_rpgc2024:0177",
+     "irena_rpgc2024:0181",
+     "irena_rpgc2024:0175",
+     "irena_rpgc2024:0249",
+     "irena_rpgc2024:0022",
+     "irena_rpgc2024:0019",
+     "irena_rpgc2024:0176",
+     "irena_rpgc2024:0218",
+     "irena_rpgc2024:0277",
+     "irena_rpgc2024:0250"
+    ],
+    "gains": [
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "irena_rpgc2024-302": {
+    "chunk_ids": [
+     "irena_rpgc2024:0022",
+     "irena_rpgc2024:0078",
+     "irena_rpgc2024:0008",
+     "irena_rpgc2024:0066",
+     "irena_rpgc2024:0020",
+     "irena_rpgc2024:0027",
+     "irena_rpgc2024:0033",
+     "irena_rpgc2024:0250",
+     "irena_rpgc2024:0007",
+     "irena_rpgc2024:0013"
+    ],
+    "gains": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "irena_rpgc2024-306": {
+    "chunk_ids": [
+     "irena_rpgc2024:0058",
+     "irena_rpgc2024:0140",
+     "irena_rpgc2024:0119",
+     "irena_rpgc2024:0013",
+     "irena_rpgc2024:0143",
+     "irena_rpgc2024:0033",
+     "irena_rpgc2024:0142",
+     "irena_rpgc2024:0032",
+     "irena_rpgc2024:0171",
+     "irena_rpgc2024:0147"
+    ],
+    "gains": [
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "irena_rpgc2024-307": {
+    "chunk_ids": [
+     "irena_rpgc2024:0151",
+     "irena_rpgc2024:0149",
+     "irena_rpgc2024:0147",
+     "irena_rpgc2024:0115",
+     "irena_rpgc2024:0060",
+     "irena_rpgc2024:0089",
+     "irena_rpgc2024:0087",
+     "irena_rpgc2024:0156",
+     "irena_rpgc2024:0150",
+     "irena_rpgc2024:0031"
+    ],
+    "gains": [
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  }
+ }
+}

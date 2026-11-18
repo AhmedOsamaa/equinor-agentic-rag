@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retrieval results dashboard</title>
+<style>
+  /* Palette: reference instance of the data-viz skill. Modes keep one categorical slot each
+     (vector 1, hybrid 2, hybrid + rerank 3); the first three slots validate on the strict
+     all-pairs test in both modes. Light aqua is below 3:1 on the surface, so every value is also
+     in a table and in the tooltip (the relief rule). */
+  :root {
+    color-scheme: light dark;
+    --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+      --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px 48px; }
+  h1 { font-size: 24px; margin: 24px 0 4px; font-weight: 600; }
+  h2 { font-size: 18px; margin: 0 0 4px; font-weight: 600; }
+  p { margin: 4px 0 12px; }
+  .sub { color: var(--ink2); }
+  .muted { color: var(--muted); }
+  code { font: 13px ui-monospace, "Cascadia Code", Consolas, monospace; background: var(--page);
+         padding: 1px 5px; border-radius: 4px; }
+  pre { background: var(--page); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px;
+        overflow-x: auto; margin: 8px 0; }
+  .banner { display: inline-block; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+            border: 1px solid var(--axis); margin: 8px 0; }
+  .banner.final { border-color: var(--ink); }
+
+  /* one filter row above everything it scopes */
+  .filters { position: sticky; top: 0; z-index: 5; display: flex; gap: 16px; align-items: center;
+             flex-wrap: wrap; background: var(--page); border-bottom: 1px solid var(--grid);
+             padding: 10px 0; margin-bottom: 16px; }
+  .filters label { color: var(--ink2); }
+  select, button { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--axis);
+                   border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+  select:focus-visible, button:focus-visible, .barwrap:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+            padding: 20px; margin: 16px 0; }
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; margin: 12px 0 8px; color: var(--ink2); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .swatch { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .m-vector { --c: var(--s1); } .m-hybrid { --c: var(--s2); } .m-hybrid_rerank { --c: var(--s3); } .m-other { --c: var(--muted); }
+  .swatch { background: var(--c); }
+
+  /* chart: horizontal grouped bars, one baseline, thin marks, hairline solid grid */
+  .grow { display: grid; grid-template-columns: 230px 1fr 92px; column-gap: 12px; padding: 8px 0;
+          border-top: 1px solid var(--grid); }
+  .grow:first-of-type { border-top: 0; }
+  .glabel { font-weight: 500; }
+  .glabel .gsub { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
+  .glabel .warn { display: block; color: var(--ink2); font-size: 13px; font-weight: 400; }
+  .plot { position: relative; border-left: 1px solid var(--axis); border-right: 1px solid var(--grid);
+          background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px);
+          background-size: 25% 100%; background-repeat: repeat-x; }
+  .barwrap { position: relative; height: 18px; }       /* 12px mark + air = a hit target larger than the mark */
+  .bar { position: absolute; left: 0; top: 3px; height: 12px; background: var(--c);
+         border-radius: 0 4px 4px 0; }                   /* square at the baseline, 4px rounded data end */
+  .ci { position: absolute; top: 8px; height: 2px; background: var(--ink); opacity: .85; }
+  .ci::before, .ci::after { content: ""; position: absolute; top: -3px; width: 2px; height: 8px; background: var(--ink); }
+  .ci::before { left: 0; } .ci::after { right: 0; }
+  .dlabel { font-size: 13px; color: var(--ink2); height: 18px; line-height: 18px; }
+  .axis { display: grid; grid-template-columns: 230px 1fr 92px; column-gap: 12px; margin-top: 4px; }
+  .ticks { position: relative; height: 18px; color: var(--muted); font-size: 12px; }
+  .ticks span { position: absolute; transform: translateX(-50%); }
+  .ticks span:first-child { transform: none; } .ticks span:last-child { transform: translateX(-100%); }
+
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: left; padding: 6px 10px; border-top: 1px solid var(--grid); vertical-align: top; }
+  th { color: var(--ink2); font-weight: 600; border-top: 0; border-bottom: 1px solid var(--axis); white-space: nowrap; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.num .ci-text { color: var(--muted); font-size: 12px; display: block; }
+  tr.groupstart td { border-top: 1px solid var(--axis); }
+  .tablewrap { overflow-x: auto; margin-top: 8px; }
+  details > summary { cursor: pointer; color: var(--ink2); margin-top: 10px; }
+  .pooled-note { border-left: 3px solid var(--axis); padding-left: 10px; color: var(--ink2); }
+  .pooled td, .pooled th { color: var(--ink2); }
+  .verdict-yes { font-weight: 600; } .verdict-no { color: var(--muted); }
+
+  /* run panel and progress bar (neutral ink, so it never borrows a series colour) */
+  .runrow { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 10px 0; }
+  .runrow input[type=text] { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--axis);
+                             border-radius: 8px; padding: 6px 10px; width: 14ch; }
+  button.primary { background: var(--ink); color: var(--page); border-color: var(--ink); font-weight: 600; }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  .warnbox { border: 1px solid var(--axis); border-left: 4px solid var(--ink); border-radius: 8px; padding: 8px 12px;
+             margin: 8px 0; color: var(--ink2); }
+  .track { height: 12px; background: var(--grid); border-radius: 6px; overflow: hidden; margin: 8px 0 4px; }
+  .fill { height: 100%; width: 0; background: var(--ink2); transition: width .4s; }
+  .runstatus { color: var(--ink2); font-variant-numeric: tabular-nums; min-height: 1.5em; }
+  .runstatus.err { color: var(--ink); font-weight: 600; }
+  #tip { position: fixed; pointer-events: none; z-index: 10; background: var(--ink); color: var(--page);
+         padding: 6px 9px; border-radius: 6px; font-size: 13px; max-width: 320px; display: none; white-space: pre-line; }
+  ul.limits { margin: 6px 0 0 18px; padding: 0; } ul.limits li { margin: 3px 0; }
+  @media print { .filters { display: none; } section { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Retrieval results</h1>
+  <div id="meta" class="sub"></div>
+  <div id="banner"></div>
+
+  <div class="filters" role="group" aria-label="Chart filters">
+    <span id="runkeywrap" hidden><label for="runkey">Run shown</label> <select id="runkey"></select></span>
+    <label for="metric">Metric shown in the charts</label>
+    <select id="metric"></select>
+    <button id="theme" type="button" aria-label="Toggle light and dark theme">Theme: auto</button>
+    <span class="muted">Tables always show every metric.</span>
+  </div>
+
+  <section id="s-run"></section>
+  <section id="s-tiers"></section>
+  <section id="s-type"></section>
+  <section id="s-format"></section>
+  <section id="s-document"></section>
+  <section id="s-pooled"></section>
+  <section id="s-diffs"></section>
+  <section id="s-latency"></section>
+  <section id="s-notes"></section>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script id="serverinfo" type="application/json">__SERVER__</script>
+<script>
+(function () {
+  "use strict";
+  const D = JSON.parse(document.getElementById("data").textContent);
+
+  const METRICS = [
+    ["coverage@10", "Coverage@10 (share of gold evidence quotes found in the top 10)", true],
+    ["hit@10", "Hit@10 (any gold quote in the top 10)", true],
+    ["hit@5", "Hit@5 (any gold quote in the top 5)", true],
+    ["mrr@10", "MRR@10 (1 / rank of the first quote chunk)", false],
+    ["ndcg@10", "nDCG@10 (graded, rank-discounted)", false],
+  ];
+  const METRIC_SHORT = { "hit@5": "Hit@5", "hit@10": "Hit@10", "coverage@10": "Coverage@10", "mrr@10": "MRR@10", "ndcg@10": "nDCG@10" };
+  const IS_PCT = { "hit@5": true, "hit@10": true, "coverage@10": true, "mrr@10": false, "ndcg@10": false };
+  const MODE_LABEL = { vector: "Vector", hybrid: "Hybrid", hybrid_rerank: "Hybrid + rerank" };
+  const MODE_NOTE = { vector: "dense embeddings only", hybrid: "BM25 + vectors fused with RRF", hybrid_rerank: "hybrid, top 30 re-ordered by a cross-encoder" };
+  const TIER_LABEL = {
+    round_1: ["Round 1", "natural wording, easy"],
+    round_2: ["Round 2", "synonym-swapped wording (paraphrase stress test)"],
+    round_3: ["Round 3", "natural wording, multi-page (written by Claude)"],
+  };
+  const DOC_LABEL = {
+    equinor_ar2025: "Equinor Annual Report 2025", havtil_framework: "Havtil Framework Regulations",
+    havtil_management: "Havtil Management Regulations", havtil_activities: "Havtil Activities Regulations",
+    havtil_co2: "Havtil CO2 Safety Regulations", irena_rpgc2024: "IRENA Renewable Power Costs 2024",
+  };
+  const SMALL_N = 10;
+  const MODES = Object.keys(D.tiers[Object.keys(D.tiers)[0]].modes);
+  const modeClass = (m) => (MODE_LABEL[m] ? "m-" + m : "m-other");
+
+  function el(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+  const fmt = (metric, v) => (IS_PCT[metric] ? Math.round(v * 100) + "%" : v.toFixed(2));
+  const fmtCI = (metric, a, b) => (IS_PCT[metric] ? "[" + Math.round(a * 100) + "–" + Math.round(b * 100) + "%]" : "[" + a.toFixed(2) + ", " + b.toFixed(2) + "]");
+  const fmtDiff = (v) => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(3);
+
+  // ---------------------------------------------------------------- header
+  const stampTime = D.time_utc ? D.time_utc.replace("T", " ").replace("+00:00", " UTC") : "";
+  document.getElementById("meta").textContent =
+    "Split: " + D.split + " · git " + D.git_sha + " · " + stampTime + " · questions: " + D.question_source + " · k = " + D.k +
+    " · reranker: " + D.settings.rerank_model;
+  const banner = el("span", "banner" + (D.pilot ? "" : " final"), D.pilot
+    ? "PILOT on dev. Not the final result; the test split is run once, at the end."
+    : "FINAL: test split, run once. Nothing was tuned on it.");
+  document.getElementById("banner").appendChild(banner);
+
+  // The metric dropdown must be filled before any chart draws: the charts read its value.
+  const sel = document.getElementById("metric");
+  METRICS.forEach((m) => { const o = el("option", "", m[1]); o.value = m[0]; sel.appendChild(o); });
+
+  // ---------------------------------------------------------------- tooltip
+  const tip = document.getElementById("tip");
+  function showTip(text, x, y) {
+    tip.textContent = text;
+    tip.style.display = "block";
+    const r = tip.getBoundingClientRect();
+    tip.style.left = Math.min(x + 12, window.innerWidth - r.width - 8) + "px";
+    tip.style.top = Math.max(8, y - r.height - 10) + "px";
+  }
+  const hideTip = () => { tip.style.display = "none"; };
+
+  // ---------------------------------------------------------------- chart
+  const charts = [];   // re-rendered when the metric changes
+  function legend(parent) {
+    const lg = el("div", "legend");
+    lg.setAttribute("aria-label", "Retrieval modes");
+    MODES.forEach((m) => {
+      const s = el("span", modeClass(m));
+      s.appendChild(el("i", "swatch"));
+      s.appendChild(el("span", "", MODE_LABEL[m] || m));
+      s.title = MODE_NOTE[m] || "";
+      lg.appendChild(s);
+    });
+    parent.appendChild(lg);
+  }
+  function renderChart(host, groups) {
+    host.textContent = "";
+    const metric = document.getElementById("metric").value;
+    groups.forEach((g, gi) => {
+      const row = el("div", "grow");
+      const lab = el("div", "glabel", g.label);
+      lab.appendChild(el("span", "gsub", g.sub));
+      if (g.n < SMALL_N) lab.appendChild(el("span", "warn", "▲ n = " + g.n + ": interval means little"));
+      row.appendChild(lab);
+
+      const plot = el("div", "plot");
+      MODES.forEach((m) => {
+        const v = g.modes[m][metric];
+        const wrap = el("div", "barwrap " + modeClass(m));
+        wrap.tabIndex = 0;
+        const text = g.label + " · " + (MODE_LABEL[m] || m) + "\n" + METRIC_SHORT[metric] + ": " + fmt(metric, v.mean) + " " +
+          fmtCI(metric, v.ci_low, v.ci_high) + " (95% bootstrap CI)\nn = " + g.n;
+        wrap.setAttribute("aria-label", text.replace(/\n/g, ". "));
+        const bar = el("div", "bar");
+        bar.style.width = (v.mean * 100) + "%";
+        const ci = el("div", "ci");
+        ci.style.left = (v.ci_low * 100) + "%";
+        ci.style.width = Math.max(0, (v.ci_high - v.ci_low) * 100) + "%";
+        wrap.appendChild(bar); wrap.appendChild(ci);
+        wrap.addEventListener("mousemove", (e) => showTip(text, e.clientX, e.clientY));
+        wrap.addEventListener("mouseleave", hideTip);
+        wrap.addEventListener("focus", () => { const r = wrap.getBoundingClientRect(); showTip(text, r.left + r.width / 2, r.top); });
+        wrap.addEventListener("blur", hideTip);
+        plot.appendChild(wrap);
+      });
+      row.appendChild(plot);
+
+      const dl = el("div");   // direct labels, first row only: the legend carries identity for the rest
+      if (gi === 0) MODES.forEach((m) => dl.appendChild(el("div", "dlabel", MODE_LABEL[m] || m)));
+      row.appendChild(dl);
+      host.appendChild(row);
+    });
+    const axis = el("div", "axis");
+    axis.appendChild(el("div"));
+    const ticks = el("div", "ticks");
+    [0, 25, 50, 75, 100].forEach((t) => {
+      const s = el("span", "", IS_PCT[metric] ? t + "%" : (t / 100).toFixed(2));
+      s.style.left = t + "%";
+      ticks.appendChild(s);
+    });
+    axis.appendChild(ticks); axis.appendChild(el("div"));
+    host.appendChild(axis);
+  }
+
+  // ---------------------------------------------------------------- table
+  function numCell(metric, v) {
+    const td = el("td", "num", fmt(metric, v.mean));
+    td.appendChild(el("span", "ci-text", fmtCI(metric, v.ci_low, v.ci_high)));
+    return td;
+  }
+  function renderTable(parent, groups, extraClass) {
+    const wrap = el("div", "tablewrap");
+    const t = el("table", extraClass || "");
+    const head = el("tr");
+    ["Group", "n", "Mode"].concat(Object.keys(METRIC_SHORT).map((k) => METRIC_SHORT[k])).forEach((h) => head.appendChild(el("th", "", h)));
+    t.appendChild(head);
+    groups.forEach((g) => {
+      MODES.forEach((m, mi) => {
+        const tr = el("tr", mi === 0 ? "groupstart" : "");
+        if (mi === 0) {
+          const c = el("td", "", g.label); c.rowSpan = MODES.length;
+          if (g.sub) c.appendChild(el("span", "gsub muted", " " + g.sub));
+          tr.appendChild(c);
+          const n = el("td", "num", String(g.n)); n.rowSpan = MODES.length; tr.appendChild(n);
+        }
+        const mc = el("td", modeClass(m));
+        mc.appendChild(el("i", "swatch")); mc.appendChild(document.createTextNode(" " + (MODE_LABEL[m] || m)));
+        tr.appendChild(mc);
+        Object.keys(METRIC_SHORT).forEach((k) => tr.appendChild(numCell(k, g.modes[m][k])));
+        t.appendChild(tr);
+      });
+    });
+    wrap.appendChild(t);
+    parent.appendChild(wrap);
+  }
+
+  function section(id, title, lead, groups, opts) {
+    const host = document.getElementById(id);
+    host.appendChild(el("h2", "", title));
+    host.appendChild(el("p", "sub", lead));
+    if (!(opts && opts.noChart)) {
+      legend(host);
+      const chartHost = el("div");
+      host.appendChild(chartHost);
+      const draw = () => renderChart(chartHost, groups);
+      charts.push(draw); draw();
+    }
+    const det = el("details"); det.open = true;
+    det.appendChild(el("summary", "", "Table view: every metric, mean and 95% bootstrap interval"));
+    renderTable(det, groups, opts && opts.tableClass);
+    host.appendChild(det);
+  }
+
+  // ---------------------------------------------------------------- sections
+  const tierGroups = Object.keys(D.tiers).map((k) => ({
+    label: (TIER_LABEL[k] || [k, ""])[0], sub: (TIER_LABEL[k] || [k, ""])[1], n: D.tiers[k].n, modes: D.tiers[k].modes,
+  }));
+  section("s-tiers", "By tier (the main result)",
+    "The three question tiers differ a lot in difficulty, so they are never blended into one headline number. Bars show the mean; the thin line is the 95% bootstrap interval.",
+    tierGroups);
+
+  function breakdownGroups(dim, labelOf) {
+    const b = D.breakdowns[dim];
+    return Object.keys(b).sort((x, y) => b[y].n - b[x].n || x.localeCompare(y)).map((v) => ({
+      label: labelOf(v), n: b[v].n, modes: b[v].modes,
+      sub: Object.keys(b[v].n_by_tier).map((t) => "R" + t.replace("round_", "") + " " + b[v].n_by_tier[t]).join(" · "),
+    }));
+  }
+  const pooledLead = " Pooled across tiers, so descriptive only; the small grey line under each name is its mix of questions per tier (R1 = round 1).";
+  section("s-type", "By question type", "What kind of reasoning the question needs." + pooledLead, breakdownGroups("type", (v) => v));
+  section("s-format", "By format", "Whether the evidence is in running text or in a table. Table rows are the known weak spot of the parser and the retriever." + pooledLead,
+    breakdownGroups("format", (v) => v));
+  section("s-document", "By document", "The document of the first gold evidence quote." + pooledLead, breakdownGroups("document", (v) => DOC_LABEL[v] || v));
+
+  const pooled = [{ label: "All tiers pooled", sub: "", n: D.pooled.n, modes: D.pooled.modes }];
+  const sp = document.getElementById("s-pooled");
+  sp.appendChild(el("h2", "", "All tiers pooled (small print)"));
+  sp.appendChild(el("p", "pooled-note", "This mixes easy, paraphrased and multi-page questions, so it describes the question set more than the retrievers. It is not a headline number and is not charted. Use the per-tier results above."));
+  const pdet = el("details"); pdet.open = true; pdet.appendChild(el("summary", "", "Table view"));
+  renderTable(pdet, pooled, "pooled"); sp.appendChild(pdet);
+
+  // paired differences, per tier
+  const sd = document.getElementById("s-diffs");
+  sd.appendChild(el("h2", "", "Differences between modes (paired, per tier)"));
+  let total = 0, yes = 0;
+  const dt = el("table"); const dh = el("tr");
+  ["Tier", "Comparison (a − b)", "Metric", "Difference", "95% interval", "Verdict"].forEach((h) => dh.appendChild(el("th", "", h)));
+  dt.appendChild(dh);
+  Object.keys(D.tiers).forEach((tk) => {
+    const pd = D.tiers[tk].paired_diffs || {};
+    Object.keys(pd).forEach((name, i) => {
+      const d = pd[name]; total += 1; if (d.supported) yes += 1;
+      const parts = name.split(" | "); const cmp = parts[0].split(" - ").map((x) => MODE_LABEL[x] || x).join(" − ");
+      const tr = el("tr", i === 0 ? "groupstart" : "");
+      tr.appendChild(el("td", "", i === 0 ? (TIER_LABEL[tk] || [tk])[0] + " (n = " + D.tiers[tk].n + ")" : ""));
+      tr.appendChild(el("td", "", cmp)); tr.appendChild(el("td", "", METRIC_SHORT[parts[1]] || parts[1]));
+      tr.appendChild(el("td", "num", fmtDiff(d.diff)));
+      tr.appendChild(el("td", "num", "[" + fmtDiff(d.ci_low) + ", " + fmtDiff(d.ci_high) + "]"));
+      tr.appendChild(el("td", d.supported ? "verdict-yes" : "verdict-no", d.supported ? "● interval excludes 0" : "○ no supported difference"));
+      dt.appendChild(tr);
+    });
+  });
+  sd.appendChild(el("p", "sub", yes + " of " + total + " intervals exclude 0. At the 95% level about " + (total * 0.05).toFixed(1) +
+    " would do so by chance alone, so a lone supported difference is weak evidence; and metrics on the same questions are correlated, so they are not independent tests. " +
+    "Do not claim that one mode beats another unless its interval excludes 0."));
+  const dw = el("div", "tablewrap"); dw.appendChild(dt); sd.appendChild(dw);
+
+  // latency
+  const sl = document.getElementById("s-latency");
+  sl.appendChild(el("h2", "", "Latency"));
+  sl.appendChild(el("p", "sub", "Mean seconds per query, warm models, CPU only (the first call of each mode is discarded)."));
+  const lt = el("table"); const lh = el("tr");
+  ["Mode", "Seconds per query"].forEach((h) => lh.appendChild(el("th", "", h))); lt.appendChild(lh);
+  MODES.forEach((m) => {
+    const tr = el("tr"); const c = el("td", modeClass(m)); c.appendChild(el("i", "swatch")); c.appendChild(document.createTextNode(" " + (MODE_LABEL[m] || m)));
+    tr.appendChild(c); tr.appendChild(el("td", "num", (D.mean_latency_s[m] || 0).toFixed(3))); lt.appendChild(tr);
+  });
+  sl.appendChild(lt);
+
+  // notes
+  const sn = document.getElementById("s-notes");
+  sn.appendChild(el("h2", "", "How to read this, and its limits"));
+  const ul = el("ul", "limits");
+  [
+    "Coverage@10 is the share of a question's gold evidence quotes that appear in some top-10 chunk. It is a quote-matching measure, not a keyword measure; for a one-quote question it equals Hit@10.",
+    "A chunk counts as relevant only if it is from the gold document and contains the gold quote. A quote split across two chunks would count in neither (none was found in this set).",
+    "Questions are model-generated: none is hand-written, round 3 and 30 later rewrites were written by Claude, and the review log records no per-item human reading. These results measure retrieval on this question set, not on real user questions.",
+    "Small n: at 13 to 45 questions per tier the intervals are wide. Per-type and per-document rows are smaller still and are shown for orientation only.",
+    "Table rows are retrieved poorly (parser and chunk context); text inside figures is lost; there is no closed-book baseline in this view.",
+  ].forEach((t) => ul.appendChild(el("li", "", t)));
+  sn.appendChild(ul);
+  sn.appendChild(el("p", "sub", "The test split can be run from the run button when this page is served by the dashboard server, or from the command line:"));
+  sn.appendChild(el("pre", "", "uv run python eval/retrieval_eval.py --split test --tag final\nuv run python eval/dashboard.py --key retrieval_test_final"));
+  const st = D.settings;
+  sn.appendChild(el("p", "muted", "Settings: embedder " + st.embed_model + " · reranker " + st.rerank_model + " · RRF k " + st.rrf_k +
+    " · rerank candidates " + st.rerank_candidates + " · chunk max " + st.chunk_max_tokens + " tokens · heading-path prefix " + st.prefix_heading_path +
+    " · bootstrap resamples " + st.bootstrap_resamples));
+
+
+  // ---------------------------------------------------------------- run panel (only when served by dashboard_server.py)
+  const SV = JSON.parse(document.getElementById("serverinfo").textContent);
+  (function runPanel() {
+    const host = document.getElementById("s-run");
+    host.appendChild(el("h2", "", "Run the retrieval eval"));
+    if (!SV.enabled) {
+      host.appendChild(el("p", "sub", "This is the static page. To use the run button and a live progress bar, serve it:"));
+      host.appendChild(el("pre", "", "uv run python eval/dashboard_server.py"));
+      return;
+    }
+    host.appendChild(el("p", "sub", "Starts eval/retrieval_eval.py (the same command you would type). The tag names the results key; reusing a split and tag overwrites that run."));
+    const row = el("div", "runrow");
+    const splitSel = el("select"); splitSel.setAttribute("aria-label", "Split to run");
+    [["dev", "Dev split (pilot)"], ["test", "Test split"]].forEach((o) => { const x = el("option", "", o[1]); x.value = o[0]; splitSel.appendChild(x); });
+    const tagLab = el("label", "", "Results tag"); const tagIn = el("input"); tagIn.type = "text"; tagIn.value = "reviewed"; tagIn.maxLength = 20;
+    tagIn.setAttribute("aria-label", "Results tag"); tagLab.appendChild(document.createTextNode(" ")); tagLab.appendChild(tagIn);
+    const btn = el("button", "primary", "Run"); btn.type = "button";
+    row.appendChild(splitSel); row.appendChild(tagLab); row.appendChild(btn);
+    host.appendChild(row);
+
+    const track = el("div", "track"); track.setAttribute("role", "progressbar"); track.setAttribute("aria-valuemin", "0"); track.setAttribute("aria-valuemax", "100");
+    const fill = el("div", "fill"); track.appendChild(fill); host.appendChild(track);
+    const stat = el("div", "runstatus"); stat.setAttribute("aria-live", "polite"); host.appendChild(stat);
+
+    let running = false, timer = null;
+    const mmss = (s) => (s == null ? "-" : Math.floor(s / 60) + ":" + String(Math.round(s % 60)).padStart(2, "0"));
+    function refreshButton() {
+      btn.disabled = running;
+    }
+    function show(st) {
+      const pct = st.total ? Math.round(100 * st.done / st.total) : 0;
+      fill.style.width = pct + "%"; track.setAttribute("aria-valuenow", String(pct));
+      stat.className = "runstatus";
+      if (st.state === "running") {
+        stat.textContent = (st.mode || "starting") + " · " + st.done + " of " + st.total + " steps · " + pct + "% · elapsed " + mmss(st.elapsed_s) + " · ETA " + mmss(st.eta_s);
+      } else if (st.state === "done") {
+        fill.style.width = "100%"; stat.textContent = "Done in " + mmss(st.elapsed_s) + ". Showing the new results…";
+      } else if (st.state === "error") {
+        stat.className = "runstatus err"; stat.textContent = "Run failed: " + (st.message || "see the server terminal");
+      } else { stat.textContent = ""; fill.style.width = "0"; }
+    }
+    async function poll() {
+      try {
+        const st = await (await fetch("/api/status", { cache: "no-store" })).json();
+        running = st.state === "running"; show(st); refreshButton();
+        if (running) { timer = setTimeout(poll, 800); }
+        else if (st.state === "done" && waiting) { setTimeout(() => { location.href = "/?key=" + encodeURIComponent(st.key); }, 1200); }
+      } catch (e) { stat.textContent = "Lost contact with the dashboard server."; }
+    }
+    let waiting = false;   // true only for a run started from this page, so an old "done" never reloads the page by itself
+    btn.addEventListener("click", async () => {
+      const body = { split: splitSel.value, tag: tagIn.value.trim() };
+      stat.className = "runstatus"; stat.textContent = "Starting…"; btn.disabled = true;
+      const r = await fetch("/api/run", { method: "POST", headers: { "Content-Type": "application/json", "X-Token": SV.token }, body: JSON.stringify(body) });
+      const j = await r.json();
+      if (!r.ok) { stat.className = "runstatus err"; stat.textContent = j.error || "could not start"; refreshButton(); return; }
+      waiting = true; running = true; poll();
+    });
+    // The tag names the results key (retrieval_<split>_<tag>); the committed test result is retrieval_test_final,
+    // so test defaults to another tag and never overwrites it by accident.
+    splitSel.addEventListener("change", () => { tagIn.value = splitSel.value === "test" ? "rerun" : "reviewed"; refreshButton(); });
+    refreshButton(); poll();   // a run already in progress (started elsewhere) shows up on load
+  })();
+
+  // which stored run the page shows
+  (function runPicker() {
+    if (!SV.enabled || !SV.keys || SV.keys.length < 2) return;
+    document.getElementById("runkeywrap").hidden = false;
+    const sel2 = document.getElementById("runkey");
+    SV.keys.forEach((k) => { const o = el("option", "", k); o.value = k; if (k === SV.current) o.selected = true; sel2.appendChild(o); });
+    sel2.addEventListener("change", () => { location.href = "/?key=" + encodeURIComponent(sel2.value); });
+  })();
+
+  // ---------------------------------------------------------------- controls
+  sel.addEventListener("change", () => charts.forEach((f) => f()));
+  const themeBtn = document.getElementById("theme");
+  const order = ["auto", "light", "dark"]; let ti = 0;
+  themeBtn.addEventListener("click", () => {
+    ti = (ti + 1) % order.length;
+    if (order[ti] === "auto") document.documentElement.removeAttribute("data-theme");
+    else document.documentElement.setAttribute("data-theme", order[ti]);
+    themeBtn.textContent = "Theme: " + order[ti];
+  });
+})();
+</script>
+</body>
+</html>

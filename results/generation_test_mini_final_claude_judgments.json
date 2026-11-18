@@ -1,0 +1,824 @@
+{
+ "cross-301": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "cross-302": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "cross-303": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "status ambiguous but the answer is right (operator)",
+  "by": "claude"
+ },
+ "cross-304": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Gives only the well-barriers sentence (in p1), misses the HSE objectives and risk acceptance criteria.",
+  "by": "claude"
+ },
+ "cross-305": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "cross-306": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Extra 'best practice' sentence is in p1.",
+  "by": "claude"
+ },
+ "equinor_ar2025-001": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-002": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-003": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-004": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Difference 1,049 derived from 2,612 and 1,563 in the passages (reference 1.05 bn).",
+  "by": "claude"
+ },
+ "equinor_ar2025-005": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-007": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-008": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-009": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-011": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-012": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-014": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-015": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-016": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Status ambiguous but the answer is committed: 5-15%, Scope 3 categories 11 and 15 (in p2).",
+  "by": "claude"
+ },
+ "equinor_ar2025-018": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-019": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Explains the rise by the Norwegian petroleum tax line and deferred tax derecognition taken from tables, this is its own inference and not the reason in the reference.",
+  "by": "claude"
+ },
+ "equinor_ar2025-021": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-024": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites all 10 passages (over-citation).",
+  "by": "claude"
+ },
+ "equinor_ar2025-026": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-028": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Question is ambiguous (year, total vs renewable), answers 5.65 TWh without asking.",
+  "by": "claude"
+ },
+ "equinor_ar2025-101": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-103": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "1,955 derived from the passages (3,569 - 1,614).",
+  "by": "claude"
+ },
+ "equinor_ar2025-104": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "87% is the 'percentage of non-recycled waste', not the hazardous share (76.1%).",
+  "by": "claude"
+ },
+ "equinor_ar2025-106": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Refuses although gold (p, 12-month intervals) was retrieved.",
+  "by": "claude"
+ },
+ "equinor_ar2025-107": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "24 days, correct.",
+  "by": "claude"
+ },
+ "equinor_ar2025-108": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-109": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Gets creation in 2025 and standalone reporting from Q1 2026, misses the internal evaluation from 1 January 2026.",
+  "by": "claude"
+ },
+ "equinor_ar2025-112": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "2,955 million increase.",
+  "by": "claude"
+ },
+ "equinor_ar2025-113": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "6,034 vs 2,507.",
+  "by": "claude"
+ },
+ "equinor_ar2025-118": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "SIF met (0.21 vs 0.30), injury frequency missed (2.3 vs 2.2), fatal accident 17 September.",
+  "by": "claude"
+ },
+ "equinor_ar2025-119": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-120": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although a cited chunk holds the figures (2,669 to 13,598): over-refusal.",
+  "by": "claude"
+ },
+ "equinor_ar2025-121": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Reasons and the opex impact both given.",
+  "by": "claude"
+ },
+ "equinor_ar2025-123": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Mandate and chair (Finn Bjorn Ruyter) correct.",
+  "by": "claude"
+ },
+ "equinor_ar2025-124": {
+  "correct": "partly",
+  "faithful": "partly",
+  "note": "Gives 21% (SDFI share of sales) instead of the 70% of gas / 60% of liquids exports, the Norwegian and European positions half is right.",
+  "by": "claude"
+ },
+ "equinor_ar2025-126": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Covers avoidance, integrated waste project, site-specific plans. Cites a passage number 129 that does not exist.",
+  "by": "claude"
+ },
+ "equinor_ar2025-128": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites all 10 passages (over-citation).",
+  "by": "claude"
+ },
+ "equinor_ar2025-301": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "equinor_ar2025-303": {
+  "correct": "partly",
+  "faithful": "partly",
+  "note": "Says 'Yes' but its own reasoning concludes 4% is NOT within the 5-15% range: self-contradictory.",
+  "by": "claude"
+ },
+ "equinor_ar2025-304": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Same wrong conclusion and for the same reason.",
+  "by": "claude"
+ },
+ "equinor_ar2025-305": {
+  "correct": "no",
+  "faithful": "no",
+  "note": "Says NZE gives the larger impairment, while its own cited p1 gives USD 6 bn for the 30% decline (the reference says the 30% decline is larger).",
+  "by": "claude"
+ },
+ "equinor_ar2025-306": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Answers about Oseberg power-from-shore, the question is about Troll C (full electrification sanctioned).",
+  "by": "claude"
+ },
+ "equinor_ar2025-307": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Same.",
+  "by": "claude"
+ },
+ "equinor_ar2025-308": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "2,137 x 1.03 = 2,201.",
+  "by": "claude"
+ },
+ "equinor_ar2025-309": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "51% (reference 51.5%).",
+  "by": "claude"
+ },
+ "havtil_activities-002": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-003": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-004": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-005": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-007": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-008": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites all 10 passages (over-citation).",
+  "by": "claude"
+ },
+ "havtil_activities-009": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-101": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-102": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Refuses although gold was retrieved.",
+  "by": "claude"
+ },
+ "havtil_activities-103": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Claims no passage covers these baseline surveys, Sections 53 and 55 are in the retrieved passages.",
+  "by": "claude"
+ },
+ "havtil_activities-104": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Six years unless the Environment Agency decides otherwise.",
+  "by": "claude"
+ },
+ "havtil_activities-107": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-301": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-302": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_activities-303": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Describes the YELLOW category, the question asks which category is exempt (green).",
+  "by": "claude"
+ },
+ "havtil_co2-001": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-002": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-005": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-007": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-008": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites six passages for a refusal.",
+  "by": "claude"
+ },
+ "havtil_co2-104": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Says Ministry of Labour and Social Inclusion, that is from a different regulation's appeal section (p9). The CO2 regulations say Ministry of Energy (p4).",
+  "by": "claude"
+ },
+ "havtil_co2-105": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Locks for pig tools cannot be opened under pressure, as in Section 16.",
+  "by": "claude"
+ },
+ "havtil_co2-107": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites six passages for a refusal.",
+  "by": "claude"
+ },
+ "havtil_co2-301": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_co2-302": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-001": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-003": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Increase of 100 hours (200 to 300).",
+  "by": "claude"
+ },
+ "havtil_framework-004": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "1 January 2011.",
+  "by": "claude"
+ },
+ "havtil_framework-005": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Half an hour for 8 hours, one hour for 12 hours.",
+  "by": "claude"
+ },
+ "havtil_framework-006": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-008": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites all 10 passages (over-citation).",
+  "by": "claude"
+ },
+ "havtil_framework-009": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Refusal text is just 'missing'.",
+  "by": "claude"
+ },
+ "havtil_framework-101": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Answers with the annual overtime ceilings (200 / 300 hours per 52 weeks), not the daily maximum of 4 extra hours.",
+  "by": "claude"
+ },
+ "havtil_framework-102": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-103": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Night work limit (8 h) is right, gives 16 h as the daytime maximum where the reference gives the standard 12-hour shift.",
+  "by": "claude"
+ },
+ "havtil_framework-105": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-106": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Lists several principles (best results unless disproportionate, reduce uncertainty, replace harmful factors), does not mention reducing risk beyond the baseline.",
+  "by": "claude"
+ },
+ "havtil_framework-107": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Says the authority can extend and no numeric limit is stated: right content, but status is answered instead of not_in_context.",
+  "by": "claude"
+ },
+ "havtil_framework-301": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_framework-302": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Names both ministries and ends with the correct one (Labour and Social Inclusion) for decisions under these regulations, hedged.",
+  "by": "claude"
+ },
+ "havtil_framework-303": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Norwegian Maritime Authority regulations with classification rules, used in entirety, Acknowledgement of Compliance.",
+  "by": "claude"
+ },
+ "havtil_management-001": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Institute of Solid Earth Physics or NORSAR.",
+  "by": "claude"
+ },
+ "havtil_management-002": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Claims the passages do not contain Section 14, but the gold chunk was retrieved.",
+  "by": "claude"
+ },
+ "havtil_management-003": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_management-004": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_management-007": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_management-008": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_management-102": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses, gold was not retrieved. Cites six passages.",
+  "by": "claude"
+ },
+ "havtil_management-103": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Ambiguous status but the recipients are right (Environment Agency, Geological Survey), adds unrelated extras (notices to seafarers).",
+  "by": "claude"
+ },
+ "havtil_management-104": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "havtil_management-105": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Barrier performance requirements and personnel competence/training, as in the reference.",
+  "by": "claude"
+ },
+ "havtil_management-304": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Gives 1 April the year after but not the 13-month interval asked for.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-001": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Solid particles.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-002": {
+  "correct": "no",
+  "faithful": "partly",
+  "note": "Refuses while admitting the table cell has a value: contradictory over-refusal.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-004": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "998 - 195 = 803.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-005": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "20 points.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-007": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Adds a derived 37 points.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-008": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "9.6 (2023) to 11 (2024).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-010": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-012": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "11.3 to 9.3 GW, LCOE 0.058 to 0.057.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-013": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-014": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-016": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Covers vertical integration, margins, surplus capacity and scale, details not all checked.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-017": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites all 10 passages (over-citation).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-018": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Cites all 10 passages (over-citation).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-019": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Names the factory and the 5.3-7.5 MW models but never says the GW capacity is not stated, status answered instead of not_in_context.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-101": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "30.2 percentage points.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-102": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-103": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses, gold was not retrieved.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-104": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although a cited chunk holds the gold values (over-refusal).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-106": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Ambiguous status but the right numbers are given (0.1 to 169 GWh, 2571 to 192 USD/kWh).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-108": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although a cited chunk holds the gold values, cites all 10 passages.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-109": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses, gold was not retrieved. Cites all 10 passages.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-111": {
+  "correct": "no",
+  "faithful": "yes",
+  "note": "Refuses although a cited chunk holds the gold values (over-refusal).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-112": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-113": {
+  "correct": "partly",
+  "faithful": "partly",
+  "note": "Capacity factor 39% is right, 691 USD/kW is a different figure (the reference is 1110 USD/kW for Indian onshore wind).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-114": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "25% and up to 50%.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-117": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "85-95% capacity factors, residues and municipal waste streams (p5).",
+  "by": "claude"
+ },
+ "irena_rpgc2024-118": {
+  "correct": "partly",
+  "faithful": "yes",
+  "note": "Lists capital cost and drilling risk (in the passages) but misses the 7-10 year timelines, labour and permitting points of the reference, details not all checked.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-119": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Correct refusal but the answer text is EMPTY.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-120": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-301": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-303": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Ambiguous status, the reason is right (modules and inverters fell faster) but the 65% figure is missing.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-304": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "Reason for the 2023 rise is right, the 2024 drop explanation is vaguer.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-305": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ },
+ "irena_rpgc2024-308": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "155 to 415 MW = 168%.",
+  "by": "claude"
+ },
+ "irena_rpgc2024-309": {
+  "correct": "yes",
+  "faithful": "yes",
+  "note": "",
+  "by": "claude"
+ }
+}

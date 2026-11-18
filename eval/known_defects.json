@@ -1,0 +1,18 @@
+{
+ "_source": "project plan, 'Known defects in the candidates' (found by reading on 16 Nov). Shown to the reviewer; the reviewer decides.",
+ "equinor_ar2025-115": "reject or reword: false premise, the four wells include Argentina",
+ "equinor_ar2025-102": "reject or reword: 'outside Norway' omits E&P USA",
+ "equinor_ar2025-105": "reject or reword: adds two differently defined measures",
+ "equinor_ar2025-116": "reject or reword: REN segment additions vs a group-wide EU Taxonomy CapEx figure, needs a judgement",
+ "havtil_management-104": "reject or reword: 'unstaffed' is not in the text, it says 'simpler facilities'",
+ "havtil_management-101": "reject or reword: barely readable",
+ "cross-306": "single-document question: drop the Equinor gold entry (it only gives context) and relabel",
+ "cross-307": "single-document question: drop the Equinor gold entry (it only gives context) and relabel",
+ "cross-308": "single-document question: drop the Equinor gold entry (it only gives context) and relabel",
+ "havtil_framework-302": "weak spanning: second page not needed, or the two facts are unrelated",
+ "havtil_co2-303": "weak spanning: second page not needed, or the two facts are unrelated",
+ "havtil_management-303": "weak spanning: second page not needed, or the two facts are unrelated",
+ "irena_rpgc2024-309": "relies on '55% of this decline', which may be solar module cost or LCOE: check Figure B3.3 in the PDF",
+ "equinor_ar2025-307": "minor: unqualified 34% vs a 50% net target",
+ "havtil_activities-304": "minor: 'deeper than 180 m' taken from a neighbouring clause"
+}

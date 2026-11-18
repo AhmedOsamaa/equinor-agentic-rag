@@ -1,0 +1,28 @@
+{
+ "seed": 42,
+ "n": 20,
+ "population_size": 169,
+ "population": "pre-screen accepts with no decision in the log when drawn",
+ "ids": [
+  "equinor_ar2025-005",
+  "equinor_ar2025-007",
+  "equinor_ar2025-010",
+  "equinor_ar2025-024",
+  "equinor_ar2025-025",
+  "equinor_ar2025-028",
+  "equinor_ar2025-103",
+  "equinor_ar2025-118",
+  "havtil_activities-001",
+  "havtil_activities-003",
+  "havtil_activities-005",
+  "havtil_activities-008",
+  "havtil_activities-302",
+  "havtil_management-002",
+  "irena_rpgc2024-006",
+  "irena_rpgc2024-016",
+  "irena_rpgc2024-020",
+  "irena_rpgc2024-108",
+  "irena_rpgc2024-111",
+  "irena_rpgc2024-303"
+ ]
+}
